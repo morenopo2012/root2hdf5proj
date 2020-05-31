@@ -1,0 +1,5 @@
+/pnfs/minerva/persistent/users/omorenop/MC/Merged-All/DSCalMasterAnaDevUpdated/MasterAnaDev_mc_AnaTuple_run00119000_Playlist.root
+/pnfs/minerva/persistent/users/omorenop/MC/Merged-All/DSCalMasterAnaDevUpdated/MasterAnaDev_mc_AnaTuple_run00119001_Playlist.root
+/pnfs/minerva/persistent/users/omorenop/MC/Merged-All/DSCalMasterAnaDevUpdated/MasterAnaDev_mc_AnaTuple_run00119002_Playlist.root
+/pnfs/minerva/persistent/users/omorenop/MC/Merged-All/DSCalMasterAnaDevUpdated/MasterAnaDev_mc_AnaTuple_run00119003_Playlist.root
+/pnfs/minerva/persistent/users/omorenop/MC/Merged-All/DSCalMasterAnaDevUpdated/MasterAnaDev_mc_AnaTuple_run00119004_Playlist.root

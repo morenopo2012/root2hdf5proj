@@ -1,0 +1,4 @@
+/pnfs/minerva/persistent/users/omorenop/MC/Merged/NukeCCInclusive-zHighCorre2/NukeCCInclusive_mc_AnaTuple_run00119033_Playlist.root
+/pnfs/minerva/persistent/users/omorenop/MC/Merged/NukeCCInclusive-zHighCorre2/NukeCCInclusive_mc_AnaTuple_run00119034_Playlist.root
+/pnfs/minerva/persistent/users/omorenop/MC/Merged/NukeCCInclusive-zHighCorre2/NukeCCInclusive_mc_AnaTuple_run00119035_Playlist.root
+/pnfs/minerva/persistent/users/omorenop/MC/Merged/NukeCCInclusive-zHighCorre2/NukeCCInclusive_mc_AnaTuple_run00119036_Playlist.root
