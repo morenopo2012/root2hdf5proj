@@ -37,7 +37,7 @@ unsigned int EnhNukeCC::getLatticeSize() const
     //The original one have just m_numberOfBuckets *  m_mostDownstreamModuleInLattice * 2
     //to get up to module 94 but we add 20 modules more (where 1 module = un planecode in this case )
     return (unsigned int)(m_numberOfBuckets *
-            m_mostDownstreamModuleInLattice * 2) + (unsigned int)(m_numberOfBuckets * 20);
+            m_mostDownstreamModuleInLattice * 2);
 }
 
 //----------------------------------------------------------------------------
