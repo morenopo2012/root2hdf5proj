@@ -34,7 +34,7 @@ unsigned int EnhMasterAnaDev::getLatticeSize() const
     //
     // this should also equal `lattice_indices_sz`, etc. in the NukeCC base
     return (unsigned int)(m_numberOfBuckets *
-            m_mostDownstreamModuleInLattice * 2) + (unsigned int)(m_numberOfBuckets * 20);
+            m_mostDownstreamModuleInLattice * 2);
 }
 //----------------------------------------------------------------------------
 std::string EnhMasterAnaDev::latticePositionIntoString(unsigned int latticepos) const
