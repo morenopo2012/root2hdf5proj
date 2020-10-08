@@ -8,7 +8,7 @@
 
 TMP_PRODUCTSROOT="/minerva/app/users/perdue"
 TMP_PRODUCTS="hep_hpc_products"
-TMP_PROJECT="/minerva/app/users/omorenop/cmtuser/root2hdf5proj"
+TMP_PROJECT="/minerva/app/users/$USER/cmtuser/root2hdf5proj"
 
 echo $TMP_PROJECT
 
