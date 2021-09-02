@@ -6,7 +6,7 @@
 # that this script is generally setting up `debug` versions of products - make
 # sure this matches what you have installed, etc.
 
-TMP_PRODUCTSROOT="/minerva/app/users/perdue"
+TMP_PRODUCTSROOT="/cvmfs/minerva.opensciencegrid.org/minerva/"
 TMP_PRODUCTS="hep_hpc_products"
 TMP_PROJECT="/minerva/app/users/$USER/cmtuser/root2hdf5proj"
 
