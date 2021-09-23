@@ -108,11 +108,11 @@ int Skim(int n_max_evts, double max_z,
     /* you basically always want n_mcfiles = -1 to get all files... */
 
     std::cout << "Starting...:" << std::endl;
-    //TChain* tree_mc = utils.getMCTree("MasterAnaDev", ntuple_list_file, -1, false); //Oscar, in case of use MAD
-    TChain* tree_mc = utils.getMCTree("NukeCC", ntuple_list_file, -1, false);
+    TChain* tree_mc = utils.getMCTree("MasterAnaDev", ntuple_list_file, -1, false); //Oscar, in case of use MAD
+    //TChain* tree_mc = utils.getMCTree("NukeCC", ntuple_list_file, -1, false);
     int entries_mc = tree_mc->GetEntries();
-    //EnhMasterAnaDev* mc = new EnhMasterAnaDev( tree_mc);
-    EnhNukeCC* mc = new EnhNukeCC( tree_mc );
+    EnhMasterAnaDev* mc = new EnhMasterAnaDev( tree_mc);
+    //EnhNukeCC* mc = new EnhNukeCC( tree_mc );
     std::cout << "Loaded chain with " << entries_mc << " events." << std::endl;
 
     std::string hdf5_name = filebasename + ".hdf5";
@@ -134,9 +134,9 @@ int Skim(int n_max_evts, double max_z,
             make_scalar_column<unsigned int>("eventids_b")
             );
     auto imgdat = make_ntuple({hdffile, "img_data"},
-            make_column<float, 3>("hitimes-x", {2, 127, 104}), //94
-            make_column<float, 3>("hitimes-u", {2, 127, 52}), //47
-            make_column<float, 3>("hitimes-v", {2, 127, 52})  //47
+            make_column<float, 3>("hitimes-x", {2, 127, 94}), 
+            make_column<float, 3>("hitimes-u", {2, 127, 47}), 
+            make_column<float, 3>("hitimes-v", {2, 127, 47})  
             );
     auto vtxdat = make_ntuple({hdffile, "vtx_data"},
             make_scalar_column<unsigned char>("segments"),
