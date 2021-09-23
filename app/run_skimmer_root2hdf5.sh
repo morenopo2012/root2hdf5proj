@@ -25,24 +25,6 @@ SAMPLE="${PLAYLIST}${DATA}"
 PROCESSING="201911" #DSCAL
 
 #Input file
-                                          #For NukeCC
-#INPFILELIST="/minerva/app/users/${USER}/cmtuser/root2hdf5proj/data/DSCal2PredictNukeNukeTest119040.txt"
-#INPFILELIST="/minerva/app/users/${USER}/cmtuser/root2hdf5proj/data/DSCal2PredictNukeNukeEvaluate119040.txt"
-#INPFILELIST="/minerva/app/users/${USER}/cmtuser/root2hdf5proj/data/DSCal2TrainNuke_minerva_me1Amc119040.txt"
-
-#INPFILELIST="/minerva/app/users/${USER}/cmtuser/root2hdf5proj/data/DSCalTrainNukezLow.txt"
-#INPFILELIST="/minerva/app/users/${USER}/cmtuser/root2hdf5proj/data/DSCalPredictNukezLowEvaluate.txt"
-#INPFILELIST="/minerva/app/users/${USER}/cmtuser/root2hdf5proj/data/DSCalPredictNukezLowTest.txt"
-
-#INPFILELIST="/minerva/app/users/${USER}/cmtuser/root2hdf5proj/data/NukeCCInclusive-zHighCorre2Train.txt"
-#INPFILELIST="/minerva/app/users/${USER}/cmtuser/root2hdf5proj/data/NukeCCInclusive-zHighCorre2Evaluate.txt"
-#INPFILELIST="/minerva/app/users/${USER}/cmtuser/root2hdf5proj/data/NukeCCInclusive-zHighCorre2Test.txt"
-
-#Whole detector
-#INPFILELIST="/minerva/app/users/${USER}/cmtuser/root2hdf5proj/data/NukeCCInclusive-WholeDetectorTrain.txt"
-#INPFILELIST="/minerva/app/users/${USER}/cmtuser/root2hdf5proj/data/NukeCCInclusive-WholeDetectorEvaluate.txt"
-#INPFILELIST="/minerva/app/users/${USER}/cmtuser/root2hdf5proj/data/NukeCCInclusive-WholeTest.txt"
-
 INPFILELIST="/minerva/app/users/${USER}/cmtuser/root2hdf5proj/data/Nuketest.txt"
 
 
