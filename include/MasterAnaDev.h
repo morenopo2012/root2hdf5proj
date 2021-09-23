@@ -568,7 +568,7 @@ public :
    Int_t           improved_michel_vertex_type[2];   //[improved_michel_vertex_type_sz]
    Int_t           improved_michel_view_vec_sz;
    Int_t           improved_michel_view_vec[2];   //[improved_michel_view_vec_sz]
-   Int_t           latticeEnergyIndices[26416];   //[n_indices]
+   Int_t           latticeEnergyIndices[23876];   //[n_indices]
    Int_t           nonvtx_iso_blobs_n_hits_in_prong_sz;
    Int_t           nonvtx_iso_blobs_n_hits_in_prong[4];   //[nonvtx_iso_blobs_n_hits_in_prong_sz]
    Int_t           nonvtx_iso_blobs_particle_pdg_in_prong_sz;
@@ -641,8 +641,8 @@ public :
    Double_t        improved_michel_yvec[2];   //[improved_michel_yvec_sz]
    Int_t           improved_michel_zvec_sz;
    Double_t        improved_michel_zvec[2];   //[improved_michel_zvec_sz]
-   Double_t        latticeNormEnergySums[26416];   //[n_indices]
-   Double_t        latticeRelativeTimes[26416];   //[n_indices]
+   Double_t        latticeNormEnergySums[23876];   //[n_indices]
+   Double_t        latticeRelativeTimes[23876];   //[n_indices]
    Int_t           muon_thetaX_allNodes_sz;
    Double_t        muon_thetaX_allNodes[40];   //[muon_thetaX_allNodes_sz]
    Int_t           muon_thetaY_allNodes_sz;
