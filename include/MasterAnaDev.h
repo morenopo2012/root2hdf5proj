@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Fri Jul  9 13:38:24 2021 by ROOT version 5.34/36
+// Mon Oct  4 22:58:50 2021 by ROOT version 5.34/36
 // from TChain MasterAnaDev/
 //////////////////////////////////////////////////////////
 
@@ -10,17 +10,15 @@
 #include <TROOT.h>
 #include <TChain.h>
 #include <TFile.h>
-//#include <TSelector.h>
-//using namespace std;
+#include <TSelector.h>
+
 // Header file for the classes stored in the TTree if any.
 //#include "/minerva/app/users/aolivier/cmtuser/SL7Build_Final/Bootstrap/lcgcmake/build/lcg_61a/projects/ROOT-5.34.36/src/ROOT/5.34.36/cint/cint/lib/prec_stl/vector"
 
 // Fixed size dimensions of array or collections stored in the TTree if any.
-   //const Int_t kMaxtruth = 1;
-   //const Int_t kMaxprong = 1;
 
 namespace RECOTRACKS_ANA {
-class MasterAnaDev {
+class MasterAnaDev : public TSelector {
 public :
    TTree          *fChain;   //!pointer to the analyzed TTree or TChain
    Int_t           fCurrent;
@@ -44,11 +42,11 @@ public :
    Int_t           processType;
    Int_t           primaryPart;
    Int_t           n_slices;
-   Int_t           slice_numbers[MAX_N_SLICES];   //[n_slices]
+   Int_t           slice_numbers[1];   //[n_slices]
    Int_t           shared_slice;
-   Double_t        vtx[4];
-   Double_t        vtxErr[4];
-   Double_t        E[4];
+   Double_t        vtx[20];
+   Double_t        vtxErr[20];
+   Double_t        E[20];
    Int_t           reco_vertex_batch;
    Bool_t          found_truth;
    Bool_t          phys_front_activity;
@@ -61,6 +59,7 @@ public :
    Bool_t          prim_vtx_has_misassigned_track_direction;
    Bool_t          prim_vtx_has_broken_track;
    Bool_t          pass_MasterAnaDev;
+   Bool_t          isMinosMatchTrack;
    Bool_t          VetoWall_extrapnowalls;
    Bool_t          VetoWall_extrapwall1;
    Bool_t          VetoWall_extrapwall2;
@@ -105,6 +104,13 @@ public :
    Int_t           blob_mufuzz_nClus_nucl;
    Int_t           blob_mufuzz_nClus_od;
    Int_t           blob_mufuzz_nClus_tracker;
+   Int_t           blob_nuefuzz_nBlobs;
+   Int_t           blob_nuefuzz_nClus;
+   Int_t           blob_nuefuzz_nClus_ecal;
+   Int_t           blob_nuefuzz_nClus_hcal;
+   Int_t           blob_nuefuzz_nClus_nucl;
+   Int_t           blob_nuefuzz_nClus_od;
+   Int_t           blob_nuefuzz_nClus_tracker;
    Int_t           blob_recoil_nBlobs;
    Int_t           blob_recoil_nClus;
    Int_t           blob_recoil_nClus_ecal;
@@ -126,7 +132,9 @@ public :
    Int_t           has_single_proton;
    Int_t           improved_nmichel;
    Int_t           isMinosMatchStub;
-   Int_t           isMinosMatchTrack;
+   //Int_t           isMinosMatchTrack;
+   Int_t           iso_prongs_blob_count;
+   Int_t           iso_prongs_count;
    Int_t           multiplicity;
    Int_t           muon_fuzz_energy;
    Int_t           muon_is_minos_match_stub;
@@ -140,6 +148,7 @@ public :
    Int_t           n_nonvtx_iso_blobs;
    Int_t           n_nonvtx_iso_blobs_all;
    Int_t           part_response_recoil_nClus;
+   Int_t           part_response_recoil_passive_nClus;
    Int_t           pass_MasterAnaDev_precuts;
    Int_t           phys_energy_in_road_downstream_nplanes;
    Int_t           phys_energy_in_road_upstream_nplanes;
@@ -341,6 +350,66 @@ public :
    Double_t        blob_mufuzz_E_tracker_p;
    Double_t        blob_mufuzz_E_tracker_xtalk;
    Double_t        blob_mufuzz_E_xtalk;
+   Double_t        blob_nuefuzz_E;
+   Double_t        blob_nuefuzz_E_ecal;
+   Double_t        blob_nuefuzz_E_ecal_em;
+   Double_t        blob_nuefuzz_E_ecal_highn;
+   Double_t        blob_nuefuzz_E_ecal_lown;
+   Double_t        blob_nuefuzz_E_ecal_meson;
+   Double_t        blob_nuefuzz_E_ecal_midn;
+   Double_t        blob_nuefuzz_E_ecal_mu;
+   Double_t        blob_nuefuzz_E_ecal_other;
+   Double_t        blob_nuefuzz_E_ecal_p;
+   Double_t        blob_nuefuzz_E_ecal_xtalk;
+   Double_t        blob_nuefuzz_E_em;
+   Double_t        blob_nuefuzz_E_hcal;
+   Double_t        blob_nuefuzz_E_hcal_em;
+   Double_t        blob_nuefuzz_E_hcal_highn;
+   Double_t        blob_nuefuzz_E_hcal_lown;
+   Double_t        blob_nuefuzz_E_hcal_meson;
+   Double_t        blob_nuefuzz_E_hcal_midn;
+   Double_t        blob_nuefuzz_E_hcal_mu;
+   Double_t        blob_nuefuzz_E_hcal_other;
+   Double_t        blob_nuefuzz_E_hcal_p;
+   Double_t        blob_nuefuzz_E_hcal_xtalk;
+   Double_t        blob_nuefuzz_E_highn;
+   Double_t        blob_nuefuzz_E_lown;
+   Double_t        blob_nuefuzz_E_meson;
+   Double_t        blob_nuefuzz_E_midn;
+   Double_t        blob_nuefuzz_E_mu;
+   Double_t        blob_nuefuzz_E_nucl;
+   Double_t        blob_nuefuzz_E_nucl_em;
+   Double_t        blob_nuefuzz_E_nucl_highn;
+   Double_t        blob_nuefuzz_E_nucl_lown;
+   Double_t        blob_nuefuzz_E_nucl_meson;
+   Double_t        blob_nuefuzz_E_nucl_midn;
+   Double_t        blob_nuefuzz_E_nucl_mu;
+   Double_t        blob_nuefuzz_E_nucl_other;
+   Double_t        blob_nuefuzz_E_nucl_p;
+   Double_t        blob_nuefuzz_E_nucl_xtalk;
+   Double_t        blob_nuefuzz_E_od;
+   Double_t        blob_nuefuzz_E_od_em;
+   Double_t        blob_nuefuzz_E_od_highn;
+   Double_t        blob_nuefuzz_E_od_lown;
+   Double_t        blob_nuefuzz_E_od_meson;
+   Double_t        blob_nuefuzz_E_od_midn;
+   Double_t        blob_nuefuzz_E_od_mu;
+   Double_t        blob_nuefuzz_E_od_other;
+   Double_t        blob_nuefuzz_E_od_p;
+   Double_t        blob_nuefuzz_E_od_xtalk;
+   Double_t        blob_nuefuzz_E_other;
+   Double_t        blob_nuefuzz_E_p;
+   Double_t        blob_nuefuzz_E_tracker;
+   Double_t        blob_nuefuzz_E_tracker_em;
+   Double_t        blob_nuefuzz_E_tracker_highn;
+   Double_t        blob_nuefuzz_E_tracker_lown;
+   Double_t        blob_nuefuzz_E_tracker_meson;
+   Double_t        blob_nuefuzz_E_tracker_midn;
+   Double_t        blob_nuefuzz_E_tracker_mu;
+   Double_t        blob_nuefuzz_E_tracker_other;
+   Double_t        blob_nuefuzz_E_tracker_p;
+   Double_t        blob_nuefuzz_E_tracker_xtalk;
+   Double_t        blob_nuefuzz_E_xtalk;
    Double_t        blob_recoil_E;
    Double_t        blob_recoil_E_ecal;
    Double_t        blob_recoil_E_ecal_em;
@@ -465,6 +534,7 @@ public :
    Double_t        energy_from_mc;
    Double_t        energy_from_mc_fraction;
    Double_t        energy_from_mc_fraction_of_highest;
+   Double_t        iso_prongs_total_energy;
    Double_t        muon_iso_blobs_energy;
    Double_t        muon_minerva_trk_chi2PerDoF;
    Double_t        muon_phi;
@@ -530,6 +600,54 @@ public :
    Double_t        part_response_recoil_other_id_err;
    Double_t        part_response_recoil_other_od;
    Double_t        part_response_recoil_other_od_err;
+   Double_t        part_response_recoil_passive_em_id;
+   Double_t        part_response_recoil_passive_em_id_err;
+   Double_t        part_response_recoil_passive_em_od;
+   Double_t        part_response_recoil_passive_em_od_err;
+   Double_t        part_response_recoil_passive_high_neutron_id;
+   Double_t        part_response_recoil_passive_high_neutron_id_err;
+   Double_t        part_response_recoil_passive_high_neutron_od;
+   Double_t        part_response_recoil_passive_high_neutron_od_err;
+   Double_t        part_response_recoil_passive_high_proton_id;
+   Double_t        part_response_recoil_passive_high_proton_id_err;
+   Double_t        part_response_recoil_passive_high_proton_od;
+   Double_t        part_response_recoil_passive_high_proton_od_err;
+   Double_t        part_response_recoil_passive_low_neutron_id;
+   Double_t        part_response_recoil_passive_low_neutron_id_err;
+   Double_t        part_response_recoil_passive_low_neutron_od;
+   Double_t        part_response_recoil_passive_low_neutron_od_err;
+   Double_t        part_response_recoil_passive_low_proton_id;
+   Double_t        part_response_recoil_passive_low_proton_id_err;
+   Double_t        part_response_recoil_passive_low_proton_od;
+   Double_t        part_response_recoil_passive_low_proton_od_err;
+   Double_t        part_response_recoil_passive_meson_id;
+   Double_t        part_response_recoil_passive_meson_id_err;
+   Double_t        part_response_recoil_passive_meson_od;
+   Double_t        part_response_recoil_passive_meson_od_err;
+   Double_t        part_response_recoil_passive_mid_neutron_id;
+   Double_t        part_response_recoil_passive_mid_neutron_id_err;
+   Double_t        part_response_recoil_passive_mid_neutron_od;
+   Double_t        part_response_recoil_passive_mid_neutron_od_err;
+   Double_t        part_response_recoil_passive_mid_proton_id;
+   Double_t        part_response_recoil_passive_mid_proton_id_err;
+   Double_t        part_response_recoil_passive_mid_proton_od;
+   Double_t        part_response_recoil_passive_mid_proton_od_err;
+   Double_t        part_response_recoil_passive_muon_id;
+   Double_t        part_response_recoil_passive_muon_id_err;
+   Double_t        part_response_recoil_passive_muon_od;
+   Double_t        part_response_recoil_passive_muon_od_err;
+   Double_t        part_response_recoil_passive_other_id;
+   Double_t        part_response_recoil_passive_other_id_err;
+   Double_t        part_response_recoil_passive_other_od;
+   Double_t        part_response_recoil_passive_other_od_err;
+   Double_t        part_response_recoil_passive_proton_id;
+   Double_t        part_response_recoil_passive_proton_id_err;
+   Double_t        part_response_recoil_passive_proton_od;
+   Double_t        part_response_recoil_passive_proton_od_err;
+   Double_t        part_response_recoil_passive_xtalk_id;
+   Double_t        part_response_recoil_passive_xtalk_id_err;
+   Double_t        part_response_recoil_passive_xtalk_od;
+   Double_t        part_response_recoil_passive_xtalk_od_err;
    Double_t        part_response_recoil_proton_id;
    Double_t        part_response_recoil_proton_id_err;
    Double_t        part_response_recoil_proton_od;
@@ -538,6 +656,8 @@ public :
    Double_t        part_response_recoil_xtalk_id_err;
    Double_t        part_response_recoil_xtalk_od;
    Double_t        part_response_recoil_xtalk_od_err;
+   Double_t        part_response_total_recoil_passive_id;
+   Double_t        part_response_total_recoil_passive_od;
    Double_t        phys_energy_dispersed;
    Double_t        phys_energy_in_road_downstream;
    Double_t        phys_energy_in_road_upstream;
@@ -565,191 +685,402 @@ public :
    Double_t        vtx_iso_blobs_energy_outside_radius;
    Int_t           _sz;
    //Int_t           [1];   //[_sz]
-   Int_t           ANN_segments[2];
+   Int_t           ANN_segments[10];
    Int_t           ANN_vtx_modules_sz;
    Int_t           ANN_vtx_modules[1];   //[ANN_vtx_modules_sz]
    Int_t           ANN_vtx_planes_sz;
    Int_t           ANN_vtx_planes[1];   //[ANN_vtx_planes_sz]
-   Int_t           VetoWall_PMTStatusMAP[24];
+   Int_t           VetoWall_PMTStatusMAP[300];
    Int_t           VetoWall_sixPush_paddle_wall1_sz;
-   Int_t           VetoWall_sixPush_paddle_wall1[2];   //[VetoWall_sixPush_paddle_wall1_sz]
+   Int_t           VetoWall_sixPush_paddle_wall1[10];   //[VetoWall_sixPush_paddle_wall1_sz]
    Int_t           VetoWall_sixPush_paddle_wall2_sz;
-   Int_t           VetoWall_sixPush_paddle_wall2[2];   //[VetoWall_sixPush_paddle_wall2_sz]
+   Int_t           VetoWall_sixPush_paddle_wall2[10];   //[VetoWall_sixPush_paddle_wall2_sz]
    Int_t           all_event_start_vertex_fv_minos_match_sz;
    Int_t           all_event_start_vertex_fv_minos_match[1];   //[all_event_start_vertex_fv_minos_match_sz]
    Int_t           clusters_found_at_end_proton_prong_sz;
-   Int_t           clusters_found_at_end_proton_prong[4];   //[clusters_found_at_end_proton_prong_sz]
+   Int_t           clusters_found_at_end_proton_prong[300];   //[clusters_found_at_end_proton_prong_sz]
    Int_t           event_in_time_vertex_types_sz;
-   Int_t           event_in_time_vertex_types[9];   //[event_in_time_vertex_types_sz]
+   Int_t           event_in_time_vertex_types[300];   //[event_in_time_vertex_types_sz]
    Int_t           event_track_nhits_sz;
-   Int_t           event_track_nhits[8];   //[event_track_nhits_sz]
+   Int_t           event_track_nhits[300];   //[event_track_nhits_sz]
    Int_t           event_vertex_types_sz;
-   Int_t           event_vertex_types[13];   //[event_vertex_types_sz]
+   Int_t           event_vertex_types[300];   //[event_vertex_types_sz]
+   Int_t           hadron_ntrack[300];
+   Int_t           has_michel_primary_particle_PDG_sz;
+   Int_t           has_michel_primary_particle_PDG[300];   //[has_michel_primary_particle_PDG_sz]
+   Int_t           has_michel_primary_particle_trackID_sz;
+   Int_t           has_michel_primary_particle_trackID[300];   //[has_michel_primary_particle_trackID_sz]
    Int_t           improved_michel_in_vertex_point_sz;
-   Int_t           improved_michel_in_vertex_point[5];   //[improved_michel_in_vertex_point_sz]
+   Int_t           improved_michel_in_vertex_point[300];   //[improved_michel_in_vertex_point_sz]
    Int_t           improved_michel_match_vec_sz;
-   Int_t           improved_michel_match_vec[5];   //[improved_michel_match_vec_sz]
+   Int_t           improved_michel_match_vec[300];   //[improved_michel_match_vec_sz]
    Int_t           improved_michel_matched_pdg_sz;
-   Int_t           improved_michel_matched_pdg[5];   //[improved_michel_matched_pdg_sz]
+   Int_t           improved_michel_matched_pdg[300];   //[improved_michel_matched_pdg_sz]
    Int_t           improved_michel_matched_primary_pdg_sz;
-   Int_t           improved_michel_matched_primary_pdg[5];   //[improved_michel_matched_primary_pdg_sz]
+   Int_t           improved_michel_matched_primary_pdg[300];   //[improved_michel_matched_primary_pdg_sz]
    Int_t           improved_michel_ndigits_sz;
-   Int_t           improved_michel_ndigits[5];   //[improved_michel_ndigits_sz]
+   Int_t           improved_michel_ndigits[300];   //[improved_michel_ndigits_sz]
    Int_t           improved_michel_vertex_type_sz;
-   Int_t           improved_michel_vertex_type[5];   //[improved_michel_vertex_type_sz]
+   Int_t           improved_michel_vertex_type[300];   //[improved_michel_vertex_type_sz]
    Int_t           improved_michel_view_vec_sz;
-   Int_t           improved_michel_view_vec[5];   //[improved_michel_view_vec_sz]
-   Int_t           latticeEnergyIndices[26416];   //[n_indices]
-   //Int_t           latticeEnergyIndices_new[23876];   //[n_indices]
+   Int_t           improved_michel_view_vec[300];   //[improved_michel_view_vec_sz]
+   Int_t           iso_prong_nhits[300];
+   Int_t           latticeEnergyIndices[23876];   //[n_indices]
+   Int_t           matched_michel_avg_idx[300];
+   Int_t           matched_michel_avg_module[300];
+   Int_t           matched_michel_code[300];
+   Int_t           matched_michel_end_idx[300];
+   Int_t           matched_michel_end_module1[300];
+   Int_t           matched_michel_end_module2[300];
+   Int_t           matched_michel_fitPass_sz;
+   Int_t           matched_michel_fitPass[300];   //[matched_michel_fitPass_sz]
+   Int_t           matched_michel_idx_sz;
+   Int_t           matched_michel_idx[300];   //[matched_michel_idx_sz]
+   Int_t           matched_michel_ov_idx[300];
+   Int_t           matched_michel_slice_sz;
+   Int_t           matched_michel_slice[300];   //[matched_michel_slice_sz]
+   Int_t           matched_michel_unique_idx_sz;
+   Int_t           matched_michel_unique_idx[300];   //[matched_michel_unique_idx_sz]
+   Int_t           matched_michel_views_sz;
+   Int_t           matched_michel_views[300];   //[matched_michel_views_sz]
+   Int_t           michel_from_decay_sz;
+   Int_t           michel_from_decay[300];   //[michel_from_decay_sz]
+   Int_t           michel_parent_PDG_sz;
+   Int_t           michel_parent_PDG[300];   //[michel_parent_PDG_sz]
+   Int_t           michel_parent_trackID_sz;
+   Int_t           michel_parent_trackID[300];   //[michel_parent_trackID_sz]
    Int_t           nonvtx_iso_blobs_n_hits_in_prong_sz;
-   Int_t           nonvtx_iso_blobs_n_hits_in_prong[9];   //[nonvtx_iso_blobs_n_hits_in_prong_sz]
+   Int_t           nonvtx_iso_blobs_n_hits_in_prong[700];   //[nonvtx_iso_blobs_n_hits_in_prong_sz]
    Int_t           nonvtx_iso_blobs_particle_pdg_in_prong_sz;
-   Int_t           nonvtx_iso_blobs_particle_pdg_in_prong[9];   //[nonvtx_iso_blobs_particle_pdg_in_prong_sz]
+   Int_t           nonvtx_iso_blobs_particle_pdg_in_prong[700];   //[nonvtx_iso_blobs_particle_pdg_in_prong_sz]
    Int_t           nonvtx_iso_blobs_primary_particle_pdg_in_prong_sz;
-   Int_t           nonvtx_iso_blobs_primary_particle_pdg_in_prong[9];   //[nonvtx_iso_blobs_primary_particle_pdg_in_prong_sz]
+   Int_t           nonvtx_iso_blobs_primary_particle_pdg_in_prong[700];   //[nonvtx_iso_blobs_primary_particle_pdg_in_prong_sz]
    Int_t           number_clusters_at_end_proton_prong_sz;
-   Int_t           number_clusters_at_end_proton_prong[4];   //[number_clusters_at_end_proton_prong_sz]
+   Int_t           number_clusters_at_end_proton_prong[300];   //[number_clusters_at_end_proton_prong_sz]
+   Int_t           part_response_container_recoil_passive_nClus_sz;
+   Int_t           part_response_container_recoil_passive_nClus[1];   //[part_response_container_recoil_passive_nClus_sz]
    Int_t           recoil_lower_time_limit_sz;
-   Int_t           recoil_lower_time_limit[700];   //[recoil_lower_time_limit_sz]
+   Int_t           recoil_lower_time_limit[2000];   //[recoil_lower_time_limit_sz]
    Int_t           recoil_upper_time_limit_sz;
-   Int_t           recoil_upper_time_limit[700];   //[recoil_upper_time_limit_sz]
+   Int_t           recoil_upper_time_limit[2000];   //[recoil_upper_time_limit_sz]
    Int_t           sec_protons_prong_PDG_sz;
-   Int_t           sec_protons_prong_PDG[3];   //[sec_protons_prong_PDG_sz]
+   Int_t           sec_protons_prong_PDG[300];   //[sec_protons_prong_PDG_sz]
    Int_t           sec_protons_prong_traj_ID_sz;
-   Int_t           sec_protons_prong_traj_ID[3];   //[sec_protons_prong_traj_ID_sz]
+   Int_t           sec_protons_prong_traj_ID[300];   //[sec_protons_prong_traj_ID_sz]
+   Int_t           true_michel_pdg_sz;
+   Int_t           true_michel_pdg[300];   //[true_michel_pdg_sz]
    //Double_t        [1];   //[_sz]
-   Double_t        ANN_plane_probs[2];
-   Double_t        VetoWall_muon_extrapVetoXY[4];
+   Double_t        ANN_plane_probs[10];
+   Double_t        VetoWall_muon_extrapVetoXY[20];
    Int_t           all_event_start_vertex_time_sz;
-   Double_t        all_event_start_vertex_time[5];   //[all_event_start_vertex_time_sz]
+   Double_t        all_event_start_vertex_time[300];   //[all_event_start_vertex_time_sz]
    Int_t           all_event_start_vertex_time_minos_match_sz;
    Double_t        all_event_start_vertex_time_minos_match[1];   //[all_event_start_vertex_time_minos_match_sz]
    Int_t           calibE_clusters_at_end_proton_prong_sz;
-   Double_t        calibE_clusters_at_end_proton_prong[4];   //[calibE_clusters_at_end_proton_prong_sz]
+   Double_t        calibE_clusters_at_end_proton_prong[300];   //[calibE_clusters_at_end_proton_prong_sz]
    Int_t           clusters_found_at_end_proton_prong_max_distance_sz;
-   Double_t        clusters_found_at_end_proton_prong_max_distance[4];   //[clusters_found_at_end_proton_prong_max_distance_sz]
+   Double_t        clusters_found_at_end_proton_prong_max_distance[300];   //[clusters_found_at_end_proton_prong_max_distance_sz]
    Int_t           event_extra_track_PID_sz;
-   Double_t        event_extra_track_PID[3];   //[event_extra_track_PID_sz]
+   Double_t        event_extra_track_PID[300];   //[event_extra_track_PID_sz]
    Int_t           event_in_time_tracks_energy_sz;
-   Double_t        event_in_time_tracks_energy[7];   //[event_in_time_tracks_energy_sz]
+   Double_t        event_in_time_tracks_energy[300];   //[event_in_time_tracks_energy_sz]
    Int_t           event_track_hit_energy_sz;
-   Double_t        event_track_hit_energy[774];   //[event_track_hit_energy_sz]
+   Double_t        event_track_hit_energy[5000];   //[event_track_hit_energy_sz]
    Int_t           event_track_hit_time_sz;
-   Double_t        event_track_hit_time[774];   //[event_track_hit_time_sz]
+   Double_t        event_track_hit_time[5000];   //[event_track_hit_time_sz]
    Int_t           event_track_time_diff_sz;
-   Double_t        event_track_time_diff[8];   //[event_track_time_diff_sz]
+   Double_t        event_track_time_diff[300];   //[event_track_time_diff_sz]
    Int_t           event_tracks_energy_sz;
-   Double_t        event_tracks_energy[8];   //[event_tracks_energy_sz]
+   Double_t        event_tracks_energy[300];   //[event_tracks_energy_sz]
    Int_t           event_vertex_time_diff_sz;
-   Double_t        event_vertex_time_diff[13];   //[event_vertex_time_diff_sz]
+   Double_t        event_vertex_time_diff[300];   //[event_vertex_time_diff_sz]
+   Double_t        hadron_track_length[300];
+   Double_t        hadron_track_length_area[300];
+   Double_t        hadron_track_length_area_ecal[300];
+   Double_t        hadron_track_length_area_trkr[300];
+   Int_t           has_michel_primary_particle_E_sz;
+   Double_t        has_michel_primary_particle_E[300];   //[has_michel_primary_particle_E_sz]
+   Int_t           has_michel_primary_particle_p_sz;
+   Double_t        has_michel_primary_particle_p[300];   //[has_michel_primary_particle_p_sz]
+   Int_t           has_michel_primary_particle_px_sz;
+   Double_t        has_michel_primary_particle_px[300];   //[has_michel_primary_particle_px_sz]
+   Int_t           has_michel_primary_particle_py_sz;
+   Double_t        has_michel_primary_particle_py[300];   //[has_michel_primary_particle_py_sz]
+   Int_t           has_michel_primary_particle_pz_sz;
+   Double_t        has_michel_primary_particle_pz[300];   //[has_michel_primary_particle_pz_sz]
    Int_t           improved_michel_data_energy_fraction_sz;
-   Double_t        improved_michel_data_energy_fraction[5];   //[improved_michel_data_energy_fraction_sz]
+   Double_t        improved_michel_data_energy_fraction[300];   //[improved_michel_data_energy_fraction_sz]
    Int_t           improved_michel_dist_vec_sz;
-   Double_t        improved_michel_dist_vec[5];   //[improved_michel_dist_vec_sz]
+   Double_t        improved_michel_dist_vec[300];   //[improved_michel_dist_vec_sz]
    Int_t           improved_michel_ecalo_vec_sz;
-   Double_t        improved_michel_ecalo_vec[5];   //[improved_michel_ecalo_vec_sz]
+   Double_t        improved_michel_ecalo_vec[300];   //[improved_michel_ecalo_vec_sz]
    Int_t           improved_michel_evis_vec_sz;
-   Double_t        improved_michel_evis_vec[5];   //[improved_michel_evis_vec_sz]
+   Double_t        improved_michel_evis_vec[300];   //[improved_michel_evis_vec_sz]
    Int_t           improved_michel_hit_charges_sz;
-   Double_t        improved_michel_hit_charges[39];   //[improved_michel_hit_charges_sz]
+   Double_t        improved_michel_hit_charges[5000];   //[improved_michel_hit_charges_sz]
    Int_t           improved_michel_hit_time_diff_cluster_sz;
-   Double_t        improved_michel_hit_time_diff_cluster[39];   //[improved_michel_hit_time_diff_cluster_sz]
+   Double_t        improved_michel_hit_time_diff_cluster[5000];   //[improved_michel_hit_time_diff_cluster_sz]
    Int_t           improved_michel_hit_time_diff_vtx_sz;
-   Double_t        improved_michel_hit_time_diff_vtx[39];   //[improved_michel_hit_time_diff_vtx_sz]
+   Double_t        improved_michel_hit_time_diff_vtx[5000];   //[improved_michel_hit_time_diff_vtx_sz]
    Int_t           improved_michel_hit_times_sz;
-   Double_t        improved_michel_hit_times[39];   //[improved_michel_hit_times_sz]
+   Double_t        improved_michel_hit_times[5000];   //[improved_michel_hit_times_sz]
    Int_t           improved_michel_matched_energy_fraction_sz;
-   Double_t        improved_michel_matched_energy_fraction[5];   //[improved_michel_matched_energy_fraction_sz]
+   Double_t        improved_michel_matched_energy_fraction[300];   //[improved_michel_matched_energy_fraction_sz]
    Int_t           improved_michel_tdiff_vec_sz;
-   Double_t        improved_michel_tdiff_vec[5];   //[improved_michel_tdiff_vec_sz]
+   Double_t        improved_michel_tdiff_vec[300];   //[improved_michel_tdiff_vec_sz]
    Int_t           improved_michel_tvec_sz;
-   Double_t        improved_michel_tvec[5];   //[improved_michel_tvec_sz]
+   Double_t        improved_michel_tvec[300];   //[improved_michel_tvec_sz]
    Int_t           improved_michel_uvec_sz;
-   Double_t        improved_michel_uvec[5];   //[improved_michel_uvec_sz]
+   Double_t        improved_michel_uvec[300];   //[improved_michel_uvec_sz]
    Int_t           improved_michel_vvec_sz;
-   Double_t        improved_michel_vvec[5];   //[improved_michel_vvec_sz]
+   Double_t        improved_michel_vvec[300];   //[improved_michel_vvec_sz]
    Int_t           improved_michel_xvec_sz;
-   Double_t        improved_michel_xvec[5];   //[improved_michel_xvec_sz]
+   Double_t        improved_michel_xvec[300];   //[improved_michel_xvec_sz]
    Int_t           improved_michel_yvec_sz;
-   Double_t        improved_michel_yvec[5];   //[improved_michel_yvec_sz]
+   Double_t        improved_michel_yvec[300];   //[improved_michel_yvec_sz]
    Int_t           improved_michel_zvec_sz;
-   Double_t        improved_michel_zvec[5];   //[improved_michel_zvec_sz]
-   Double_t        latticeNormEnergySums[26416];   //[n_indices]
-//   Double_t        latticeNormEnergySums_new[23876];   //[n_indices]
-   Double_t        latticeRelativeTimes[26416];   //[n_indices]
-//   Double_t        latticeRelativeTimes_new[23876];   //[n_indices]
+   Double_t        improved_michel_zvec[300];   //[improved_michel_zvec_sz]
+   Double_t        iso_prong_energy[300];
+   Double_t        iso_prong_separation[300];
+   Double_t        iso_prong_x[300];
+   Double_t        iso_prong_y[300];
+   Double_t        iso_prong_z[300];
+   Double_t        latticeNormEnergySums[23876];   //[n_indices]
+   Double_t        latticeRelativeTimes[23876];   //[n_indices]
+   Int_t           matched_michel_cal_energy_sz;
+   Double_t        matched_michel_cal_energy[300];   //[matched_michel_cal_energy_sz]
+   Int_t           matched_michel_down_end_U_sz;
+   Double_t        matched_michel_down_end_U[300];   //[matched_michel_down_end_U_sz]
+   Int_t           matched_michel_down_end_V_sz;
+   Double_t        matched_michel_down_end_V[300];   //[matched_michel_down_end_V_sz]
+   Int_t           matched_michel_down_end_X_sz;
+   Double_t        matched_michel_down_end_X[300];   //[matched_michel_down_end_X_sz]
+   Int_t           matched_michel_down_end_Y_sz;
+   Double_t        matched_michel_down_end_Y[300];   //[matched_michel_down_end_Y_sz]
+   Int_t           matched_michel_down_end_Z_sz;
+   Double_t        matched_michel_down_end_Z[300];   //[matched_michel_down_end_Z_sz]
+   Int_t           matched_michel_end_dist_sz;
+   Double_t        matched_michel_end_dist[300];   //[matched_michel_end_dist_sz]
+   Int_t           matched_michel_fit_AU_sz;
+   Double_t        matched_michel_fit_AU[300];   //[matched_michel_fit_AU_sz]
+   Int_t           matched_michel_fit_AV_sz;
+   Double_t        matched_michel_fit_AV[300];   //[matched_michel_fit_AV_sz]
+   Int_t           matched_michel_fit_AX_sz;
+   Double_t        matched_michel_fit_AX[300];   //[matched_michel_fit_AX_sz]
+   Int_t           matched_michel_fit_AY_sz;
+   Double_t        matched_michel_fit_AY[300];   //[matched_michel_fit_AY_sz]
+   Double_t        matched_michel_fit_residual[300];
+   Int_t           matched_michel_ov_dist_sz;
+   Double_t        matched_michel_ov_dist[300];   //[matched_michel_ov_dist_sz]
+   Int_t           matched_michel_position_u_sz;
+   Double_t        matched_michel_position_u[300];   //[matched_michel_position_u_sz]
+   Int_t           matched_michel_position_v_sz;
+   Double_t        matched_michel_position_v[300];   //[matched_michel_position_v_sz]
+   Int_t           matched_michel_position_x_sz;
+   Double_t        matched_michel_position_x[300];   //[matched_michel_position_x_sz]
+   Int_t           matched_michel_position_y_sz;
+   Double_t        matched_michel_position_y[300];   //[matched_michel_position_y_sz]
+   Int_t           matched_michel_position_z_sz;
+   Double_t        matched_michel_position_z[300];   //[matched_michel_position_z_sz]
+   Int_t           matched_michel_time_sz;
+   Double_t        matched_michel_time[300];   //[matched_michel_time_sz]
+   Int_t           matched_michel_up_end_U_sz;
+   Double_t        matched_michel_up_end_U[300];   //[matched_michel_up_end_U_sz]
+   Int_t           matched_michel_up_end_V_sz;
+   Double_t        matched_michel_up_end_V[300];   //[matched_michel_up_end_V_sz]
+   Int_t           matched_michel_up_end_X_sz;
+   Double_t        matched_michel_up_end_X[300];   //[matched_michel_up_end_X_sz]
+   Int_t           matched_michel_up_end_Y_sz;
+   Double_t        matched_michel_up_end_Y[300];   //[matched_michel_up_end_Y_sz]
+   Int_t           matched_michel_up_end_Z_sz;
+   Double_t        matched_michel_up_end_Z[300];   //[matched_michel_up_end_Z_sz]
+   Int_t           matched_michel_vis_energy_sz;
+   Double_t        matched_michel_vis_energy[300];   //[matched_michel_vis_energy_sz]
    Int_t           muon_thetaX_allNodes_sz;
-   Double_t        muon_thetaX_allNodes[200];   //[muon_thetaX_allNodes_sz]
+   Double_t        muon_thetaX_allNodes[5000];   //[muon_thetaX_allNodes_sz]
    Int_t           muon_thetaY_allNodes_sz;
-   Double_t        muon_thetaY_allNodes[200];   //[muon_thetaY_allNodes_sz]
+   Double_t        muon_thetaY_allNodes[5000];   //[muon_thetaY_allNodes_sz]
    Int_t           muon_theta_allNodes_sz;
-   Double_t        muon_theta_allNodes[200];   //[muon_theta_allNodes_sz]
+   Double_t        muon_theta_allNodes[5000];   //[muon_theta_allNodes_sz]
    Int_t           nonvtx_iso_blobs_data_energy_fraction_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_data_energy_fraction_in_prong[9];   //[nonvtx_iso_blobs_data_energy_fraction_in_prong_sz]
+   Double_t        nonvtx_iso_blobs_data_energy_fraction_in_prong[700];   //[nonvtx_iso_blobs_data_energy_fraction_in_prong_sz]
    Int_t           nonvtx_iso_blobs_distance_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_distance_in_prong[9];   //[nonvtx_iso_blobs_distance_in_prong_sz]
+   Double_t        nonvtx_iso_blobs_distance_in_prong[700];   //[nonvtx_iso_blobs_distance_in_prong_sz]
    Int_t           nonvtx_iso_blobs_earliest_hit_time_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_earliest_hit_time_in_prong[9];   //[nonvtx_iso_blobs_earliest_hit_time_in_prong_sz]
+   Double_t        nonvtx_iso_blobs_earliest_hit_time_in_prong[700];   //[nonvtx_iso_blobs_earliest_hit_time_in_prong_sz]
    Int_t           nonvtx_iso_blobs_energy_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_energy_in_prong[9];   //[nonvtx_iso_blobs_energy_in_prong_sz]
+   Double_t        nonvtx_iso_blobs_energy_in_prong[700];   //[nonvtx_iso_blobs_energy_in_prong_sz]
    Int_t           nonvtx_iso_blobs_highest_hit_energy_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_highest_hit_energy_in_prong[9];   //[nonvtx_iso_blobs_highest_hit_energy_in_prong_sz]
+   Double_t        nonvtx_iso_blobs_highest_hit_energy_in_prong[700];   //[nonvtx_iso_blobs_highest_hit_energy_in_prong_sz]
    Int_t           nonvtx_iso_blobs_highest_module_u_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_highest_module_u_in_prong[9];   //[nonvtx_iso_blobs_highest_module_u_in_prong_sz]
+   Double_t        nonvtx_iso_blobs_highest_module_u_in_prong[700];   //[nonvtx_iso_blobs_highest_module_u_in_prong_sz]
    Int_t           nonvtx_iso_blobs_highest_module_v_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_highest_module_v_in_prong[9];   //[nonvtx_iso_blobs_highest_module_v_in_prong_sz]
+   Double_t        nonvtx_iso_blobs_highest_module_v_in_prong[700];   //[nonvtx_iso_blobs_highest_module_v_in_prong_sz]
    Int_t           nonvtx_iso_blobs_highest_module_x_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_highest_module_x_in_prong[9];   //[nonvtx_iso_blobs_highest_module_x_in_prong_sz]
+   Double_t        nonvtx_iso_blobs_highest_module_x_in_prong[700];   //[nonvtx_iso_blobs_highest_module_x_in_prong_sz]
    Int_t           nonvtx_iso_blobs_latest_hit_time_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_latest_hit_time_in_prong[9];   //[nonvtx_iso_blobs_latest_hit_time_in_prong_sz]
+   Double_t        nonvtx_iso_blobs_latest_hit_time_in_prong[700];   //[nonvtx_iso_blobs_latest_hit_time_in_prong_sz]
    Int_t           nonvtx_iso_blobs_lowest_module_u_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_lowest_module_u_in_prong[9];   //[nonvtx_iso_blobs_lowest_module_u_in_prong_sz]
+   Double_t        nonvtx_iso_blobs_lowest_module_u_in_prong[700];   //[nonvtx_iso_blobs_lowest_module_u_in_prong_sz]
    Int_t           nonvtx_iso_blobs_lowest_module_v_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_lowest_module_v_in_prong[9];   //[nonvtx_iso_blobs_lowest_module_v_in_prong_sz]
+   Double_t        nonvtx_iso_blobs_lowest_module_v_in_prong[700];   //[nonvtx_iso_blobs_lowest_module_v_in_prong_sz]
    Int_t           nonvtx_iso_blobs_lowest_module_x_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_lowest_module_x_in_prong[9];   //[nonvtx_iso_blobs_lowest_module_x_in_prong_sz]
+   Double_t        nonvtx_iso_blobs_lowest_module_x_in_prong[700];   //[nonvtx_iso_blobs_lowest_module_x_in_prong_sz]
    Int_t           nonvtx_iso_blobs_matched_energy_fraction_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_matched_energy_fraction_in_prong[9];   //[nonvtx_iso_blobs_matched_energy_fraction_in_prong_sz]
+   Double_t        nonvtx_iso_blobs_matched_energy_fraction_in_prong[700];   //[nonvtx_iso_blobs_matched_energy_fraction_in_prong_sz]
    Int_t           nonvtx_iso_blobs_start_position_x_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_start_position_x_in_prong[9];   //[nonvtx_iso_blobs_start_position_x_in_prong_sz]
+   Double_t        nonvtx_iso_blobs_start_position_x_in_prong[700];   //[nonvtx_iso_blobs_start_position_x_in_prong_sz]
    Int_t           nonvtx_iso_blobs_start_position_y_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_start_position_y_in_prong[9];   //[nonvtx_iso_blobs_start_position_y_in_prong_sz]
+   Double_t        nonvtx_iso_blobs_start_position_y_in_prong[700];   //[nonvtx_iso_blobs_start_position_y_in_prong_sz]
    Int_t           nonvtx_iso_blobs_start_position_z_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_start_position_z_in_prong[9];   //[nonvtx_iso_blobs_start_position_z_in_prong_sz]
+   Double_t        nonvtx_iso_blobs_start_position_z_in_prong[700];   //[nonvtx_iso_blobs_start_position_z_in_prong_sz]
    Int_t           nonvtx_iso_blobs_time_difference_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_time_difference_in_prong[9];   //[nonvtx_iso_blobs_time_difference_in_prong_sz]
+   Double_t        nonvtx_iso_blobs_time_difference_in_prong[700];   //[nonvtx_iso_blobs_time_difference_in_prong_sz]
    Int_t           nonvtx_iso_blobs_time_in_prong_sz;
-   Double_t        nonvtx_iso_blobs_time_in_prong[9];   //[nonvtx_iso_blobs_time_in_prong_sz]
-   Double_t        proton_prong_4p[4];
-   Double_t        proton_prong_tpos[4];
+   Double_t        nonvtx_iso_blobs_time_in_prong[700];   //[nonvtx_iso_blobs_time_in_prong_sz]
+   Int_t           part_response_container_recoil_passive_em_id_sz;
+   Double_t        part_response_container_recoil_passive_em_id[1];   //[part_response_container_recoil_passive_em_id_sz]
+   Int_t           part_response_container_recoil_passive_em_id_err_sz;
+   Double_t        part_response_container_recoil_passive_em_id_err[1];   //[part_response_container_recoil_passive_em_id_err_sz]
+   Int_t           part_response_container_recoil_passive_em_od_sz;
+   Double_t        part_response_container_recoil_passive_em_od[1];   //[part_response_container_recoil_passive_em_od_sz]
+   Int_t           part_response_container_recoil_passive_em_od_err_sz;
+   Double_t        part_response_container_recoil_passive_em_od_err[1];   //[part_response_container_recoil_passive_em_od_err_sz]
+   Int_t           part_response_container_recoil_passive_high_neutron_id_sz;
+   Double_t        part_response_container_recoil_passive_high_neutron_id[1];   //[part_response_container_recoil_passive_high_neutron_id_sz]
+   Int_t           part_response_container_recoil_passive_high_neutron_id_err_sz;
+   Double_t        part_response_container_recoil_passive_high_neutron_id_err[1];   //[part_response_container_recoil_passive_high_neutron_id_err_sz]
+   Int_t           part_response_container_recoil_passive_high_neutron_od_sz;
+   Double_t        part_response_container_recoil_passive_high_neutron_od[1];   //[part_response_container_recoil_passive_high_neutron_od_sz]
+   Int_t           part_response_container_recoil_passive_high_neutron_od_err_sz;
+   Double_t        part_response_container_recoil_passive_high_neutron_od_err[1];   //[part_response_container_recoil_passive_high_neutron_od_err_sz]
+   Int_t           part_response_container_recoil_passive_high_proton_id_sz;
+   Double_t        part_response_container_recoil_passive_high_proton_id[1];   //[part_response_container_recoil_passive_high_proton_id_sz]
+   Int_t           part_response_container_recoil_passive_high_proton_id_err_sz;
+   Double_t        part_response_container_recoil_passive_high_proton_id_err[1];   //[part_response_container_recoil_passive_high_proton_id_err_sz]
+   Int_t           part_response_container_recoil_passive_high_proton_od_sz;
+   Double_t        part_response_container_recoil_passive_high_proton_od[1];   //[part_response_container_recoil_passive_high_proton_od_sz]
+   Int_t           part_response_container_recoil_passive_high_proton_od_err_sz;
+   Double_t        part_response_container_recoil_passive_high_proton_od_err[1];   //[part_response_container_recoil_passive_high_proton_od_err_sz]
+   Int_t           part_response_container_recoil_passive_low_neutron_id_sz;
+   Double_t        part_response_container_recoil_passive_low_neutron_id[1];   //[part_response_container_recoil_passive_low_neutron_id_sz]
+   Int_t           part_response_container_recoil_passive_low_neutron_id_err_sz;
+   Double_t        part_response_container_recoil_passive_low_neutron_id_err[1];   //[part_response_container_recoil_passive_low_neutron_id_err_sz]
+   Int_t           part_response_container_recoil_passive_low_neutron_od_sz;
+   Double_t        part_response_container_recoil_passive_low_neutron_od[1];   //[part_response_container_recoil_passive_low_neutron_od_sz]
+   Int_t           part_response_container_recoil_passive_low_neutron_od_err_sz;
+   Double_t        part_response_container_recoil_passive_low_neutron_od_err[1];   //[part_response_container_recoil_passive_low_neutron_od_err_sz]
+   Int_t           part_response_container_recoil_passive_low_proton_id_sz;
+   Double_t        part_response_container_recoil_passive_low_proton_id[1];   //[part_response_container_recoil_passive_low_proton_id_sz]
+   Int_t           part_response_container_recoil_passive_low_proton_id_err_sz;
+   Double_t        part_response_container_recoil_passive_low_proton_id_err[1];   //[part_response_container_recoil_passive_low_proton_id_err_sz]
+   Int_t           part_response_container_recoil_passive_low_proton_od_sz;
+   Double_t        part_response_container_recoil_passive_low_proton_od[1];   //[part_response_container_recoil_passive_low_proton_od_sz]
+   Int_t           part_response_container_recoil_passive_low_proton_od_err_sz;
+   Double_t        part_response_container_recoil_passive_low_proton_od_err[1];   //[part_response_container_recoil_passive_low_proton_od_err_sz]
+   Int_t           part_response_container_recoil_passive_meson_id_sz;
+   Double_t        part_response_container_recoil_passive_meson_id[1];   //[part_response_container_recoil_passive_meson_id_sz]
+   Int_t           part_response_container_recoil_passive_meson_id_err_sz;
+   Double_t        part_response_container_recoil_passive_meson_id_err[1];   //[part_response_container_recoil_passive_meson_id_err_sz]
+   Int_t           part_response_container_recoil_passive_meson_od_sz;
+   Double_t        part_response_container_recoil_passive_meson_od[1];   //[part_response_container_recoil_passive_meson_od_sz]
+   Int_t           part_response_container_recoil_passive_meson_od_err_sz;
+   Double_t        part_response_container_recoil_passive_meson_od_err[1];   //[part_response_container_recoil_passive_meson_od_err_sz]
+   Int_t           part_response_container_recoil_passive_mid_neutron_id_sz;
+   Double_t        part_response_container_recoil_passive_mid_neutron_id[1];   //[part_response_container_recoil_passive_mid_neutron_id_sz]
+   Int_t           part_response_container_recoil_passive_mid_neutron_id_err_sz;
+   Double_t        part_response_container_recoil_passive_mid_neutron_id_err[1];   //[part_response_container_recoil_passive_mid_neutron_id_err_sz]
+   Int_t           part_response_container_recoil_passive_mid_neutron_od_sz;
+   Double_t        part_response_container_recoil_passive_mid_neutron_od[1];   //[part_response_container_recoil_passive_mid_neutron_od_sz]
+   Int_t           part_response_container_recoil_passive_mid_neutron_od_err_sz;
+   Double_t        part_response_container_recoil_passive_mid_neutron_od_err[1];   //[part_response_container_recoil_passive_mid_neutron_od_err_sz]
+   Int_t           part_response_container_recoil_passive_mid_proton_id_sz;
+   Double_t        part_response_container_recoil_passive_mid_proton_id[1];   //[part_response_container_recoil_passive_mid_proton_id_sz]
+   Int_t           part_response_container_recoil_passive_mid_proton_id_err_sz;
+   Double_t        part_response_container_recoil_passive_mid_proton_id_err[1];   //[part_response_container_recoil_passive_mid_proton_id_err_sz]
+   Int_t           part_response_container_recoil_passive_mid_proton_od_sz;
+   Double_t        part_response_container_recoil_passive_mid_proton_od[1];   //[part_response_container_recoil_passive_mid_proton_od_sz]
+   Int_t           part_response_container_recoil_passive_mid_proton_od_err_sz;
+   Double_t        part_response_container_recoil_passive_mid_proton_od_err[1];   //[part_response_container_recoil_passive_mid_proton_od_err_sz]
+   Int_t           part_response_container_recoil_passive_muon_id_sz;
+   Double_t        part_response_container_recoil_passive_muon_id[1];   //[part_response_container_recoil_passive_muon_id_sz]
+   Int_t           part_response_container_recoil_passive_muon_id_err_sz;
+   Double_t        part_response_container_recoil_passive_muon_id_err[1];   //[part_response_container_recoil_passive_muon_id_err_sz]
+   Int_t           part_response_container_recoil_passive_muon_od_sz;
+   Double_t        part_response_container_recoil_passive_muon_od[1];   //[part_response_container_recoil_passive_muon_od_sz]
+   Int_t           part_response_container_recoil_passive_muon_od_err_sz;
+   Double_t        part_response_container_recoil_passive_muon_od_err[1];   //[part_response_container_recoil_passive_muon_od_err_sz]
+   Int_t           part_response_container_recoil_passive_other_id_sz;
+   Double_t        part_response_container_recoil_passive_other_id[1];   //[part_response_container_recoil_passive_other_id_sz]
+   Int_t           part_response_container_recoil_passive_other_id_err_sz;
+   Double_t        part_response_container_recoil_passive_other_id_err[1];   //[part_response_container_recoil_passive_other_id_err_sz]
+   Int_t           part_response_container_recoil_passive_other_od_sz;
+   Double_t        part_response_container_recoil_passive_other_od[1];   //[part_response_container_recoil_passive_other_od_sz]
+   Int_t           part_response_container_recoil_passive_other_od_err_sz;
+   Double_t        part_response_container_recoil_passive_other_od_err[1];   //[part_response_container_recoil_passive_other_od_err_sz]
+   Int_t           part_response_container_recoil_passive_proton_id_sz;
+   Double_t        part_response_container_recoil_passive_proton_id[1];   //[part_response_container_recoil_passive_proton_id_sz]
+   Int_t           part_response_container_recoil_passive_proton_id_err_sz;
+   Double_t        part_response_container_recoil_passive_proton_id_err[1];   //[part_response_container_recoil_passive_proton_id_err_sz]
+   Int_t           part_response_container_recoil_passive_proton_od_sz;
+   Double_t        part_response_container_recoil_passive_proton_od[1];   //[part_response_container_recoil_passive_proton_od_sz]
+   Int_t           part_response_container_recoil_passive_proton_od_err_sz;
+   Double_t        part_response_container_recoil_passive_proton_od_err[1];   //[part_response_container_recoil_passive_proton_od_err_sz]
+   Int_t           part_response_container_recoil_passive_xtalk_id_sz;
+   Double_t        part_response_container_recoil_passive_xtalk_id[1];   //[part_response_container_recoil_passive_xtalk_id_sz]
+   Int_t           part_response_container_recoil_passive_xtalk_id_err_sz;
+   Double_t        part_response_container_recoil_passive_xtalk_id_err[1];   //[part_response_container_recoil_passive_xtalk_id_err_sz]
+   Int_t           part_response_container_recoil_passive_xtalk_od_sz;
+   Double_t        part_response_container_recoil_passive_xtalk_od[1];   //[part_response_container_recoil_passive_xtalk_od_sz]
+   Int_t           part_response_container_recoil_passive_xtalk_od_err_sz;
+   Double_t        part_response_container_recoil_passive_xtalk_od_err[1];   //[part_response_container_recoil_passive_xtalk_od_err_sz]
+   Int_t           part_response_container_total_recoil_passive_id_sz;
+   Double_t        part_response_container_total_recoil_passive_id[1];   //[part_response_container_total_recoil_passive_id_sz]
+   Int_t           part_response_container_total_recoil_passive_od_sz;
+   Double_t        part_response_container_total_recoil_passive_od[1];   //[part_response_container_total_recoil_passive_od_sz]
+   Double_t        primary_prong_separation[300];
+   Double_t        proton_prong_4p[20];
+   Double_t        proton_prong_tpos[20];
    Int_t           proton_prong_tpos_t_sz;
-   Double_t        proton_prong_tpos_t[3];   //[proton_prong_tpos_t_sz]
+   Double_t        proton_prong_tpos_t[300];   //[proton_prong_tpos_t_sz]
    Int_t           proton_prong_tpos_x_sz;
-   Double_t        proton_prong_tpos_x[3];   //[proton_prong_tpos_x_sz]
+   Double_t        proton_prong_tpos_x[300];   //[proton_prong_tpos_x_sz]
    Int_t           proton_prong_tpos_y_sz;
-   Double_t        proton_prong_tpos_y[3];   //[proton_prong_tpos_y_sz]
+   Double_t        proton_prong_tpos_y[300];   //[proton_prong_tpos_y_sz]
    Int_t           proton_prong_tpos_z_sz;
-   Double_t        proton_prong_tpos_z[3];   //[proton_prong_tpos_z_sz]
+   Double_t        proton_prong_tpos_z[300];   //[proton_prong_tpos_z_sz]
    Int_t           recoil_data_fraction_sz;
-   Double_t        recoil_data_fraction[700];   //[recoil_data_fraction_sz]
+   Double_t        recoil_data_fraction[2000];   //[recoil_data_fraction_sz]
    Int_t           recoil_summed_energy_sz;
-   Double_t        recoil_summed_energy[700];   //[recoil_summed_energy_sz]
+   Double_t        recoil_summed_energy[2000];   //[recoil_summed_energy_sz]
    Int_t           recoil_summed_energy_edge_sz;
-   Double_t        recoil_summed_energy_edge[700];   //[recoil_summed_energy_edge_sz]
+   Double_t        recoil_summed_energy_edge[2000];   //[recoil_summed_energy_edge_sz]
    Int_t           seco_protons_prong_4p_E_sz;
-   Double_t        seco_protons_prong_4p_E[3];   //[seco_protons_prong_4p_E_sz]
+   Double_t        seco_protons_prong_4p_E[300];   //[seco_protons_prong_4p_E_sz]
    Int_t           seco_protons_prong_4p_px_sz;
-   Double_t        seco_protons_prong_4p_px[3];   //[seco_protons_prong_4p_px_sz]
+   Double_t        seco_protons_prong_4p_px[300];   //[seco_protons_prong_4p_px_sz]
    Int_t           seco_protons_prong_4p_py_sz;
-   Double_t        seco_protons_prong_4p_py[3];   //[seco_protons_prong_4p_py_sz]
+   Double_t        seco_protons_prong_4p_py[300];   //[seco_protons_prong_4p_py_sz]
    Int_t           seco_protons_prong_4p_pz_sz;
-   Double_t        seco_protons_prong_4p_pz[3];   //[seco_protons_prong_4p_pz_sz]
+   Double_t        seco_protons_prong_4p_pz[300];   //[seco_protons_prong_4p_pz_sz]
    Int_t           slice_hit_energy_sz;
-   Double_t        slice_hit_energy[2640];   //[slice_hit_energy_sz]
+   Double_t        slice_hit_energy[16678];   //[slice_hit_energy_sz]
    Int_t           slice_hit_time_sz;
-   Double_t        slice_hit_time[2640];   //[slice_hit_time_sz]
+   Double_t        slice_hit_time[16678];   //[slice_hit_time_sz]
+   Int_t           true_michel_x1_sz;
+   Double_t        true_michel_x1[300];   //[true_michel_x1_sz]
+   Int_t           true_michel_x2_sz;
+   Double_t        true_michel_x2[300];   //[true_michel_x2_sz]
+   Int_t           true_michel_y1_sz;
+   Double_t        true_michel_y1[300];   //[true_michel_y1_sz]
+   Int_t           true_michel_y2_sz;
+   Double_t        true_michel_y2[300];   //[true_michel_y2_sz]
+   Int_t           true_michel_z1_sz;
+   Double_t        true_michel_z1[300];   //[true_michel_z1_sz]
+   Int_t           true_michel_z2_sz;
+   Double_t        true_michel_z2[300];   //[true_michel_z2_sz]
    Int_t           visE_clusters_at_end_proton_prong_sz;
-   Double_t        visE_clusters_at_end_proton_prong[4];   //[visE_clusters_at_end_proton_prong_sz]
+   Double_t        visE_clusters_at_end_proton_prong[300];   //[visE_clusters_at_end_proton_prong_sz]
    Double_t        vtx_blob_radius;
    Int_t           vtx_blobs_iso_distance_in_prong_sz;
    Double_t        vtx_blobs_iso_distance_in_prong[1];   //[vtx_blobs_iso_distance_in_prong_sz]
@@ -764,9 +1095,19 @@ public :
    Bool_t          truth_has_physics_event;
    Bool_t          truth_pass_MasterAnaDev;
    Bool_t          truth_is_fiducial;
+   Bool_t          truth_reco_hasGoodObjects;
+   Bool_t          truth_reco_isGoodVertex;
+   Bool_t          truth_reco_isFidVol_smeared;
    Bool_t          truth_reco_has_muon;
    Bool_t          truth_reco_has_int_vtx;
-   //Int_t           truth_;
+   Int_t           truth_;
+   Int_t           truth_N_K0;
+   Int_t           truth_N_chargedK;
+   Int_t           truth_N_lambda;
+   Int_t           truth_N_pi0;
+   Int_t           truth_N_pim;
+   Int_t           truth_N_pip;
+   Int_t           truth_N_sigma;
    Int_t           truth_hadronReweightNPaths;
    Int_t           truth_hadronReweightNPoints;
    Int_t           truth_in_fiducial_area;
@@ -783,87 +1124,97 @@ public :
    Int_t           truth_vtx_module;
    Int_t           truth_vtx_plane;
    //Double_t        truth_;
+   Double_t        truth_muon_E;
+   Double_t        truth_muon_px;
+   Double_t        truth_muon_py;
+   Double_t        truth_muon_pz;
    Double_t        truth_muon_theta;
    Double_t        truth_target_dist_to_division;
    Double_t        truth_target_zDist;
    Int_t           truth__sz;
    //Int_t           truth_[1];   //[truth__sz]
    Int_t           truth_hadronReweightID_sz;
-   Int_t           truth_hadronReweightID[120];   //[truth_hadronReweightID_sz]
+   Int_t           truth_hadronReweightID[4000];   //[truth_hadronReweightID_sz]
    Int_t           truth_hadronReweightIntCode_sz;
-   Int_t           truth_hadronReweightIntCode[120];   //[truth_hadronReweightIntCode_sz]
+   Int_t           truth_hadronReweightIntCode[4000];   //[truth_hadronReweightIntCode_sz]
    Int_t           truth_hadronReweightIntCodePerSegment_sz;
-   Int_t           truth_hadronReweightIntCodePerSegment[871];   //[truth_hadronReweightIntCodePerSegment_sz]
+   Int_t           truth_hadronReweightIntCodePerSegment[2049];   //[truth_hadronReweightIntCodePerSegment_sz]
    Int_t           truth_hadronReweightNTrajPoints_sz;
-   Int_t           truth_hadronReweightNTrajPoints[120];   //[truth_hadronReweightNTrajPoints_sz]
+   Int_t           truth_hadronReweightNTrajPoints[4000];   //[truth_hadronReweightNTrajPoints_sz]
    Int_t           truth_hadronReweightNTrajPointsSaved_sz;
-   Int_t           truth_hadronReweightNTrajPointsSaved[120];   //[truth_hadronReweightNTrajPointsSaved_sz]
+   Int_t           truth_hadronReweightNTrajPointsSaved[4000];   //[truth_hadronReweightNTrajPointsSaved_sz]
    Int_t           truth_hadronReweightNuke_sz;
-   Int_t           truth_hadronReweightNuke[871];   //[truth_hadronReweightNuke_sz]
+   Int_t           truth_hadronReweightNuke[2049];   //[truth_hadronReweightNuke_sz]
    Int_t           truth_hadronReweightPDG_sz;
-   Int_t           truth_hadronReweightPDG[120];   //[truth_hadronReweightPDG_sz]
+   Int_t           truth_hadronReweightPDG[4000];   //[truth_hadronReweightPDG_sz]
    Int_t           truth_hadronReweightParentID_sz;
-   Int_t           truth_hadronReweightParentID[120];   //[truth_hadronReweightParentID_sz]
+   Int_t           truth_hadronReweightParentID[4000];   //[truth_hadronReweightParentID_sz]
    Int_t           truth_hadronReweightTrackID_sz;
-   Int_t           truth_hadronReweightTrackID[871];   //[truth_hadronReweightTrackID_sz]
+   Int_t           truth_hadronReweightTrackID[2049];   //[truth_hadronReweightTrackID_sz]
    Int_t           truth_hadronReweightTrajPointFlag_sz;
-   Int_t           truth_hadronReweightTrajPointFlag[120];   //[truth_hadronReweightTrajPointFlag_sz]
+   Int_t           truth_hadronReweightTrajPointFlag[4000];   //[truth_hadronReweightTrajPointFlag_sz]
+   Int_t           truth_pi_charge[300];
    //Double_t        truth_[1];   //[truth__sz]
    Int_t           genie_wgt_n_shifts;
-   Double_t        truth_genie_wgt_AGKYxF1pi[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_AhtBY[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_BhtBY[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_CCQEPauliSupViaKF[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_CV1uBY[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_CV2uBY[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_EtaNCEL[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_FrAbs_N[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_FrAbs_pi[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_FrCEx_N[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_FrCEx_pi[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_FrElas_N[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_FrElas_pi[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_FrInel_N[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_FrInel_pi[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_FrPiProd_N[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_FrPiProd_pi[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_MFP_N[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_MFP_pi[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_MaCCQE[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_MaCCQEshape[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_MaNCEL[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_MaRES[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_MvRES[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_NormCCQE[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_NormCCRES[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_NormDISCC[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_NormNCRES[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_RDecBR1gamma[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_Rvn1pi[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_Rvn2pi[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_Rvp1pi[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_Rvp2pi[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_Theta_Delta2Npi[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_VecFFCCQEshape[MAX_GENIE_WGT_N_SHIFTS];   //[genie_wgt_n_shifts]
-   Double_t        truth_genie_wgt_shifts[7];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_AGKYxF1pi[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_AhtBY[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_BhtBY[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_CCQEPauliSupViaKF[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_CV1uBY[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_CV2uBY[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_EtaNCEL[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_FrAbs_N[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_FrAbs_pi[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_FrCEx_N[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_FrCEx_pi[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_FrElas_N[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_FrElas_pi[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_FrInel_N[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_FrInel_pi[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_FrPiProd_N[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_FrPiProd_pi[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_MFP_N[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_MFP_pi[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_MaCCQE[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_MaCCQEshape[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_MaNCEL[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_MaRES[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_MvRES[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_NormCCQE[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_NormCCRES[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_NormDISCC[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_NormNCRES[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_RDecBR1gamma[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_Rvn1pi[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_Rvn2pi[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_Rvp1pi[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_Rvp2pi[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_Theta_Delta2Npi[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_VecFFCCQEshape[300];   //[genie_wgt_n_shifts]
+   Double_t        truth_genie_wgt_shifts[300];   //[genie_wgt_n_shifts]
    Int_t           truth_hadronReweightColumnarDensity_sz;
-   Double_t        truth_hadronReweightColumnarDensity[871];   //[truth_hadronReweightColumnarDensity_sz]
+   Double_t        truth_hadronReweightColumnarDensity[2049];   //[truth_hadronReweightColumnarDensity_sz]
    Int_t           truth_hadronReweightFinalE_sz;
-   Double_t        truth_hadronReweightFinalE[871];   //[truth_hadronReweightFinalE_sz]
+   Double_t        truth_hadronReweightFinalE[2049];   //[truth_hadronReweightFinalE_sz]
    Int_t           truth_hadronReweightFinalSigmaE_sz;
-   Double_t        truth_hadronReweightFinalSigmaE[871];   //[truth_hadronReweightFinalSigmaE_sz]
+   Double_t        truth_hadronReweightFinalSigmaE[2049];   //[truth_hadronReweightFinalSigmaE_sz]
    Int_t           truth_hadronReweightInitialE_sz;
-   Double_t        truth_hadronReweightInitialE[871];   //[truth_hadronReweightInitialE_sz]
+   Double_t        truth_hadronReweightInitialE[2049];   //[truth_hadronReweightInitialE_sz]
    Int_t           truth_hadronReweightInitialSigmaE_sz;
-   Double_t        truth_hadronReweightInitialSigmaE[871];   //[truth_hadronReweightInitialSigmaE_sz]
+   Double_t        truth_hadronReweightInitialSigmaE[2049];   //[truth_hadronReweightInitialSigmaE_sz]
    Int_t           truth_hadronReweightPosX_sz;
-   Double_t        truth_hadronReweightPosX[871];   //[truth_hadronReweightPosX_sz]
+   Double_t        truth_hadronReweightPosX[2049];   //[truth_hadronReweightPosX_sz]
    Int_t           truth_hadronReweightPosY_sz;
-   Double_t        truth_hadronReweightPosY[871];   //[truth_hadronReweightPosY_sz]
+   Double_t        truth_hadronReweightPosY[2049];   //[truth_hadronReweightPosY_sz]
    Int_t           truth_hadronReweightPosZ_sz;
-   Double_t        truth_hadronReweightPosZ[871];   //[truth_hadronReweightPosZ_sz]
+   Double_t        truth_hadronReweightPosZ[2049];   //[truth_hadronReweightPosZ_sz]
    Int_t           truth_hadronReweightTimeDelta_sz;
-   Double_t        truth_hadronReweightTimeDelta[120];   //[truth_hadronReweightTimeDelta_sz]
+   Double_t        truth_hadronReweightTimeDelta[4000];   //[truth_hadronReweightTimeDelta_sz]
+   Double_t        truth_pi_E[300];
+   Double_t        truth_pi_px[300];
+   Double_t        truth_pi_py[300];
+   Double_t        truth_pi_pz[300];
+   Double_t        truth_pi_theta_wrtbeam[300];
    Int_t           MasterAnaDev_nuFlavor;
    Int_t           MasterAnaDev_nuHelicity;
    Int_t           MasterAnaDev_intCurrent;
@@ -874,14 +1225,15 @@ public :
    Double_t        MasterAnaDev_y;
    Double_t        MasterAnaDev_W;
    Double_t        MasterAnaDev_score;
-   Double_t        MasterAnaDev_leptonE[4];
-   Double_t        MasterAnaDev_vtx[4];
+   Double_t        MasterAnaDev_leptonE[20];
+   Double_t        MasterAnaDev_vtx[20];
    Bool_t          MasterAnaDev_minos_trk_is_contained;
    Bool_t          MasterAnaDev_minos_trk_is_ok;
    Bool_t          MasterAnaDev_minos_used_range;
    Bool_t          MasterAnaDev_minos_used_curvature;
    Int_t           MasterAnaDev_EvtHasNBlobIncTracks;
    Int_t           MasterAnaDev_EvtHasNBlobTracks;
+   Int_t           MasterAnaDev_hadron_number;
    Int_t           MasterAnaDev_in_fiducial_area;
    Int_t           MasterAnaDev_minos_trk_end_plane;
    Int_t           MasterAnaDev_minos_trk_quality;
@@ -920,9 +1272,16 @@ public :
    Double_t        MasterAnaDev_minos_trk_vtx_z;
    Double_t        MasterAnaDev_muon_E;
    Double_t        MasterAnaDev_muon_P;
+   Double_t        MasterAnaDev_muon_Px;
+   Double_t        MasterAnaDev_muon_Py;
+   Double_t        MasterAnaDev_muon_Pz;
    Double_t        MasterAnaDev_muon_T;
+   Double_t        MasterAnaDev_muon_qp;
+   Double_t        MasterAnaDev_muon_qpqpe;
    Double_t        MasterAnaDev_muon_score;
    Double_t        MasterAnaDev_muon_theta;
+   Double_t        MasterAnaDev_muon_theta_biasDown;
+   Double_t        MasterAnaDev_muon_theta_biasUp;
    Double_t        MasterAnaDev_pion_score;
    Double_t        MasterAnaDev_pion_score1;
    Double_t        MasterAnaDev_pion_score2;
@@ -993,348 +1352,389 @@ public :
    Double_t        MasterAnaDev_target_zDist;
    Double_t        MasterAnaDev_visible_E;
    Int_t           MasterAnaDev_Blob2DMuonDRho_order_sz;
-   Int_t           MasterAnaDev_Blob2DMuonDRho_order[82];   //[MasterAnaDev_Blob2DMuonDRho_order_sz]
+   Int_t           MasterAnaDev_Blob2DMuonDRho_order[3000];   //[MasterAnaDev_Blob2DMuonDRho_order_sz]
    Int_t           MasterAnaDev_Blob2DMuonDTheta_order_sz;
-   Int_t           MasterAnaDev_Blob2DMuonDTheta_order[82];   //[MasterAnaDev_Blob2DMuonDTheta_order_sz]
+   Int_t           MasterAnaDev_Blob2DMuonDTheta_order[3000];   //[MasterAnaDev_Blob2DMuonDTheta_order_sz]
    Int_t           MasterAnaDev_Blob2DPartDRho_order_sz;
-   Int_t           MasterAnaDev_Blob2DPartDRho_order[82];   //[MasterAnaDev_Blob2DPartDRho_order_sz]
+   Int_t           MasterAnaDev_Blob2DPartDRho_order[3000];   //[MasterAnaDev_Blob2DPartDRho_order_sz]
    Int_t           MasterAnaDev_Blob2DPartDTheta_order_sz;
-   Int_t           MasterAnaDev_Blob2DPartDTheta_order[82];   //[MasterAnaDev_Blob2DPartDTheta_order_sz]
+   Int_t           MasterAnaDev_Blob2DPartDTheta_order[3000];   //[MasterAnaDev_Blob2DPartDTheta_order_sz]
    Int_t           MasterAnaDev_Blob2DView_sz;
-   Int_t           MasterAnaDev_Blob2DView[82];   //[MasterAnaDev_Blob2DView_sz]
+   Int_t           MasterAnaDev_Blob2DView[3000];   //[MasterAnaDev_Blob2DView_sz]
    Int_t           MasterAnaDev_BlobAvgE_order_sz;
-   Int_t           MasterAnaDev_BlobAvgE_order[82];   //[MasterAnaDev_BlobAvgE_order_sz]
+   Int_t           MasterAnaDev_BlobAvgE_order[3000];   //[MasterAnaDev_BlobAvgE_order_sz]
    Int_t           MasterAnaDev_BlobClusID_sz;
-   Int_t           MasterAnaDev_BlobClusID[92];   //[MasterAnaDev_BlobClusID_sz]
+   Int_t           MasterAnaDev_BlobClusID[5000];   //[MasterAnaDev_BlobClusID_sz]
    Int_t           MasterAnaDev_BlobClusterMaxE_order_sz;
-   Int_t           MasterAnaDev_BlobClusterMaxE_order[82];   //[MasterAnaDev_BlobClusterMaxE_order_sz]
+   Int_t           MasterAnaDev_BlobClusterMaxE_order[3000];   //[MasterAnaDev_BlobClusterMaxE_order_sz]
    Int_t           MasterAnaDev_BlobID_sz;
-   Int_t           MasterAnaDev_BlobID[82];   //[MasterAnaDev_BlobID_sz]
+   Int_t           MasterAnaDev_BlobID[3000];   //[MasterAnaDev_BlobID_sz]
    Int_t           MasterAnaDev_BlobIs3D_sz;
-   Int_t           MasterAnaDev_BlobIs3D[82];   //[MasterAnaDev_BlobIs3D_sz]
+   Int_t           MasterAnaDev_BlobIs3D[3000];   //[MasterAnaDev_BlobIs3D_sz]
    Int_t           MasterAnaDev_BlobIsFiducial_sz;
-   Int_t           MasterAnaDev_BlobIsFiducial[82];   //[MasterAnaDev_BlobIsFiducial_sz]
+   Int_t           MasterAnaDev_BlobIsFiducial[3000];   //[MasterAnaDev_BlobIsFiducial_sz]
    Int_t           MasterAnaDev_BlobMCPID_sz;
-   Int_t           MasterAnaDev_BlobMCPID[82];   //[MasterAnaDev_BlobMCPID_sz]
+   Int_t           MasterAnaDev_BlobMCPID[3000];   //[MasterAnaDev_BlobMCPID_sz]
    Int_t           MasterAnaDev_BlobMCParentTrackID_sz;
-   Int_t           MasterAnaDev_BlobMCParentTrackID[82];   //[MasterAnaDev_BlobMCParentTrackID_sz]
+   Int_t           MasterAnaDev_BlobMCParentTrackID[3000];   //[MasterAnaDev_BlobMCParentTrackID_sz]
    Int_t           MasterAnaDev_BlobMCTrackID_sz;
-   Int_t           MasterAnaDev_BlobMCTrackID[82];   //[MasterAnaDev_BlobMCTrackID_sz]
+   Int_t           MasterAnaDev_BlobMCTrackID[3000];   //[MasterAnaDev_BlobMCTrackID_sz]
    Int_t           MasterAnaDev_BlobMuonDRho_order_sz;
-   Int_t           MasterAnaDev_BlobMuonDRho_order[82];   //[MasterAnaDev_BlobMuonDRho_order_sz]
+   Int_t           MasterAnaDev_BlobMuonDRho_order[3000];   //[MasterAnaDev_BlobMuonDRho_order_sz]
    Int_t           MasterAnaDev_BlobMuonDTheta_order_sz;
-   Int_t           MasterAnaDev_BlobMuonDTheta_order[82];   //[MasterAnaDev_BlobMuonDTheta_order_sz]
+   Int_t           MasterAnaDev_BlobMuonDTheta_order[3000];   //[MasterAnaDev_BlobMuonDTheta_order_sz]
    Int_t           MasterAnaDev_BlobNClusters_sz;
-   Int_t           MasterAnaDev_BlobNClusters[82];   //[MasterAnaDev_BlobNClusters_sz]
+   Int_t           MasterAnaDev_BlobNClusters[3000];   //[MasterAnaDev_BlobNClusters_sz]
    Int_t           MasterAnaDev_BlobNHeavyIonizingClusters_sz;
-   Int_t           MasterAnaDev_BlobNHeavyIonizingClusters[82];   //[MasterAnaDev_BlobNHeavyIonizingClusters_sz]
+   Int_t           MasterAnaDev_BlobNHeavyIonizingClusters[3000];   //[MasterAnaDev_BlobNHeavyIonizingClusters_sz]
    Int_t           MasterAnaDev_BlobNTracks_sz;
-   Int_t           MasterAnaDev_BlobNTracks[82];   //[MasterAnaDev_BlobNTracks_sz]
+   Int_t           MasterAnaDev_BlobNTracks[3000];   //[MasterAnaDev_BlobNTracks_sz]
    Int_t           MasterAnaDev_BlobPIDPerCluster_sz;
    Int_t           MasterAnaDev_BlobPIDPerCluster[1];   //[MasterAnaDev_BlobPIDPerCluster_sz]
    Int_t           MasterAnaDev_BlobParentMCPID_sz;
-   Int_t           MasterAnaDev_BlobParentMCPID[82];   //[MasterAnaDev_BlobParentMCPID_sz]
+   Int_t           MasterAnaDev_BlobParentMCPID[3000];   //[MasterAnaDev_BlobParentMCPID_sz]
    Int_t           MasterAnaDev_BlobTopMCPID_sz;
-   Int_t           MasterAnaDev_BlobTopMCPID[82];   //[MasterAnaDev_BlobTopMCPID_sz]
+   Int_t           MasterAnaDev_BlobTopMCPID[3000];   //[MasterAnaDev_BlobTopMCPID_sz]
    Int_t           MasterAnaDev_BlobTotalE_order_sz;
-   Int_t           MasterAnaDev_BlobTotalE_order[82];   //[MasterAnaDev_BlobTotalE_order_sz]
+   Int_t           MasterAnaDev_BlobTotalE_order[3000];   //[MasterAnaDev_BlobTotalE_order_sz]
    Int_t           MasterAnaDev_BlobTrackNClus_sz;
-   Int_t           MasterAnaDev_BlobTrackNClus[82];   //[MasterAnaDev_BlobTrackNClus_sz]
+   Int_t           MasterAnaDev_BlobTrackNClus[3000];   //[MasterAnaDev_BlobTrackNClus_sz]
    Int_t           MasterAnaDev_BlobTrackNNode_sz;
-   Int_t           MasterAnaDev_BlobTrackNNode[82];   //[MasterAnaDev_BlobTrackNNode_sz]
+   Int_t           MasterAnaDev_BlobTrackNNode[3000];   //[MasterAnaDev_BlobTrackNNode_sz]
    Int_t           MasterAnaDev_BlobViewPerCluster_sz;
-   Int_t           MasterAnaDev_BlobViewPerCluster[417];   //[MasterAnaDev_BlobViewPerCluster_sz]
+   Int_t           MasterAnaDev_BlobViewPerCluster[5000];   //[MasterAnaDev_BlobViewPerCluster_sz]
    Int_t           MasterAnaDev_BlobVtxDR_order_sz;
-   Int_t           MasterAnaDev_BlobVtxDR_order[82];   //[MasterAnaDev_BlobVtxDR_order_sz]
+   Int_t           MasterAnaDev_BlobVtxDR_order[3000];   //[MasterAnaDev_BlobVtxDR_order_sz]
    Int_t           MasterAnaDev_BlobVtxDZ_order_sz;
    Int_t           MasterAnaDev_BlobVtxDZ_order[1];   //[MasterAnaDev_BlobVtxDZ_order_sz]
    Int_t           MasterAnaDev_RecoPattern_sz;
-   Int_t           MasterAnaDev_RecoPattern[82];   //[MasterAnaDev_RecoPattern_sz]
+   Int_t           MasterAnaDev_RecoPattern[3000];   //[MasterAnaDev_RecoPattern_sz]
+   Int_t           MasterAnaDev_hadron_endMichel_category[300];
+   Int_t           MasterAnaDev_hadron_endMichel_ndigits[300];
+   Int_t           MasterAnaDev_hadron_isExiting[300];
+   Int_t           MasterAnaDev_hadron_isForked[300];
+   Int_t           MasterAnaDev_hadron_isODMatch[300];
+   Int_t           MasterAnaDev_hadron_isSideECAL[300];
+   Int_t           MasterAnaDev_hadron_isTracker[300];
+   Int_t           MasterAnaDev_hadron_tm_PDGCode[300];
+   Int_t           MasterAnaDev_hadron_tm_destructCode[300];
+   Int_t           MasterAnaDev_hadron_tm_trackID[300];
+   Int_t           MasterAnaDev_pion_nNodes[300];
    Int_t           MasterAnaDev_ref_targZ[5];
    Int_t           MasterAnaDev_sec_protons_nodes_index_sz;
-   Int_t           MasterAnaDev_sec_protons_nodes_index[59];   //[MasterAnaDev_sec_protons_nodes_index_sz]
+   Int_t           MasterAnaDev_sec_protons_nodes_index[2000];   //[MasterAnaDev_sec_protons_nodes_index_sz]
    Int_t           MasterAnaDev_sec_protons_patternRec_sz;
-   Int_t           MasterAnaDev_sec_protons_patternRec[3];   //[MasterAnaDev_sec_protons_patternRec_sz]
+   Int_t           MasterAnaDev_sec_protons_patternRec[300];   //[MasterAnaDev_sec_protons_patternRec_sz]
    Int_t           MasterAnaDev_sec_protons_prongType_sz;
-   Int_t           MasterAnaDev_sec_protons_prongType[3];   //[MasterAnaDev_sec_protons_prongType_sz]
+   Int_t           MasterAnaDev_sec_protons_prongType[300];   //[MasterAnaDev_sec_protons_prongType_sz]
    Int_t           MasterAnaDev_Blob2DBeamDTPos_sz;
-   Double_t        MasterAnaDev_Blob2DBeamDTPos[82];   //[MasterAnaDev_Blob2DBeamDTPos_sz]
+   Double_t        MasterAnaDev_Blob2DBeamDTPos[3000];   //[MasterAnaDev_Blob2DBeamDTPos_sz]
    Int_t           MasterAnaDev_Blob2DBeamDZ_sz;
-   Double_t        MasterAnaDev_Blob2DBeamDZ[82];   //[MasterAnaDev_Blob2DBeamDZ_sz]
+   Double_t        MasterAnaDev_Blob2DBeamDZ[3000];   //[MasterAnaDev_Blob2DBeamDZ_sz]
    Int_t           MasterAnaDev_Blob2DMuonDRho_sz;
-   Double_t        MasterAnaDev_Blob2DMuonDRho[82];   //[MasterAnaDev_Blob2DMuonDRho_sz]
+   Double_t        MasterAnaDev_Blob2DMuonDRho[3000];   //[MasterAnaDev_Blob2DMuonDRho_sz]
    Int_t           MasterAnaDev_Blob2DMuonDTheta_sz;
-   Double_t        MasterAnaDev_Blob2DMuonDTheta[82];   //[MasterAnaDev_Blob2DMuonDTheta_sz]
+   Double_t        MasterAnaDev_Blob2DMuonDTheta[3000];   //[MasterAnaDev_Blob2DMuonDTheta_sz]
    Int_t           MasterAnaDev_Blob2DPartDRho_sz;
-   Double_t        MasterAnaDev_Blob2DPartDRho[82];   //[MasterAnaDev_Blob2DPartDRho_sz]
+   Double_t        MasterAnaDev_Blob2DPartDRho[3000];   //[MasterAnaDev_Blob2DPartDRho_sz]
    Int_t           MasterAnaDev_Blob2DPartDTheta_sz;
-   Double_t        MasterAnaDev_Blob2DPartDTheta[82];   //[MasterAnaDev_Blob2DPartDTheta_sz]
+   Double_t        MasterAnaDev_Blob2DPartDTheta[3000];   //[MasterAnaDev_Blob2DPartDTheta_sz]
    Int_t           MasterAnaDev_Blob2DPartDZ_sz;
-   Double_t        MasterAnaDev_Blob2DPartDZ[82];   //[MasterAnaDev_Blob2DPartDZ_sz]
+   Double_t        MasterAnaDev_Blob2DPartDZ[3000];   //[MasterAnaDev_Blob2DPartDZ_sz]
    Int_t           MasterAnaDev_Blob2DVtxDR_sz;
-   Double_t        MasterAnaDev_Blob2DVtxDR[82];   //[MasterAnaDev_Blob2DVtxDR_sz]
+   Double_t        MasterAnaDev_Blob2DVtxDR[3000];   //[MasterAnaDev_Blob2DVtxDR_sz]
    Int_t           MasterAnaDev_Blob2DVtxDTPos_sz;
-   Double_t        MasterAnaDev_Blob2DVtxDTPos[82];   //[MasterAnaDev_Blob2DVtxDTPos_sz]
+   Double_t        MasterAnaDev_Blob2DVtxDTPos[3000];   //[MasterAnaDev_Blob2DVtxDTPos_sz]
    Int_t           MasterAnaDev_Blob2DVtxDZ_sz;
-   Double_t        MasterAnaDev_Blob2DVtxDZ[82];   //[MasterAnaDev_Blob2DVtxDZ_sz]
+   Double_t        MasterAnaDev_Blob2DVtxDZ[3000];   //[MasterAnaDev_Blob2DVtxDZ_sz]
    Int_t           MasterAnaDev_BlobAvgE_sz;
-   Double_t        MasterAnaDev_BlobAvgE[82];   //[MasterAnaDev_BlobAvgE_sz]
+   Double_t        MasterAnaDev_BlobAvgE[3000];   //[MasterAnaDev_BlobAvgE_sz]
    Int_t           MasterAnaDev_BlobBeamDZ_sz;
-   Double_t        MasterAnaDev_BlobBeamDZ[82];   //[MasterAnaDev_BlobBeamDZ_sz]
+   Double_t        MasterAnaDev_BlobBeamDZ[3000];   //[MasterAnaDev_BlobBeamDZ_sz]
    Int_t           MasterAnaDev_BlobBegT_sz;
-   Double_t        MasterAnaDev_BlobBegT[82];   //[MasterAnaDev_BlobBegT_sz]
+   Double_t        MasterAnaDev_BlobBegT[3000];   //[MasterAnaDev_BlobBegT_sz]
    Int_t           MasterAnaDev_BlobBegX_sz;
-   Double_t        MasterAnaDev_BlobBegX[82];   //[MasterAnaDev_BlobBegX_sz]
+   Double_t        MasterAnaDev_BlobBegX[3000];   //[MasterAnaDev_BlobBegX_sz]
    Int_t           MasterAnaDev_BlobBegY_sz;
-   Double_t        MasterAnaDev_BlobBegY[82];   //[MasterAnaDev_BlobBegY_sz]
+   Double_t        MasterAnaDev_BlobBegY[3000];   //[MasterAnaDev_BlobBegY_sz]
    Int_t           MasterAnaDev_BlobBegZ_sz;
-   Double_t        MasterAnaDev_BlobBegZ[82];   //[MasterAnaDev_BlobBegZ_sz]
+   Double_t        MasterAnaDev_BlobBegZ[3000];   //[MasterAnaDev_BlobBegZ_sz]
    Int_t           MasterAnaDev_BlobClusterMaxE_sz;
-   Double_t        MasterAnaDev_BlobClusterMaxE[82];   //[MasterAnaDev_BlobClusterMaxE_sz]
+   Double_t        MasterAnaDev_BlobClusterMaxE[3000];   //[MasterAnaDev_BlobClusterMaxE_sz]
    Int_t           MasterAnaDev_BlobClusterMinE_sz;
-   Double_t        MasterAnaDev_BlobClusterMinE[82];   //[MasterAnaDev_BlobClusterMinE_sz]
+   Double_t        MasterAnaDev_BlobClusterMinE[3000];   //[MasterAnaDev_BlobClusterMinE_sz]
    Int_t           MasterAnaDev_BlobCoplanarityAngle_sz;
-   Double_t        MasterAnaDev_BlobCoplanarityAngle[82];   //[MasterAnaDev_BlobCoplanarityAngle_sz]
+   Double_t        MasterAnaDev_BlobCoplanarityAngle[3000];   //[MasterAnaDev_BlobCoplanarityAngle_sz]
    Int_t           MasterAnaDev_BlobEndT_sz;
-   Double_t        MasterAnaDev_BlobEndT[82];   //[MasterAnaDev_BlobEndT_sz]
+   Double_t        MasterAnaDev_BlobEndT[3000];   //[MasterAnaDev_BlobEndT_sz]
    Int_t           MasterAnaDev_BlobEndX_sz;
-   Double_t        MasterAnaDev_BlobEndX[82];   //[MasterAnaDev_BlobEndX_sz]
+   Double_t        MasterAnaDev_BlobEndX[3000];   //[MasterAnaDev_BlobEndX_sz]
    Int_t           MasterAnaDev_BlobEndY_sz;
-   Double_t        MasterAnaDev_BlobEndY[82];   //[MasterAnaDev_BlobEndY_sz]
+   Double_t        MasterAnaDev_BlobEndY[3000];   //[MasterAnaDev_BlobEndY_sz]
    Int_t           MasterAnaDev_BlobEndZ_sz;
-   Double_t        MasterAnaDev_BlobEndZ[82];   //[MasterAnaDev_BlobEndZ_sz]
+   Double_t        MasterAnaDev_BlobEndZ[3000];   //[MasterAnaDev_BlobEndZ_sz]
    Int_t           MasterAnaDev_BlobEnergyPerCluster_sz;
-   Double_t        MasterAnaDev_BlobEnergyPerCluster[417];   //[MasterAnaDev_BlobEnergyPerCluster_sz]
+   Double_t        MasterAnaDev_BlobEnergyPerCluster[5000];   //[MasterAnaDev_BlobEnergyPerCluster_sz]
    Int_t           MasterAnaDev_BlobMCTrackE_sz;
-   Double_t        MasterAnaDev_BlobMCTrackE[82];   //[MasterAnaDev_BlobMCTrackE_sz]
+   Double_t        MasterAnaDev_BlobMCTrackE[3000];   //[MasterAnaDev_BlobMCTrackE_sz]
    Int_t           MasterAnaDev_BlobMCTrackPx_sz;
-   Double_t        MasterAnaDev_BlobMCTrackPx[82];   //[MasterAnaDev_BlobMCTrackPx_sz]
+   Double_t        MasterAnaDev_BlobMCTrackPx[3000];   //[MasterAnaDev_BlobMCTrackPx_sz]
    Int_t           MasterAnaDev_BlobMCTrackPy_sz;
-   Double_t        MasterAnaDev_BlobMCTrackPy[82];   //[MasterAnaDev_BlobMCTrackPy_sz]
+   Double_t        MasterAnaDev_BlobMCTrackPy[3000];   //[MasterAnaDev_BlobMCTrackPy_sz]
    Int_t           MasterAnaDev_BlobMCTrackPz_sz;
-   Double_t        MasterAnaDev_BlobMCTrackPz[82];   //[MasterAnaDev_BlobMCTrackPz_sz]
+   Double_t        MasterAnaDev_BlobMCTrackPz[3000];   //[MasterAnaDev_BlobMCTrackPz_sz]
    Int_t           MasterAnaDev_BlobMCTrackT_sz;
-   Double_t        MasterAnaDev_BlobMCTrackT[82];   //[MasterAnaDev_BlobMCTrackT_sz]
+   Double_t        MasterAnaDev_BlobMCTrackT[3000];   //[MasterAnaDev_BlobMCTrackT_sz]
    Int_t           MasterAnaDev_BlobMCTrackX_sz;
-   Double_t        MasterAnaDev_BlobMCTrackX[82];   //[MasterAnaDev_BlobMCTrackX_sz]
+   Double_t        MasterAnaDev_BlobMCTrackX[3000];   //[MasterAnaDev_BlobMCTrackX_sz]
    Int_t           MasterAnaDev_BlobMCTrackY_sz;
-   Double_t        MasterAnaDev_BlobMCTrackY[82];   //[MasterAnaDev_BlobMCTrackY_sz]
+   Double_t        MasterAnaDev_BlobMCTrackY[3000];   //[MasterAnaDev_BlobMCTrackY_sz]
    Int_t           MasterAnaDev_BlobMCTrackZ_sz;
-   Double_t        MasterAnaDev_BlobMCTrackZ[82];   //[MasterAnaDev_BlobMCTrackZ_sz]
+   Double_t        MasterAnaDev_BlobMCTrackZ[3000];   //[MasterAnaDev_BlobMCTrackZ_sz]
    Int_t           MasterAnaDev_BlobMuonDRho_sz;
-   Double_t        MasterAnaDev_BlobMuonDRho[82];   //[MasterAnaDev_BlobMuonDRho_sz]
+   Double_t        MasterAnaDev_BlobMuonDRho[3000];   //[MasterAnaDev_BlobMuonDRho_sz]
    Int_t           MasterAnaDev_BlobMuonDTheta_sz;
-   Double_t        MasterAnaDev_BlobMuonDTheta[82];   //[MasterAnaDev_BlobMuonDTheta_sz]
+   Double_t        MasterAnaDev_BlobMuonDTheta[3000];   //[MasterAnaDev_BlobMuonDTheta_sz]
    Int_t           MasterAnaDev_BlobReactionPlaneAngle_sz;
-   Double_t        MasterAnaDev_BlobReactionPlaneAngle[82];   //[MasterAnaDev_BlobReactionPlaneAngle_sz]
+   Double_t        MasterAnaDev_BlobReactionPlaneAngle[3000];   //[MasterAnaDev_BlobReactionPlaneAngle_sz]
    Int_t           MasterAnaDev_BlobT_sz;
-   Double_t        MasterAnaDev_BlobT[82];   //[MasterAnaDev_BlobT_sz]
+   Double_t        MasterAnaDev_BlobT[3000];   //[MasterAnaDev_BlobT_sz]
    Int_t           MasterAnaDev_BlobTPos_sz;
-   Double_t        MasterAnaDev_BlobTPos[82];   //[MasterAnaDev_BlobTPos_sz]
+   Double_t        MasterAnaDev_BlobTPos[3000];   //[MasterAnaDev_BlobTPos_sz]
    Int_t           MasterAnaDev_BlobTPosPerCluster_sz;
-   Double_t        MasterAnaDev_BlobTPosPerCluster[417];   //[MasterAnaDev_BlobTPosPerCluster_sz]
+   Double_t        MasterAnaDev_BlobTPosPerCluster[5000];   //[MasterAnaDev_BlobTPosPerCluster_sz]
    Int_t           MasterAnaDev_BlobTimePerCluster_sz;
-   Double_t        MasterAnaDev_BlobTimePerCluster[417];   //[MasterAnaDev_BlobTimePerCluster_sz]
+   Double_t        MasterAnaDev_BlobTimePerCluster[5000];   //[MasterAnaDev_BlobTimePerCluster_sz]
    Int_t           MasterAnaDev_BlobTotalE_sz;
-   Double_t        MasterAnaDev_BlobTotalE[82];   //[MasterAnaDev_BlobTotalE_sz]
+   Double_t        MasterAnaDev_BlobTotalE[3000];   //[MasterAnaDev_BlobTotalE_sz]
    Int_t           MasterAnaDev_BlobTrackAx_sz;
-   Double_t        MasterAnaDev_BlobTrackAx[82];   //[MasterAnaDev_BlobTrackAx_sz]
+   Double_t        MasterAnaDev_BlobTrackAx[3000];   //[MasterAnaDev_BlobTrackAx_sz]
    Int_t           MasterAnaDev_BlobTrackAy_sz;
-   Double_t        MasterAnaDev_BlobTrackAy[82];   //[MasterAnaDev_BlobTrackAy_sz]
+   Double_t        MasterAnaDev_BlobTrackAy[3000];   //[MasterAnaDev_BlobTrackAy_sz]
    Int_t           MasterAnaDev_BlobTrackE_sz;
-   Double_t        MasterAnaDev_BlobTrackE[82];   //[MasterAnaDev_BlobTrackE_sz]
+   Double_t        MasterAnaDev_BlobTrackE[3000];   //[MasterAnaDev_BlobTrackE_sz]
    Int_t           MasterAnaDev_BlobTrackL_sz;
-   Double_t        MasterAnaDev_BlobTrackL[82];   //[MasterAnaDev_BlobTrackL_sz]
+   Double_t        MasterAnaDev_BlobTrackL[3000];   //[MasterAnaDev_BlobTrackL_sz]
    Int_t           MasterAnaDev_BlobTrackLLRPion_sz;
-   Double_t        MasterAnaDev_BlobTrackLLRPion[82];   //[MasterAnaDev_BlobTrackLLRPion_sz]
+   Double_t        MasterAnaDev_BlobTrackLLRPion[3000];   //[MasterAnaDev_BlobTrackLLRPion_sz]
    Int_t           MasterAnaDev_BlobTrackLLRProton_sz;
-   Double_t        MasterAnaDev_BlobTrackLLRProton[82];   //[MasterAnaDev_BlobTrackLLRProton_sz]
+   Double_t        MasterAnaDev_BlobTrackLLRProton[3000];   //[MasterAnaDev_BlobTrackLLRProton_sz]
    Int_t           MasterAnaDev_BlobTrackNodeEnergy_sz;
-   Double_t        MasterAnaDev_BlobTrackNodeEnergy[41];   //[MasterAnaDev_BlobTrackNodeEnergy_sz]
+   Double_t        MasterAnaDev_BlobTrackNodeEnergy[127];   //[MasterAnaDev_BlobTrackNodeEnergy_sz]
    Int_t           MasterAnaDev_BlobTrackT_sz;
-   Double_t        MasterAnaDev_BlobTrackT[82];   //[MasterAnaDev_BlobTrackT_sz]
+   Double_t        MasterAnaDev_BlobTrackT[3000];   //[MasterAnaDev_BlobTrackT_sz]
    Int_t           MasterAnaDev_BlobTrackX_sz;
-   Double_t        MasterAnaDev_BlobTrackX[82];   //[MasterAnaDev_BlobTrackX_sz]
+   Double_t        MasterAnaDev_BlobTrackX[3000];   //[MasterAnaDev_BlobTrackX_sz]
    Int_t           MasterAnaDev_BlobTrackY_sz;
-   Double_t        MasterAnaDev_BlobTrackY[82];   //[MasterAnaDev_BlobTrackY_sz]
+   Double_t        MasterAnaDev_BlobTrackY[3000];   //[MasterAnaDev_BlobTrackY_sz]
    Int_t           MasterAnaDev_BlobTrackZ_sz;
-   Double_t        MasterAnaDev_BlobTrackZ[82];   //[MasterAnaDev_BlobTrackZ_sz]
+   Double_t        MasterAnaDev_BlobTrackZ[3000];   //[MasterAnaDev_BlobTrackZ_sz]
    Int_t           MasterAnaDev_BlobTrackdEdXElectron_sz;
-   Double_t        MasterAnaDev_BlobTrackdEdXElectron[82];   //[MasterAnaDev_BlobTrackdEdXElectron_sz]
+   Double_t        MasterAnaDev_BlobTrackdEdXElectron[3000];   //[MasterAnaDev_BlobTrackdEdXElectron_sz]
    Int_t           MasterAnaDev_BlobTrackdEdXElectronE_sz;
-   Double_t        MasterAnaDev_BlobTrackdEdXElectronE[82];   //[MasterAnaDev_BlobTrackdEdXElectronE_sz]
+   Double_t        MasterAnaDev_BlobTrackdEdXElectronE[3000];   //[MasterAnaDev_BlobTrackdEdXElectronE_sz]
    Int_t           MasterAnaDev_BlobTrackdEdXElectronPx_sz;
-   Double_t        MasterAnaDev_BlobTrackdEdXElectronPx[82];   //[MasterAnaDev_BlobTrackdEdXElectronPx_sz]
+   Double_t        MasterAnaDev_BlobTrackdEdXElectronPx[3000];   //[MasterAnaDev_BlobTrackdEdXElectronPx_sz]
    Int_t           MasterAnaDev_BlobTrackdEdXElectronPy_sz;
-   Double_t        MasterAnaDev_BlobTrackdEdXElectronPy[82];   //[MasterAnaDev_BlobTrackdEdXElectronPy_sz]
+   Double_t        MasterAnaDev_BlobTrackdEdXElectronPy[3000];   //[MasterAnaDev_BlobTrackdEdXElectronPy_sz]
    Int_t           MasterAnaDev_BlobTrackdEdXElectronPz_sz;
-   Double_t        MasterAnaDev_BlobTrackdEdXElectronPz[82];   //[MasterAnaDev_BlobTrackdEdXElectronPz_sz]
+   Double_t        MasterAnaDev_BlobTrackdEdXElectronPz[3000];   //[MasterAnaDev_BlobTrackdEdXElectronPz_sz]
    Int_t           MasterAnaDev_BlobTrackdEdXPion_sz;
-   Double_t        MasterAnaDev_BlobTrackdEdXPion[82];   //[MasterAnaDev_BlobTrackdEdXPion_sz]
+   Double_t        MasterAnaDev_BlobTrackdEdXPion[3000];   //[MasterAnaDev_BlobTrackdEdXPion_sz]
    Int_t           MasterAnaDev_BlobTrackdEdXPionE_sz;
-   Double_t        MasterAnaDev_BlobTrackdEdXPionE[82];   //[MasterAnaDev_BlobTrackdEdXPionE_sz]
+   Double_t        MasterAnaDev_BlobTrackdEdXPionE[3000];   //[MasterAnaDev_BlobTrackdEdXPionE_sz]
    Int_t           MasterAnaDev_BlobTrackdEdXPionPx_sz;
-   Double_t        MasterAnaDev_BlobTrackdEdXPionPx[82];   //[MasterAnaDev_BlobTrackdEdXPionPx_sz]
+   Double_t        MasterAnaDev_BlobTrackdEdXPionPx[3000];   //[MasterAnaDev_BlobTrackdEdXPionPx_sz]
    Int_t           MasterAnaDev_BlobTrackdEdXPionPy_sz;
-   Double_t        MasterAnaDev_BlobTrackdEdXPionPy[82];   //[MasterAnaDev_BlobTrackdEdXPionPy_sz]
+   Double_t        MasterAnaDev_BlobTrackdEdXPionPy[3000];   //[MasterAnaDev_BlobTrackdEdXPionPy_sz]
    Int_t           MasterAnaDev_BlobTrackdEdXPionPz_sz;
-   Double_t        MasterAnaDev_BlobTrackdEdXPionPz[82];   //[MasterAnaDev_BlobTrackdEdXPionPz_sz]
+   Double_t        MasterAnaDev_BlobTrackdEdXPionPz[3000];   //[MasterAnaDev_BlobTrackdEdXPionPz_sz]
    Int_t           MasterAnaDev_BlobTrackdEdXProton_sz;
-   Double_t        MasterAnaDev_BlobTrackdEdXProton[82];   //[MasterAnaDev_BlobTrackdEdXProton_sz]
+   Double_t        MasterAnaDev_BlobTrackdEdXProton[3000];   //[MasterAnaDev_BlobTrackdEdXProton_sz]
    Int_t           MasterAnaDev_BlobTrackdEdXProtonE_sz;
-   Double_t        MasterAnaDev_BlobTrackdEdXProtonE[82];   //[MasterAnaDev_BlobTrackdEdXProtonE_sz]
+   Double_t        MasterAnaDev_BlobTrackdEdXProtonE[3000];   //[MasterAnaDev_BlobTrackdEdXProtonE_sz]
    Int_t           MasterAnaDev_BlobTrackdEdXProtonPx_sz;
-   Double_t        MasterAnaDev_BlobTrackdEdXProtonPx[82];   //[MasterAnaDev_BlobTrackdEdXProtonPx_sz]
+   Double_t        MasterAnaDev_BlobTrackdEdXProtonPx[3000];   //[MasterAnaDev_BlobTrackdEdXProtonPx_sz]
    Int_t           MasterAnaDev_BlobTrackdEdXProtonPy_sz;
-   Double_t        MasterAnaDev_BlobTrackdEdXProtonPy[82];   //[MasterAnaDev_BlobTrackdEdXProtonPy_sz]
+   Double_t        MasterAnaDev_BlobTrackdEdXProtonPy[3000];   //[MasterAnaDev_BlobTrackdEdXProtonPy_sz]
    Int_t           MasterAnaDev_BlobTrackdEdXProtonPz_sz;
-   Double_t        MasterAnaDev_BlobTrackdEdXProtonPz[82];   //[MasterAnaDev_BlobTrackdEdXProtonPz_sz]
+   Double_t        MasterAnaDev_BlobTrackdEdXProtonPz[3000];   //[MasterAnaDev_BlobTrackdEdXProtonPz_sz]
    Int_t           MasterAnaDev_BlobVtxDR_sz;
-   Double_t        MasterAnaDev_BlobVtxDR[82];   //[MasterAnaDev_BlobVtxDR_sz]
+   Double_t        MasterAnaDev_BlobVtxDR[3000];   //[MasterAnaDev_BlobVtxDR_sz]
    Int_t           MasterAnaDev_BlobVtxDTPos_sz;
    Double_t        MasterAnaDev_BlobVtxDTPos[1];   //[MasterAnaDev_BlobVtxDTPos_sz]
    Int_t           MasterAnaDev_BlobVtxDZ_sz;
-   Double_t        MasterAnaDev_BlobVtxDZ[82];   //[MasterAnaDev_BlobVtxDZ_sz]
+   Double_t        MasterAnaDev_BlobVtxDZ[3000];   //[MasterAnaDev_BlobVtxDZ_sz]
    Int_t           MasterAnaDev_BlobX_sz;
-   Double_t        MasterAnaDev_BlobX[82];   //[MasterAnaDev_BlobX_sz]
+   Double_t        MasterAnaDev_BlobX[3000];   //[MasterAnaDev_BlobX_sz]
    Int_t           MasterAnaDev_BlobY_sz;
-   Double_t        MasterAnaDev_BlobY[82];   //[MasterAnaDev_BlobY_sz]
+   Double_t        MasterAnaDev_BlobY[3000];   //[MasterAnaDev_BlobY_sz]
    Int_t           MasterAnaDev_BlobZ_sz;
-   Double_t        MasterAnaDev_BlobZ[82];   //[MasterAnaDev_BlobZ_sz]
+   Double_t        MasterAnaDev_BlobZ[3000];   //[MasterAnaDev_BlobZ_sz]
    Int_t           MasterAnaDev_BlobZPerCluster_sz;
-   Double_t        MasterAnaDev_BlobZPerCluster[417];   //[MasterAnaDev_BlobZPerCluster_sz]
+   Double_t        MasterAnaDev_BlobZPerCluster[5000];   //[MasterAnaDev_BlobZPerCluster_sz]
    Int_t           MasterAnaDev_HadronE_sz;
-   Double_t        MasterAnaDev_HadronE[4];   //[MasterAnaDev_HadronE_sz]
+   Double_t        MasterAnaDev_HadronE[20];   //[MasterAnaDev_HadronE_sz]
    Int_t           MasterAnaDev_MCEnergyFrac_Election_sz;
-   Double_t        MasterAnaDev_MCEnergyFrac_Election[82];   //[MasterAnaDev_MCEnergyFrac_Election_sz]
+   Double_t        MasterAnaDev_MCEnergyFrac_Election[3000];   //[MasterAnaDev_MCEnergyFrac_Election_sz]
    Int_t           MasterAnaDev_MCEnergyFrac_Muon_sz;
-   Double_t        MasterAnaDev_MCEnergyFrac_Muon[82];   //[MasterAnaDev_MCEnergyFrac_Muon_sz]
+   Double_t        MasterAnaDev_MCEnergyFrac_Muon[3000];   //[MasterAnaDev_MCEnergyFrac_Muon_sz]
    Int_t           MasterAnaDev_MCEnergyFrac_Neutron_sz;
-   Double_t        MasterAnaDev_MCEnergyFrac_Neutron[82];   //[MasterAnaDev_MCEnergyFrac_Neutron_sz]
+   Double_t        MasterAnaDev_MCEnergyFrac_Neutron[3000];   //[MasterAnaDev_MCEnergyFrac_Neutron_sz]
    Int_t           MasterAnaDev_MCEnergyFrac_NonParticle_sz;
-   Double_t        MasterAnaDev_MCEnergyFrac_NonParticle[82];   //[MasterAnaDev_MCEnergyFrac_NonParticle_sz]
+   Double_t        MasterAnaDev_MCEnergyFrac_NonParticle[3000];   //[MasterAnaDev_MCEnergyFrac_NonParticle_sz]
    Int_t           MasterAnaDev_MCEnergyFrac_Others_sz;
-   Double_t        MasterAnaDev_MCEnergyFrac_Others[82];   //[MasterAnaDev_MCEnergyFrac_Others_sz]
+   Double_t        MasterAnaDev_MCEnergyFrac_Others[3000];   //[MasterAnaDev_MCEnergyFrac_Others_sz]
    Int_t           MasterAnaDev_MCEnergyFrac_Photon_sz;
-   Double_t        MasterAnaDev_MCEnergyFrac_Photon[82];   //[MasterAnaDev_MCEnergyFrac_Photon_sz]
+   Double_t        MasterAnaDev_MCEnergyFrac_Photon[3000];   //[MasterAnaDev_MCEnergyFrac_Photon_sz]
    Int_t           MasterAnaDev_MCEnergyFrac_Pi0_sz;
-   Double_t        MasterAnaDev_MCEnergyFrac_Pi0[82];   //[MasterAnaDev_MCEnergyFrac_Pi0_sz]
+   Double_t        MasterAnaDev_MCEnergyFrac_Pi0[3000];   //[MasterAnaDev_MCEnergyFrac_Pi0_sz]
    Int_t           MasterAnaDev_MCEnergyFrac_PiMinus_sz;
-   Double_t        MasterAnaDev_MCEnergyFrac_PiMinus[82];   //[MasterAnaDev_MCEnergyFrac_PiMinus_sz]
+   Double_t        MasterAnaDev_MCEnergyFrac_PiMinus[3000];   //[MasterAnaDev_MCEnergyFrac_PiMinus_sz]
    Int_t           MasterAnaDev_MCEnergyFrac_PiPlus_sz;
-   Double_t        MasterAnaDev_MCEnergyFrac_PiPlus[82];   //[MasterAnaDev_MCEnergyFrac_PiPlus_sz]
+   Double_t        MasterAnaDev_MCEnergyFrac_PiPlus[3000];   //[MasterAnaDev_MCEnergyFrac_PiPlus_sz]
    Int_t           MasterAnaDev_MCEnergyFrac_Proton_sz;
-   Double_t        MasterAnaDev_MCEnergyFrac_Proton[82];   //[MasterAnaDev_MCEnergyFrac_Proton_sz]
+   Double_t        MasterAnaDev_MCEnergyFrac_Proton[3000];   //[MasterAnaDev_MCEnergyFrac_Proton_sz]
    Int_t           MasterAnaDev_ReconstructedHadronMass_sz;
-   Double_t        MasterAnaDev_ReconstructedHadronMass[82];   //[MasterAnaDev_ReconstructedHadronMass_sz]
+   Double_t        MasterAnaDev_ReconstructedHadronMass[3000];   //[MasterAnaDev_ReconstructedHadronMass_sz]
+   Double_t        MasterAnaDev_hadron_endMichel_energy[300];
+   Double_t        MasterAnaDev_hadron_endMichel_slice_energy[300];
+   Double_t        MasterAnaDev_hadron_piFit_score1[300];
+   Double_t        MasterAnaDev_hadron_piFit_scoreLLR[300];
+   Double_t        MasterAnaDev_hadron_tm_beginKE[300];
+   Double_t        MasterAnaDev_piFit_score1_BetheBloch_biasDown[300];
+   Double_t        MasterAnaDev_piFit_score1_BetheBloch_biasUp[300];
+   Double_t        MasterAnaDev_piFit_score1_Birks[300];
+   Double_t        MasterAnaDev_piFit_score1_Mass_biasDown[300];
+   Double_t        MasterAnaDev_piFit_score1_Mass_biasUp[300];
+   Double_t        MasterAnaDev_pion_E[300];
+   Double_t        MasterAnaDev_pion_E_BetheBloch_biasDown[300];
+   Double_t        MasterAnaDev_pion_E_BetheBloch_biasUp[300];
+   Double_t        MasterAnaDev_pion_E_Birks[300];
+   Double_t        MasterAnaDev_pion_E_Mass_biasDown[300];
+   Double_t        MasterAnaDev_pion_E_Mass_biasUp[300];
+   Double_t        MasterAnaDev_pion_P[300];
+   Double_t        MasterAnaDev_pion_Px[300];
+   Double_t        MasterAnaDev_pion_Py[300];
+   Double_t        MasterAnaDev_pion_Pz[300];
+   Double_t        MasterAnaDev_pion_T[300];
+   Double_t        MasterAnaDev_pion_lastnode_Q0[300];
+   Double_t        MasterAnaDev_pion_lastnode_Q1[300];
+   Double_t        MasterAnaDev_pion_lastnode_Q2[300];
+   Double_t        MasterAnaDev_pion_lastnode_Q3[300];
+   Double_t        MasterAnaDev_pion_lastnode_Q4[300];
+   Double_t        MasterAnaDev_pion_lastnode_Q5[300];
+   Double_t        MasterAnaDev_pion_theta[300];
+   Double_t        MasterAnaDev_pion_theta_biasDown[300];
+   Double_t        MasterAnaDev_pion_theta_biasUp[300];
    Int_t           MasterAnaDev_proton_nodes_E_sz;
-   Double_t        MasterAnaDev_proton_nodes_E[167];   //[MasterAnaDev_proton_nodes_E_sz]
+   Double_t        MasterAnaDev_proton_nodes_E[4000];   //[MasterAnaDev_proton_nodes_E_sz]
    Int_t           MasterAnaDev_proton_nodes_nodesNormE_sz;
-   Double_t        MasterAnaDev_proton_nodes_nodesNormE[167];   //[MasterAnaDev_proton_nodes_nodesNormE_sz]
+   Double_t        MasterAnaDev_proton_nodes_nodesNormE[4000];   //[MasterAnaDev_proton_nodes_nodesNormE_sz]
    Double_t        MasterAnaDev_ref_dist_to_division[5];
    Double_t        MasterAnaDev_ref_dist_to_target[5];
    Int_t           MasterAnaDev_sec_protons_E_BetheBloch_biasDown_sz;
-   Double_t        MasterAnaDev_sec_protons_E_BetheBloch_biasDown[3];   //[MasterAnaDev_sec_protons_E_BetheBloch_biasDown_sz]
+   Double_t        MasterAnaDev_sec_protons_E_BetheBloch_biasDown[300];   //[MasterAnaDev_sec_protons_E_BetheBloch_biasDown_sz]
    Int_t           MasterAnaDev_sec_protons_E_BetheBloch_biasUp_sz;
-   Double_t        MasterAnaDev_sec_protons_E_BetheBloch_biasUp[3];   //[MasterAnaDev_sec_protons_E_BetheBloch_biasUp_sz]
+   Double_t        MasterAnaDev_sec_protons_E_BetheBloch_biasUp[300];   //[MasterAnaDev_sec_protons_E_BetheBloch_biasUp_sz]
    Int_t           MasterAnaDev_sec_protons_E_Birks_bias_sz;
-   Double_t        MasterAnaDev_sec_protons_E_Birks_bias[3];   //[MasterAnaDev_sec_protons_E_Birks_bias_sz]
+   Double_t        MasterAnaDev_sec_protons_E_Birks_bias[300];   //[MasterAnaDev_sec_protons_E_Birks_bias_sz]
    Int_t           MasterAnaDev_sec_protons_E_MEU_biasDown_sz;
-   Double_t        MasterAnaDev_sec_protons_E_MEU_biasDown[3];   //[MasterAnaDev_sec_protons_E_MEU_biasDown_sz]
+   Double_t        MasterAnaDev_sec_protons_E_MEU_biasDown[300];   //[MasterAnaDev_sec_protons_E_MEU_biasDown_sz]
    Int_t           MasterAnaDev_sec_protons_E_MEU_biasUp_sz;
-   Double_t        MasterAnaDev_sec_protons_E_MEU_biasUp[3];   //[MasterAnaDev_sec_protons_E_MEU_biasUp_sz]
+   Double_t        MasterAnaDev_sec_protons_E_MEU_biasUp[300];   //[MasterAnaDev_sec_protons_E_MEU_biasUp_sz]
    Int_t           MasterAnaDev_sec_protons_E_Mass_biasDown_sz;
-   Double_t        MasterAnaDev_sec_protons_E_Mass_biasDown[3];   //[MasterAnaDev_sec_protons_E_Mass_biasDown_sz]
+   Double_t        MasterAnaDev_sec_protons_E_Mass_biasDown[300];   //[MasterAnaDev_sec_protons_E_Mass_biasDown_sz]
    Int_t           MasterAnaDev_sec_protons_E_Mass_biasUp_sz;
-   Double_t        MasterAnaDev_sec_protons_E_Mass_biasUp[3];   //[MasterAnaDev_sec_protons_E_Mass_biasUp_sz]
+   Double_t        MasterAnaDev_sec_protons_E_Mass_biasUp[300];   //[MasterAnaDev_sec_protons_E_Mass_biasUp_sz]
    Int_t           MasterAnaDev_sec_protons_E_fromdEdx_sz;
-   Double_t        MasterAnaDev_sec_protons_E_fromdEdx[3];   //[MasterAnaDev_sec_protons_E_fromdEdx_sz]
+   Double_t        MasterAnaDev_sec_protons_E_fromdEdx[300];   //[MasterAnaDev_sec_protons_E_fromdEdx_sz]
    Int_t           MasterAnaDev_sec_protons_P_fromdEdx_sz;
-   Double_t        MasterAnaDev_sec_protons_P_fromdEdx[3];   //[MasterAnaDev_sec_protons_P_fromdEdx_sz]
+   Double_t        MasterAnaDev_sec_protons_P_fromdEdx[300];   //[MasterAnaDev_sec_protons_P_fromdEdx_sz]
    Int_t           MasterAnaDev_sec_protons_Px_fromdEdx_sz;
-   Double_t        MasterAnaDev_sec_protons_Px_fromdEdx[3];   //[MasterAnaDev_sec_protons_Px_fromdEdx_sz]
+   Double_t        MasterAnaDev_sec_protons_Px_fromdEdx[300];   //[MasterAnaDev_sec_protons_Px_fromdEdx_sz]
    Int_t           MasterAnaDev_sec_protons_Py_fromdEdx_sz;
-   Double_t        MasterAnaDev_sec_protons_Py_fromdEdx[3];   //[MasterAnaDev_sec_protons_Py_fromdEdx_sz]
+   Double_t        MasterAnaDev_sec_protons_Py_fromdEdx[300];   //[MasterAnaDev_sec_protons_Py_fromdEdx_sz]
    Int_t           MasterAnaDev_sec_protons_Pz_fromdEdx_sz;
-   Double_t        MasterAnaDev_sec_protons_Pz_fromdEdx[3];   //[MasterAnaDev_sec_protons_Pz_fromdEdx_sz]
+   Double_t        MasterAnaDev_sec_protons_Pz_fromdEdx[300];   //[MasterAnaDev_sec_protons_Pz_fromdEdx_sz]
    Int_t           MasterAnaDev_sec_protons_T_fromCalo_sz;
-   Double_t        MasterAnaDev_sec_protons_T_fromCalo[3];   //[MasterAnaDev_sec_protons_T_fromCalo_sz]
+   Double_t        MasterAnaDev_sec_protons_T_fromCalo[300];   //[MasterAnaDev_sec_protons_T_fromCalo_sz]
    Int_t           MasterAnaDev_sec_protons_T_fromdEdx_sz;
-   Double_t        MasterAnaDev_sec_protons_T_fromdEdx[3];   //[MasterAnaDev_sec_protons_T_fromdEdx_sz]
+   Double_t        MasterAnaDev_sec_protons_T_fromdEdx[300];   //[MasterAnaDev_sec_protons_T_fromdEdx_sz]
    Int_t           MasterAnaDev_sec_protons_nodes_E_sz;
-   Double_t        MasterAnaDev_sec_protons_nodes_E[59];   //[MasterAnaDev_sec_protons_nodes_E_sz]
+   Double_t        MasterAnaDev_sec_protons_nodes_E[2000];   //[MasterAnaDev_sec_protons_nodes_E_sz]
    Int_t           MasterAnaDev_sec_protons_nodes_nodesNormE_sz;
-   Double_t        MasterAnaDev_sec_protons_nodes_nodesNormE[59];   //[MasterAnaDev_sec_protons_nodes_nodesNormE_sz]
+   Double_t        MasterAnaDev_sec_protons_nodes_nodesNormE[2000];   //[MasterAnaDev_sec_protons_nodes_nodesNormE_sz]
    Int_t           MasterAnaDev_sec_protons_pion_scores_sz;
-   Double_t        MasterAnaDev_sec_protons_pion_scores[3];   //[MasterAnaDev_sec_protons_pion_scores_sz]
+   Double_t        MasterAnaDev_sec_protons_pion_scores[300];   //[MasterAnaDev_sec_protons_pion_scores_sz]
    Int_t           MasterAnaDev_sec_protons_pion_scores1_sz;
-   Double_t        MasterAnaDev_sec_protons_pion_scores1[3];   //[MasterAnaDev_sec_protons_pion_scores1_sz]
+   Double_t        MasterAnaDev_sec_protons_pion_scores1[300];   //[MasterAnaDev_sec_protons_pion_scores1_sz]
    Int_t           MasterAnaDev_sec_protons_pion_scores2_sz;
-   Double_t        MasterAnaDev_sec_protons_pion_scores2[3];   //[MasterAnaDev_sec_protons_pion_scores2_sz]
+   Double_t        MasterAnaDev_sec_protons_pion_scores2[300];   //[MasterAnaDev_sec_protons_pion_scores2_sz]
    Int_t           MasterAnaDev_sec_protons_proton_scores_sz;
-   Double_t        MasterAnaDev_sec_protons_proton_scores[3];   //[MasterAnaDev_sec_protons_proton_scores_sz]
+   Double_t        MasterAnaDev_sec_protons_proton_scores[300];   //[MasterAnaDev_sec_protons_proton_scores_sz]
    Int_t           MasterAnaDev_sec_protons_proton_scores1_sz;
-   Double_t        MasterAnaDev_sec_protons_proton_scores1[3];   //[MasterAnaDev_sec_protons_proton_scores1_sz]
+   Double_t        MasterAnaDev_sec_protons_proton_scores1[300];   //[MasterAnaDev_sec_protons_proton_scores1_sz]
    Int_t           MasterAnaDev_sec_protons_proton_scores2_sz;
-   Double_t        MasterAnaDev_sec_protons_proton_scores2[3];   //[MasterAnaDev_sec_protons_proton_scores2_sz]
+   Double_t        MasterAnaDev_sec_protons_proton_scores2[300];   //[MasterAnaDev_sec_protons_proton_scores2_sz]
    Int_t           MasterAnaDev_sec_protons_score1_BetheBloch_biasDown_sz;
-   Double_t        MasterAnaDev_sec_protons_score1_BetheBloch_biasDown[3];   //[MasterAnaDev_sec_protons_score1_BetheBloch_biasDown_sz]
+   Double_t        MasterAnaDev_sec_protons_score1_BetheBloch_biasDown[300];   //[MasterAnaDev_sec_protons_score1_BetheBloch_biasDown_sz]
    Int_t           MasterAnaDev_sec_protons_score1_BetheBloch_biasUp_sz;
-   Double_t        MasterAnaDev_sec_protons_score1_BetheBloch_biasUp[3];   //[MasterAnaDev_sec_protons_score1_BetheBloch_biasUp_sz]
+   Double_t        MasterAnaDev_sec_protons_score1_BetheBloch_biasUp[300];   //[MasterAnaDev_sec_protons_score1_BetheBloch_biasUp_sz]
    Int_t           MasterAnaDev_sec_protons_score1_Birks_bias_sz;
-   Double_t        MasterAnaDev_sec_protons_score1_Birks_bias[3];   //[MasterAnaDev_sec_protons_score1_Birks_bias_sz]
+   Double_t        MasterAnaDev_sec_protons_score1_Birks_bias[300];   //[MasterAnaDev_sec_protons_score1_Birks_bias_sz]
    Int_t           MasterAnaDev_sec_protons_score1_MEU_biasDown_sz;
-   Double_t        MasterAnaDev_sec_protons_score1_MEU_biasDown[3];   //[MasterAnaDev_sec_protons_score1_MEU_biasDown_sz]
+   Double_t        MasterAnaDev_sec_protons_score1_MEU_biasDown[300];   //[MasterAnaDev_sec_protons_score1_MEU_biasDown_sz]
    Int_t           MasterAnaDev_sec_protons_score1_MEU_biasUp_sz;
-   Double_t        MasterAnaDev_sec_protons_score1_MEU_biasUp[3];   //[MasterAnaDev_sec_protons_score1_MEU_biasUp_sz]
+   Double_t        MasterAnaDev_sec_protons_score1_MEU_biasUp[300];   //[MasterAnaDev_sec_protons_score1_MEU_biasUp_sz]
    Int_t           MasterAnaDev_sec_protons_score1_Mass_biasDown_sz;
-   Double_t        MasterAnaDev_sec_protons_score1_Mass_biasDown[3];   //[MasterAnaDev_sec_protons_score1_Mass_biasDown_sz]
+   Double_t        MasterAnaDev_sec_protons_score1_Mass_biasDown[300];   //[MasterAnaDev_sec_protons_score1_Mass_biasDown_sz]
    Int_t           MasterAnaDev_sec_protons_score1_Mass_biasUp_sz;
-   Double_t        MasterAnaDev_sec_protons_score1_Mass_biasUp[3];   //[MasterAnaDev_sec_protons_score1_Mass_biasUp_sz]
+   Double_t        MasterAnaDev_sec_protons_score1_Mass_biasUp[300];   //[MasterAnaDev_sec_protons_score1_Mass_biasUp_sz]
    Int_t           MasterAnaDev_sec_protons_theta_fromdEdx_sz;
-   Double_t        MasterAnaDev_sec_protons_theta_fromdEdx[3];   //[MasterAnaDev_sec_protons_theta_fromdEdx_sz]
-   Double_t        MasterAnaDev_sys_muon_curve_energy_shift[2];
-   Double_t        MasterAnaDev_sys_muon_energy_shift[2];
-   Double_t        MasterAnaDev_sys_muon_minerva_energy_shift[2];
-   Double_t        MasterAnaDev_sys_muon_qSquared_shift[2];
-   Double_t        MasterAnaDev_sys_muon_range_energy_shift[2];
-   Double_t        MasterAnaDev_sys_muon_wSquared_shift[2];
-   Double_t        MasterAnaDev_sys_muon_xbj_shift[2];
-   Double_t        MasterAnaDev_sys_muon_y_shift[2];
-   Double_t        MasterAnaDev_sys_nu_energy_shift[2];
-   Double_t        MasterAnaDev_sys_recoil_energy_shift[2];
-   Double_t        MasterAnaDev_sys_recoil_qSquared_shift[2];
-   Double_t        MasterAnaDev_sys_recoil_wSquared_shift[2];
-   Double_t        MasterAnaDev_sys_recoil_xbj_shift[2];
-   Double_t        MasterAnaDev_sys_recoil_y_shift[2];
-   Double_t        MasterAnaDev_sys_total_qSquared_shift[2];
-   Double_t        MasterAnaDev_sys_total_wSquared_shift[2];
-   Double_t        MasterAnaDev_sys_total_xbj_shift[2];
-   Double_t        MasterAnaDev_sys_total_y_shift[2];
+   Double_t        MasterAnaDev_sec_protons_theta_fromdEdx[300];   //[MasterAnaDev_sec_protons_theta_fromdEdx_sz]
+   Double_t        MasterAnaDev_sys_muon_curve_energy_shift[10];
+   Double_t        MasterAnaDev_sys_muon_energy_shift[10];
+   Double_t        MasterAnaDev_sys_muon_minerva_energy_shift[10];
+   Double_t        MasterAnaDev_sys_muon_qSquared_shift[10];
+   Double_t        MasterAnaDev_sys_muon_range_energy_shift[10];
+   Double_t        MasterAnaDev_sys_muon_wSquared_shift[10];
+   Double_t        MasterAnaDev_sys_muon_xbj_shift[10];
+   Double_t        MasterAnaDev_sys_muon_y_shift[10];
+   Double_t        MasterAnaDev_sys_nu_energy_shift[10];
+   Double_t        MasterAnaDev_sys_recoil_energy_shift[10];
+   Double_t        MasterAnaDev_sys_recoil_qSquared_shift[10];
+   Double_t        MasterAnaDev_sys_recoil_wSquared_shift[10];
+   Double_t        MasterAnaDev_sys_recoil_xbj_shift[10];
+   Double_t        MasterAnaDev_sys_recoil_y_shift[10];
+   Double_t        MasterAnaDev_sys_total_qSquared_shift[10];
+   Double_t        MasterAnaDev_sys_total_wSquared_shift[10];
+   Double_t        MasterAnaDev_sys_total_xbj_shift[10];
+   Double_t        MasterAnaDev_sys_total_y_shift[10];
    Int_t           n_prongs;
-   Int_t           prong_nParticles[MAX_N_PRONGS];   //[n_prongs]
-   Int_t           prong_[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_BackMiddleRatio[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_CalCorrectedEnergy[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_ECALCalibE[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_ECALVisE[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_FirstFireFraction[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_HCALCalibE[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_HCALVisE[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_MedianPlaneShowerWidth[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_NonMIPClusFrac[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_ODVisE[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_SideECALVisE[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_TotalVisE[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_TrackerCalibE[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_TransverseGapScore[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_TrimmedCaloEnergy[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_TrimmedVisE[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_UViewE[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_VViewE[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_XViewE[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_dEdXMean[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_dEdXMeanFrontTracker[MAX_N_PRONGS];   //[n_prongs]
+   Int_t           prong_nParticles[300];   //[n_prongs]
+   Int_t           prong_[300];   //[n_prongs]
+   Double_t        prong_BackMiddleRatio[300];   //[n_prongs]
+   Double_t        prong_CalCorrectedEnergy[300];   //[n_prongs]
+   Double_t        prong_ECALCalibE[300];   //[n_prongs]
+   Double_t        prong_ECALVisE[300];   //[n_prongs]
+   Double_t        prong_FirstFireFraction[300];   //[n_prongs]
+   Double_t        prong_HCALCalibE[300];   //[n_prongs]
+   Double_t        prong_HCALVisE[300];   //[n_prongs]
+   Double_t        prong_MedianPlaneShowerWidth[300];   //[n_prongs]
+   Double_t        prong_NonMIPClusFrac[300];   //[n_prongs]
+   Double_t        prong_ODVisE[300];   //[n_prongs]
+   Double_t        prong_SideECALVisE[300];   //[n_prongs]
+   Double_t        prong_TotalVisE[300];   //[n_prongs]
+   Double_t        prong_TrackerCalibE[300];   //[n_prongs]
+   Double_t        prong_TransverseGapScore[300];   //[n_prongs]
+   Double_t        prong_TrimmedCaloEnergy[300];   //[n_prongs]
+   Double_t        prong_TrimmedVisE[300];   //[n_prongs]
+   Double_t        prong_UViewE[300];   //[n_prongs]
+   Double_t        prong_VViewE[300];   //[n_prongs]
+   Double_t        prong_XViewE[300];   //[n_prongs]
+   Double_t        prong_dEdXMean[300];   //[n_prongs]
+   Double_t        prong_dEdXMeanFrontTracker[300];   //[n_prongs]
    std::vector<std::vector<double> > *prong_axis_vector;
    std::vector<std::vector<double> > *prong_axis_vertex;
    std::vector<std::vector<double> > *prong_dEdXs;
@@ -1414,38 +1814,38 @@ public :
    Double_t        mc_Q2;
    Double_t        mc_nuT;
    Double_t        mc_w;
-   Double_t        mc_vtx[4];
-   Double_t        mc_incomingPartVec[4];
-   Double_t        mc_initNucVec[4];
-   Double_t        mc_primFSLepton[4];
+   Double_t        mc_vtx[20];
+   Double_t        mc_incomingPartVec[20];
+   Double_t        mc_initNucVec[20];
+   Double_t        mc_primFSLepton[20];
    Int_t           mc_nFSPart;
-   Double_t        mc_FSPartPx[MAX_MC_NFSPART];   //[mc_nFSPart]
-   Double_t        mc_FSPartPy[MAX_MC_NFSPART];   //[mc_nFSPart]
-   Double_t        mc_FSPartPz[MAX_MC_NFSPART];   //[mc_nFSPart]
-   Double_t        mc_FSPartE[MAX_MC_NFSPART];   //[mc_nFSPart]
-   Int_t           mc_FSPartPDG[MAX_MC_NFSPART];   //[mc_nFSPart]
+   Double_t        mc_FSPartPx[3000];   //[mc_nFSPart]
+   Double_t        mc_FSPartPy[3000];   //[mc_nFSPart]
+   Double_t        mc_FSPartPz[3000];   //[mc_nFSPart]
+   Double_t        mc_FSPartE[3000];   //[mc_nFSPart]
+   Int_t           mc_FSPartPDG[3000];   //[mc_nFSPart]
    Int_t           mc_er_nPart;
-   Int_t           mc_er_ID[MAX_MC_ER_NPART];   //[mc_er_nPart]
-   Int_t           mc_er_status[MAX_MC_ER_NPART];   //[mc_er_nPart]
-   Double_t        mc_er_posInNucX[MAX_MC_ER_NPART];   //[mc_er_nPart]
-   Double_t        mc_er_posInNucY[MAX_MC_ER_NPART];   //[mc_er_nPart]
-   Double_t        mc_er_posInNucZ[MAX_MC_ER_NPART];   //[mc_er_nPart]
-   Double_t        mc_er_Px[MAX_MC_ER_NPART];   //[mc_er_nPart]
-   Double_t        mc_er_Py[MAX_MC_ER_NPART];   //[mc_er_nPart]
-   Double_t        mc_er_Pz[MAX_MC_ER_NPART];   //[mc_er_nPart]
-   Double_t        mc_er_E[MAX_MC_ER_NPART];   //[mc_er_nPart]
-   Int_t           mc_er_FD[MAX_MC_ER_NPART];   //[mc_er_nPart]
-   Int_t           mc_er_LD[MAX_MC_ER_NPART];   //[mc_er_nPart]
-   Int_t           mc_er_mother[MAX_MC_ER_NPART];   //[mc_er_nPart]
+   Int_t           mc_er_ID[3000];   //[mc_er_nPart]
+   Int_t           mc_er_status[3000];   //[mc_er_nPart]
+   Double_t        mc_er_posInNucX[3000];   //[mc_er_nPart]
+   Double_t        mc_er_posInNucY[3000];   //[mc_er_nPart]
+   Double_t        mc_er_posInNucZ[3000];   //[mc_er_nPart]
+   Double_t        mc_er_Px[3000];   //[mc_er_nPart]
+   Double_t        mc_er_Py[3000];   //[mc_er_nPart]
+   Double_t        mc_er_Pz[3000];   //[mc_er_nPart]
+   Double_t        mc_er_E[3000];   //[mc_er_nPart]
+   Int_t           mc_er_FD[3000];   //[mc_er_nPart]
+   Int_t           mc_er_LD[3000];   //[mc_er_nPart]
+   Int_t           mc_er_mother[3000];   //[mc_er_nPart]
    Int_t           mc_fr_nNuAncestorIDs;
-   Int_t           mc_fr_nuAncestorIDs[MAX_MC_FR_NNUANCESTORIDS];   //[mc_fr_nNuAncestorIDs]
+   Int_t           mc_fr_nuAncestorIDs[9];   //[mc_fr_nNuAncestorIDs]
    Int_t           mc_fr_nuParentID;
    Int_t           mc_fr_decMode;
    Double_t        mc_fr_primProtonVtx[3];
-   Double_t        mc_fr_primProtonP[4];
+   Double_t        mc_fr_primProtonP[20];
    Double_t        mc_fr_nuParentDecVtx[3];
    Double_t        mc_fr_nuParentProdVtx[3];
-   Double_t        mc_fr_nuParentProdP[4];
+   Double_t        mc_fr_nuParentProdP[20];
    Double_t        mc_cvweight_total;
    Double_t        wgt;
    Double_t        mc_cvweight_totalFlux;
@@ -1457,7 +1857,7 @@ public :
    Double_t        mc_gen1_cvweight_totalFlux;
    Double_t        mc_gen1_cvweight_NA49;
    Int_t           mc_wgt_Flux_BeamFocus_sz;
-   Double_t        mc_wgt_Flux_BeamFocus[MAX_MC_WGT_FLUX_BEAMFOCUS_SZ];   //[mc_wgt_Flux_BeamFocus_sz]
+   Double_t        mc_wgt_Flux_BeamFocus[100];   //[mc_wgt_Flux_BeamFocus_sz]
    Int_t           mc_wgt_gen1_Flux_Tertiary_sz;
    Double_t        mc_wgt_gen1_Flux_Tertiary[100];   //[mc_wgt_gen1_Flux_Tertiary_sz]
    Int_t           mc_wgt_gen1_Flux_NA49_sz;
@@ -1467,10 +1867,10 @@ public :
    Int_t           mc_wgt_ppfx1_Total_sz;
    Double_t        mc_wgt_ppfx1_Total[100];   //[mc_wgt_ppfx1_Total_sz]
    Int_t           mc_vertex_batch;
-   Double_t        prong_part_score[MAX_N_PRONGS];   //[n_prongs]
-   Double_t        prong_part_mass[MAX_N_PRONGS];   //[n_prongs]
-   Int_t           prong_part_charge[MAX_N_PRONGS];   //[n_prongs]
-   Int_t           prong_part_pid[MAX_N_PRONGS];   //[n_prongs]
+   Double_t        prong_part_score[300];   //[n_prongs]
+   Double_t        prong_part_mass[300];   //[n_prongs]
+   Int_t           prong_part_charge[300];   //[n_prongs]
+   Int_t           prong_part_pid[300];   //[n_prongs]
    std::vector<std::vector<double> > *prong_part_E;
    std::vector<std::vector<double> > *prong_part_pos;
 
@@ -1498,6 +1898,7 @@ public :
    TBranch        *b_prim_vtx_has_misassigned_track_direction;   //!
    TBranch        *b_prim_vtx_has_broken_track;   //!
    TBranch        *b_pass_MasterAnaDev;   //!
+   //TBranch        *b_isMinosMatchTrack;   //!
    TBranch        *b_VetoWall_extrapnowalls;   //!
    TBranch        *b_VetoWall_extrapwall1;   //!
    TBranch        *b_VetoWall_extrapwall2;   //!
@@ -1542,6 +1943,13 @@ public :
    TBranch        *b_blob_mufuzz_nClus_nucl;   //!
    TBranch        *b_blob_mufuzz_nClus_od;   //!
    TBranch        *b_blob_mufuzz_nClus_tracker;   //!
+   TBranch        *b_blob_nuefuzz_nBlobs;   //!
+   TBranch        *b_blob_nuefuzz_nClus;   //!
+   TBranch        *b_blob_nuefuzz_nClus_ecal;   //!
+   TBranch        *b_blob_nuefuzz_nClus_hcal;   //!
+   TBranch        *b_blob_nuefuzz_nClus_nucl;   //!
+   TBranch        *b_blob_nuefuzz_nClus_od;   //!
+   TBranch        *b_blob_nuefuzz_nClus_tracker;   //!
    TBranch        *b_blob_recoil_nBlobs;   //!
    TBranch        *b_blob_recoil_nClus;   //!
    TBranch        *b_blob_recoil_nClus_ecal;   //!
@@ -1564,6 +1972,8 @@ public :
    TBranch        *b_improved_nmichel;   //!
    TBranch        *b_isMinosMatchStub;   //!
    TBranch        *b_isMinosMatchTrack;   //!
+   TBranch        *b_iso_prongs_blob_count;   //!
+   TBranch        *b_iso_prongs_count;   //!
    TBranch        *b_multiplicity;   //!
    TBranch        *b_muon_fuzz_energy;   //!
    TBranch        *b_muon_is_minos_match_stub;   //!
@@ -1577,6 +1987,7 @@ public :
    TBranch        *b_n_nonvtx_iso_blobs;   //!
    TBranch        *b_n_nonvtx_iso_blobs_all;   //!
    TBranch        *b_part_response_recoil_nClus;   //!
+   TBranch        *b_part_response_recoil_passive_nClus;   //!
    TBranch        *b_pass_MasterAnaDev_precuts;   //!
    TBranch        *b_phys_energy_in_road_downstream_nplanes;   //!
    TBranch        *b_phys_energy_in_road_upstream_nplanes;   //!
@@ -1778,6 +2189,66 @@ public :
    TBranch        *b_blob_mufuzz_E_tracker_p;   //!
    TBranch        *b_blob_mufuzz_E_tracker_xtalk;   //!
    TBranch        *b_blob_mufuzz_E_xtalk;   //!
+   TBranch        *b_blob_nuefuzz_E;   //!
+   TBranch        *b_blob_nuefuzz_E_ecal;   //!
+   TBranch        *b_blob_nuefuzz_E_ecal_em;   //!
+   TBranch        *b_blob_nuefuzz_E_ecal_highn;   //!
+   TBranch        *b_blob_nuefuzz_E_ecal_lown;   //!
+   TBranch        *b_blob_nuefuzz_E_ecal_meson;   //!
+   TBranch        *b_blob_nuefuzz_E_ecal_midn;   //!
+   TBranch        *b_blob_nuefuzz_E_ecal_mu;   //!
+   TBranch        *b_blob_nuefuzz_E_ecal_other;   //!
+   TBranch        *b_blob_nuefuzz_E_ecal_p;   //!
+   TBranch        *b_blob_nuefuzz_E_ecal_xtalk;   //!
+   TBranch        *b_blob_nuefuzz_E_em;   //!
+   TBranch        *b_blob_nuefuzz_E_hcal;   //!
+   TBranch        *b_blob_nuefuzz_E_hcal_em;   //!
+   TBranch        *b_blob_nuefuzz_E_hcal_highn;   //!
+   TBranch        *b_blob_nuefuzz_E_hcal_lown;   //!
+   TBranch        *b_blob_nuefuzz_E_hcal_meson;   //!
+   TBranch        *b_blob_nuefuzz_E_hcal_midn;   //!
+   TBranch        *b_blob_nuefuzz_E_hcal_mu;   //!
+   TBranch        *b_blob_nuefuzz_E_hcal_other;   //!
+   TBranch        *b_blob_nuefuzz_E_hcal_p;   //!
+   TBranch        *b_blob_nuefuzz_E_hcal_xtalk;   //!
+   TBranch        *b_blob_nuefuzz_E_highn;   //!
+   TBranch        *b_blob_nuefuzz_E_lown;   //!
+   TBranch        *b_blob_nuefuzz_E_meson;   //!
+   TBranch        *b_blob_nuefuzz_E_midn;   //!
+   TBranch        *b_blob_nuefuzz_E_mu;   //!
+   TBranch        *b_blob_nuefuzz_E_nucl;   //!
+   TBranch        *b_blob_nuefuzz_E_nucl_em;   //!
+   TBranch        *b_blob_nuefuzz_E_nucl_highn;   //!
+   TBranch        *b_blob_nuefuzz_E_nucl_lown;   //!
+   TBranch        *b_blob_nuefuzz_E_nucl_meson;   //!
+   TBranch        *b_blob_nuefuzz_E_nucl_midn;   //!
+   TBranch        *b_blob_nuefuzz_E_nucl_mu;   //!
+   TBranch        *b_blob_nuefuzz_E_nucl_other;   //!
+   TBranch        *b_blob_nuefuzz_E_nucl_p;   //!
+   TBranch        *b_blob_nuefuzz_E_nucl_xtalk;   //!
+   TBranch        *b_blob_nuefuzz_E_od;   //!
+   TBranch        *b_blob_nuefuzz_E_od_em;   //!
+   TBranch        *b_blob_nuefuzz_E_od_highn;   //!
+   TBranch        *b_blob_nuefuzz_E_od_lown;   //!
+   TBranch        *b_blob_nuefuzz_E_od_meson;   //!
+   TBranch        *b_blob_nuefuzz_E_od_midn;   //!
+   TBranch        *b_blob_nuefuzz_E_od_mu;   //!
+   TBranch        *b_blob_nuefuzz_E_od_other;   //!
+   TBranch        *b_blob_nuefuzz_E_od_p;   //!
+   TBranch        *b_blob_nuefuzz_E_od_xtalk;   //!
+   TBranch        *b_blob_nuefuzz_E_other;   //!
+   TBranch        *b_blob_nuefuzz_E_p;   //!
+   TBranch        *b_blob_nuefuzz_E_tracker;   //!
+   TBranch        *b_blob_nuefuzz_E_tracker_em;   //!
+   TBranch        *b_blob_nuefuzz_E_tracker_highn;   //!
+   TBranch        *b_blob_nuefuzz_E_tracker_lown;   //!
+   TBranch        *b_blob_nuefuzz_E_tracker_meson;   //!
+   TBranch        *b_blob_nuefuzz_E_tracker_midn;   //!
+   TBranch        *b_blob_nuefuzz_E_tracker_mu;   //!
+   TBranch        *b_blob_nuefuzz_E_tracker_other;   //!
+   TBranch        *b_blob_nuefuzz_E_tracker_p;   //!
+   TBranch        *b_blob_nuefuzz_E_tracker_xtalk;   //!
+   TBranch        *b_blob_nuefuzz_E_xtalk;   //!
    TBranch        *b_blob_recoil_E;   //!
    TBranch        *b_blob_recoil_E_ecal;   //!
    TBranch        *b_blob_recoil_E_ecal_em;   //!
@@ -1902,6 +2373,7 @@ public :
    TBranch        *b_energy_from_mc;   //!
    TBranch        *b_energy_from_mc_fraction;   //!
    TBranch        *b_energy_from_mc_fraction_of_highest;   //!
+   TBranch        *b_iso_prongs_total_energy;   //!
    TBranch        *b_muon_iso_blobs_energy;   //!
    TBranch        *b_muon_minerva_trk_chi2PerDoF;   //!
    TBranch        *b_muon_phi;   //!
@@ -1967,6 +2439,54 @@ public :
    TBranch        *b_part_response_recoil_other_id_err;   //!
    TBranch        *b_part_response_recoil_other_od;   //!
    TBranch        *b_part_response_recoil_other_od_err;   //!
+   TBranch        *b_part_response_recoil_passive_em_id;   //!
+   TBranch        *b_part_response_recoil_passive_em_id_err;   //!
+   TBranch        *b_part_response_recoil_passive_em_od;   //!
+   TBranch        *b_part_response_recoil_passive_em_od_err;   //!
+   TBranch        *b_part_response_recoil_passive_high_neutron_id;   //!
+   TBranch        *b_part_response_recoil_passive_high_neutron_id_err;   //!
+   TBranch        *b_part_response_recoil_passive_high_neutron_od;   //!
+   TBranch        *b_part_response_recoil_passive_high_neutron_od_err;   //!
+   TBranch        *b_part_response_recoil_passive_high_proton_id;   //!
+   TBranch        *b_part_response_recoil_passive_high_proton_id_err;   //!
+   TBranch        *b_part_response_recoil_passive_high_proton_od;   //!
+   TBranch        *b_part_response_recoil_passive_high_proton_od_err;   //!
+   TBranch        *b_part_response_recoil_passive_low_neutron_id;   //!
+   TBranch        *b_part_response_recoil_passive_low_neutron_id_err;   //!
+   TBranch        *b_part_response_recoil_passive_low_neutron_od;   //!
+   TBranch        *b_part_response_recoil_passive_low_neutron_od_err;   //!
+   TBranch        *b_part_response_recoil_passive_low_proton_id;   //!
+   TBranch        *b_part_response_recoil_passive_low_proton_id_err;   //!
+   TBranch        *b_part_response_recoil_passive_low_proton_od;   //!
+   TBranch        *b_part_response_recoil_passive_low_proton_od_err;   //!
+   TBranch        *b_part_response_recoil_passive_meson_id;   //!
+   TBranch        *b_part_response_recoil_passive_meson_id_err;   //!
+   TBranch        *b_part_response_recoil_passive_meson_od;   //!
+   TBranch        *b_part_response_recoil_passive_meson_od_err;   //!
+   TBranch        *b_part_response_recoil_passive_mid_neutron_id;   //!
+   TBranch        *b_part_response_recoil_passive_mid_neutron_id_err;   //!
+   TBranch        *b_part_response_recoil_passive_mid_neutron_od;   //!
+   TBranch        *b_part_response_recoil_passive_mid_neutron_od_err;   //!
+   TBranch        *b_part_response_recoil_passive_mid_proton_id;   //!
+   TBranch        *b_part_response_recoil_passive_mid_proton_id_err;   //!
+   TBranch        *b_part_response_recoil_passive_mid_proton_od;   //!
+   TBranch        *b_part_response_recoil_passive_mid_proton_od_err;   //!
+   TBranch        *b_part_response_recoil_passive_muon_id;   //!
+   TBranch        *b_part_response_recoil_passive_muon_id_err;   //!
+   TBranch        *b_part_response_recoil_passive_muon_od;   //!
+   TBranch        *b_part_response_recoil_passive_muon_od_err;   //!
+   TBranch        *b_part_response_recoil_passive_other_id;   //!
+   TBranch        *b_part_response_recoil_passive_other_id_err;   //!
+   TBranch        *b_part_response_recoil_passive_other_od;   //!
+   TBranch        *b_part_response_recoil_passive_other_od_err;   //!
+   TBranch        *b_part_response_recoil_passive_proton_id;   //!
+   TBranch        *b_part_response_recoil_passive_proton_id_err;   //!
+   TBranch        *b_part_response_recoil_passive_proton_od;   //!
+   TBranch        *b_part_response_recoil_passive_proton_od_err;   //!
+   TBranch        *b_part_response_recoil_passive_xtalk_id;   //!
+   TBranch        *b_part_response_recoil_passive_xtalk_id_err;   //!
+   TBranch        *b_part_response_recoil_passive_xtalk_od;   //!
+   TBranch        *b_part_response_recoil_passive_xtalk_od_err;   //!
    TBranch        *b_part_response_recoil_proton_id;   //!
    TBranch        *b_part_response_recoil_proton_id_err;   //!
    TBranch        *b_part_response_recoil_proton_od;   //!
@@ -1975,6 +2495,8 @@ public :
    TBranch        *b_part_response_recoil_xtalk_id_err;   //!
    TBranch        *b_part_response_recoil_xtalk_od;   //!
    TBranch        *b_part_response_recoil_xtalk_od_err;   //!
+   TBranch        *b_part_response_total_recoil_passive_id;   //!
+   TBranch        *b_part_response_total_recoil_passive_od;   //!
    TBranch        *b_phys_energy_dispersed;   //!
    TBranch        *b_phys_energy_in_road_downstream;   //!
    TBranch        *b_phys_energy_in_road_upstream;   //!
@@ -2022,6 +2544,11 @@ public :
    TBranch        *b_event_track_nhits;   //!
    TBranch        *b_event_vertex_types_sz;   //!
    TBranch        *b_event_vertex_types;   //!
+   TBranch        *b_hadron_ntrack;   //!
+   TBranch        *b_has_michel_primary_particle_PDG_sz;   //!
+   TBranch        *b_has_michel_primary_particle_PDG;   //!
+   TBranch        *b_has_michel_primary_particle_trackID_sz;   //!
+   TBranch        *b_has_michel_primary_particle_trackID;   //!
    TBranch        *b_improved_michel_in_vertex_point_sz;   //!
    TBranch        *b_improved_michel_in_vertex_point;   //!
    TBranch        *b_improved_michel_match_vec_sz;   //!
@@ -2036,8 +2563,31 @@ public :
    TBranch        *b_improved_michel_vertex_type;   //!
    TBranch        *b_improved_michel_view_vec_sz;   //!
    TBranch        *b_improved_michel_view_vec;   //!
+   TBranch        *b_iso_prong_nhits;   //!
    TBranch        *b_latticeEnergyIndices;   //!
-//   TBranch        *b_latticeEnergyIndices_new;   //!
+   TBranch        *b_matched_michel_avg_idx;   //!
+   TBranch        *b_matched_michel_avg_module;   //!
+   TBranch        *b_matched_michel_code;   //!
+   TBranch        *b_matched_michel_end_idx;   //!
+   TBranch        *b_matched_michel_end_module1;   //!
+   TBranch        *b_matched_michel_end_module2;   //!
+   TBranch        *b_matched_michel_fitPass_sz;   //!
+   TBranch        *b_matched_michel_fitPass;   //!
+   TBranch        *b_matched_michel_idx_sz;   //!
+   TBranch        *b_matched_michel_idx;   //!
+   TBranch        *b_matched_michel_ov_idx;   //!
+   TBranch        *b_matched_michel_slice_sz;   //!
+   TBranch        *b_matched_michel_slice;   //!
+   TBranch        *b_matched_michel_unique_idx_sz;   //!
+   TBranch        *b_matched_michel_unique_idx;   //!
+   TBranch        *b_matched_michel_views_sz;   //!
+   TBranch        *b_matched_michel_views;   //!
+   TBranch        *b_michel_from_decay_sz;   //!
+   TBranch        *b_michel_from_decay;   //!
+   TBranch        *b_michel_parent_PDG_sz;   //!
+   TBranch        *b_michel_parent_PDG;   //!
+   TBranch        *b_michel_parent_trackID_sz;   //!
+   TBranch        *b_michel_parent_trackID;   //!
    TBranch        *b_nonvtx_iso_blobs_n_hits_in_prong_sz;   //!
    TBranch        *b_nonvtx_iso_blobs_n_hits_in_prong;   //!
    TBranch        *b_nonvtx_iso_blobs_particle_pdg_in_prong_sz;   //!
@@ -2046,6 +2596,8 @@ public :
    TBranch        *b_nonvtx_iso_blobs_primary_particle_pdg_in_prong;   //!
    TBranch        *b_number_clusters_at_end_proton_prong_sz;   //!
    TBranch        *b_number_clusters_at_end_proton_prong;   //!
+   TBranch        *b_part_response_container_recoil_passive_nClus_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_nClus;   //!
    TBranch        *b_recoil_lower_time_limit_sz;   //!
    TBranch        *b_recoil_lower_time_limit;   //!
    TBranch        *b_recoil_upper_time_limit_sz;   //!
@@ -2054,7 +2606,9 @@ public :
    TBranch        *b_sec_protons_prong_PDG;   //!
    TBranch        *b_sec_protons_prong_traj_ID_sz;   //!
    TBranch        *b_sec_protons_prong_traj_ID;   //!
-   //TBranch        *b_;   //!
+   TBranch        *b_true_michel_pdg_sz;   //!
+   TBranch        *b_true_michel_pdg;   //!
+   TBranch        *b_;   //!
    TBranch        *b_ANN_plane_probs;   //!
    TBranch        *b_VetoWall_muon_extrapVetoXY;   //!
    TBranch        *b_all_event_start_vertex_time_sz;   //!
@@ -2079,6 +2633,20 @@ public :
    TBranch        *b_event_tracks_energy;   //!
    TBranch        *b_event_vertex_time_diff_sz;   //!
    TBranch        *b_event_vertex_time_diff;   //!
+   TBranch        *b_hadron_track_length;   //!
+   TBranch        *b_hadron_track_length_area;   //!
+   TBranch        *b_hadron_track_length_area_ecal;   //!
+   TBranch        *b_hadron_track_length_area_trkr;   //!
+   TBranch        *b_has_michel_primary_particle_E_sz;   //!
+   TBranch        *b_has_michel_primary_particle_E;   //!
+   TBranch        *b_has_michel_primary_particle_p_sz;   //!
+   TBranch        *b_has_michel_primary_particle_p;   //!
+   TBranch        *b_has_michel_primary_particle_px_sz;   //!
+   TBranch        *b_has_michel_primary_particle_px;   //!
+   TBranch        *b_has_michel_primary_particle_py_sz;   //!
+   TBranch        *b_has_michel_primary_particle_py;   //!
+   TBranch        *b_has_michel_primary_particle_pz_sz;   //!
+   TBranch        *b_has_michel_primary_particle_pz;   //!
    TBranch        *b_improved_michel_data_energy_fraction_sz;   //!
    TBranch        *b_improved_michel_data_energy_fraction;   //!
    TBranch        *b_improved_michel_dist_vec_sz;   //!
@@ -2111,10 +2679,62 @@ public :
    TBranch        *b_improved_michel_yvec;   //!
    TBranch        *b_improved_michel_zvec_sz;   //!
    TBranch        *b_improved_michel_zvec;   //!
+   TBranch        *b_iso_prong_energy;   //!
+   TBranch        *b_iso_prong_separation;   //!
+   TBranch        *b_iso_prong_x;   //!
+   TBranch        *b_iso_prong_y;   //!
+   TBranch        *b_iso_prong_z;   //!
    TBranch        *b_latticeNormEnergySums;   //!
    TBranch        *b_latticeRelativeTimes;   //!
-//   TBranch        *b_latticeNormEnergySums_new;   //!
-//   TBranch        *b_latticeRelativeTimes_new;   //!
+   TBranch        *b_matched_michel_cal_energy_sz;   //!
+   TBranch        *b_matched_michel_cal_energy;   //!
+   TBranch        *b_matched_michel_down_end_U_sz;   //!
+   TBranch        *b_matched_michel_down_end_U;   //!
+   TBranch        *b_matched_michel_down_end_V_sz;   //!
+   TBranch        *b_matched_michel_down_end_V;   //!
+   TBranch        *b_matched_michel_down_end_X_sz;   //!
+   TBranch        *b_matched_michel_down_end_X;   //!
+   TBranch        *b_matched_michel_down_end_Y_sz;   //!
+   TBranch        *b_matched_michel_down_end_Y;   //!
+   TBranch        *b_matched_michel_down_end_Z_sz;   //!
+   TBranch        *b_matched_michel_down_end_Z;   //!
+   TBranch        *b_matched_michel_end_dist_sz;   //!
+   TBranch        *b_matched_michel_end_dist;   //!
+   TBranch        *b_matched_michel_fit_AU_sz;   //!
+   TBranch        *b_matched_michel_fit_AU;   //!
+   TBranch        *b_matched_michel_fit_AV_sz;   //!
+   TBranch        *b_matched_michel_fit_AV;   //!
+   TBranch        *b_matched_michel_fit_AX_sz;   //!
+   TBranch        *b_matched_michel_fit_AX;   //!
+   TBranch        *b_matched_michel_fit_AY_sz;   //!
+   TBranch        *b_matched_michel_fit_AY;   //!
+   TBranch        *b_matched_michel_fit_residual;   //!
+   TBranch        *b_matched_michel_ov_dist_sz;   //!
+   TBranch        *b_matched_michel_ov_dist;   //!
+   TBranch        *b_matched_michel_position_u_sz;   //!
+   TBranch        *b_matched_michel_position_u;   //!
+   TBranch        *b_matched_michel_position_v_sz;   //!
+   TBranch        *b_matched_michel_position_v;   //!
+   TBranch        *b_matched_michel_position_x_sz;   //!
+   TBranch        *b_matched_michel_position_x;   //!
+   TBranch        *b_matched_michel_position_y_sz;   //!
+   TBranch        *b_matched_michel_position_y;   //!
+   TBranch        *b_matched_michel_position_z_sz;   //!
+   TBranch        *b_matched_michel_position_z;   //!
+   TBranch        *b_matched_michel_time_sz;   //!
+   TBranch        *b_matched_michel_time;   //!
+   TBranch        *b_matched_michel_up_end_U_sz;   //!
+   TBranch        *b_matched_michel_up_end_U;   //!
+   TBranch        *b_matched_michel_up_end_V_sz;   //!
+   TBranch        *b_matched_michel_up_end_V;   //!
+   TBranch        *b_matched_michel_up_end_X_sz;   //!
+   TBranch        *b_matched_michel_up_end_X;   //!
+   TBranch        *b_matched_michel_up_end_Y_sz;   //!
+   TBranch        *b_matched_michel_up_end_Y;   //!
+   TBranch        *b_matched_michel_up_end_Z_sz;   //!
+   TBranch        *b_matched_michel_up_end_Z;   //!
+   TBranch        *b_matched_michel_vis_energy_sz;   //!
+   TBranch        *b_matched_michel_vis_energy;   //!
    TBranch        *b_muon_thetaX_allNodes_sz;   //!
    TBranch        *b_muon_thetaX_allNodes;   //!
    TBranch        *b_muon_thetaY_allNodes_sz;   //!
@@ -2157,6 +2777,107 @@ public :
    TBranch        *b_nonvtx_iso_blobs_time_difference_in_prong;   //!
    TBranch        *b_nonvtx_iso_blobs_time_in_prong_sz;   //!
    TBranch        *b_nonvtx_iso_blobs_time_in_prong;   //!
+   TBranch        *b_part_response_container_recoil_passive_em_id_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_em_id;   //!
+   TBranch        *b_part_response_container_recoil_passive_em_id_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_em_id_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_em_od_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_em_od;   //!
+   TBranch        *b_part_response_container_recoil_passive_em_od_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_em_od_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_high_neutron_id_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_high_neutron_id;   //!
+   TBranch        *b_part_response_container_recoil_passive_high_neutron_id_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_high_neutron_id_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_high_neutron_od_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_high_neutron_od;   //!
+   TBranch        *b_part_response_container_recoil_passive_high_neutron_od_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_high_neutron_od_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_high_proton_id_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_high_proton_id;   //!
+   TBranch        *b_part_response_container_recoil_passive_high_proton_id_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_high_proton_id_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_high_proton_od_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_high_proton_od;   //!
+   TBranch        *b_part_response_container_recoil_passive_high_proton_od_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_high_proton_od_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_low_neutron_id_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_low_neutron_id;   //!
+   TBranch        *b_part_response_container_recoil_passive_low_neutron_id_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_low_neutron_id_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_low_neutron_od_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_low_neutron_od;   //!
+   TBranch        *b_part_response_container_recoil_passive_low_neutron_od_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_low_neutron_od_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_low_proton_id_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_low_proton_id;   //!
+   TBranch        *b_part_response_container_recoil_passive_low_proton_id_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_low_proton_id_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_low_proton_od_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_low_proton_od;   //!
+   TBranch        *b_part_response_container_recoil_passive_low_proton_od_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_low_proton_od_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_meson_id_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_meson_id;   //!
+   TBranch        *b_part_response_container_recoil_passive_meson_id_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_meson_id_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_meson_od_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_meson_od;   //!
+   TBranch        *b_part_response_container_recoil_passive_meson_od_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_meson_od_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_mid_neutron_id_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_mid_neutron_id;   //!
+   TBranch        *b_part_response_container_recoil_passive_mid_neutron_id_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_mid_neutron_id_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_mid_neutron_od_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_mid_neutron_od;   //!
+   TBranch        *b_part_response_container_recoil_passive_mid_neutron_od_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_mid_neutron_od_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_mid_proton_id_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_mid_proton_id;   //!
+   TBranch        *b_part_response_container_recoil_passive_mid_proton_id_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_mid_proton_id_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_mid_proton_od_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_mid_proton_od;   //!
+   TBranch        *b_part_response_container_recoil_passive_mid_proton_od_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_mid_proton_od_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_muon_id_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_muon_id;   //!
+   TBranch        *b_part_response_container_recoil_passive_muon_id_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_muon_id_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_muon_od_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_muon_od;   //!
+   TBranch        *b_part_response_container_recoil_passive_muon_od_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_muon_od_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_other_id_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_other_id;   //!
+   TBranch        *b_part_response_container_recoil_passive_other_id_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_other_id_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_other_od_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_other_od;   //!
+   TBranch        *b_part_response_container_recoil_passive_other_od_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_other_od_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_proton_id_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_proton_id;   //!
+   TBranch        *b_part_response_container_recoil_passive_proton_id_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_proton_id_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_proton_od_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_proton_od;   //!
+   TBranch        *b_part_response_container_recoil_passive_proton_od_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_proton_od_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_xtalk_id_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_xtalk_id;   //!
+   TBranch        *b_part_response_container_recoil_passive_xtalk_id_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_xtalk_id_err;   //!
+   TBranch        *b_part_response_container_recoil_passive_xtalk_od_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_xtalk_od;   //!
+   TBranch        *b_part_response_container_recoil_passive_xtalk_od_err_sz;   //!
+   TBranch        *b_part_response_container_recoil_passive_xtalk_od_err;   //!
+   TBranch        *b_part_response_container_total_recoil_passive_id_sz;   //!
+   TBranch        *b_part_response_container_total_recoil_passive_id;   //!
+   TBranch        *b_part_response_container_total_recoil_passive_od_sz;   //!
+   TBranch        *b_part_response_container_total_recoil_passive_od;   //!
+   TBranch        *b_primary_prong_separation;   //!
    TBranch        *b_proton_prong_4p;   //!
    TBranch        *b_proton_prong_tpos;   //!
    TBranch        *b_proton_prong_tpos_t_sz;   //!
@@ -2185,6 +2906,18 @@ public :
    TBranch        *b_slice_hit_energy;   //!
    TBranch        *b_slice_hit_time_sz;   //!
    TBranch        *b_slice_hit_time;   //!
+   TBranch        *b_true_michel_x1_sz;   //!
+   TBranch        *b_true_michel_x1;   //!
+   TBranch        *b_true_michel_x2_sz;   //!
+   TBranch        *b_true_michel_x2;   //!
+   TBranch        *b_true_michel_y1_sz;   //!
+   TBranch        *b_true_michel_y1;   //!
+   TBranch        *b_true_michel_y2_sz;   //!
+   TBranch        *b_true_michel_y2;   //!
+   TBranch        *b_true_michel_z1_sz;   //!
+   TBranch        *b_true_michel_z1;   //!
+   TBranch        *b_true_michel_z2_sz;   //!
+   TBranch        *b_true_michel_z2;   //!
    TBranch        *b_visE_clusters_at_end_proton_prong_sz;   //!
    TBranch        *b_visE_clusters_at_end_proton_prong;   //!
    TBranch        *b_vtx_blob_radius;   //!
@@ -2201,9 +2934,19 @@ public :
    TBranch        *b_truth_has_physics_event;   //!
    TBranch        *b_truth_pass_MasterAnaDev;   //!
    TBranch        *b_truth_is_fiducial;   //!
+   TBranch        *b_truth_reco_hasGoodObjects;   //!
+   TBranch        *b_truth_reco_isGoodVertex;   //!
+   TBranch        *b_truth_reco_isFidVol_smeared;   //!
    TBranch        *b_truth_reco_has_muon;   //!
    TBranch        *b_truth_reco_has_int_vtx;   //!
    //TBranch        *b_truth_;   //!
+   TBranch        *b_truth_N_K0;   //!
+   TBranch        *b_truth_N_chargedK;   //!
+   TBranch        *b_truth_N_lambda;   //!
+   TBranch        *b_truth_N_pi0;   //!
+   TBranch        *b_truth_N_pim;   //!
+   TBranch        *b_truth_N_pip;   //!
+   TBranch        *b_truth_N_sigma;   //!
    TBranch        *b_truth_hadronReweightNPaths;   //!
    TBranch        *b_truth_hadronReweightNPoints;   //!
    TBranch        *b_truth_in_fiducial_area;   //!
@@ -2220,6 +2963,10 @@ public :
    TBranch        *b_truth_vtx_module;   //!
    TBranch        *b_truth_vtx_plane;   //!
    //TBranch        *b_truth_;   //!
+   TBranch        *b_truth_muon_E;   //!
+   TBranch        *b_truth_muon_px;   //!
+   TBranch        *b_truth_muon_py;   //!
+   TBranch        *b_truth_muon_pz;   //!
    TBranch        *b_truth_muon_theta;   //!
    TBranch        *b_truth_target_dist_to_division;   //!
    TBranch        *b_truth_target_zDist;   //!
@@ -2245,7 +2992,8 @@ public :
    TBranch        *b_truth_hadronReweightTrackID;   //!
    TBranch        *b_truth_hadronReweightTrajPointFlag_sz;   //!
    TBranch        *b_truth_hadronReweightTrajPointFlag;   //!
-   //TBranch        *b_truth_;   //!
+   TBranch        *b_truth_pi_charge;   //!
+   TBranch        *b_truth_;   //!
    TBranch        *b_genie_wgt_n_shifts;   //!
    TBranch        *b_truth_genie_wgt_AGKYxF1pi;   //!
    TBranch        *b_truth_genie_wgt_AhtBY;   //!
@@ -2301,6 +3049,11 @@ public :
    TBranch        *b_truth_hadronReweightPosZ;   //!
    TBranch        *b_truth_hadronReweightTimeDelta_sz;   //!
    TBranch        *b_truth_hadronReweightTimeDelta;   //!
+   TBranch        *b_truth_pi_E;   //!
+   TBranch        *b_truth_pi_px;   //!
+   TBranch        *b_truth_pi_py;   //!
+   TBranch        *b_truth_pi_pz;   //!
+   TBranch        *b_truth_pi_theta_wrtbeam;   //!
    TBranch        *b_MasterAnaDev_nuFlavor;   //!
    TBranch        *b_MasterAnaDev_nuHelicity;   //!
    TBranch        *b_MasterAnaDev_intCurrent;   //!
@@ -2319,6 +3072,7 @@ public :
    TBranch        *b_MasterAnaDev_minos_used_curvature;   //!
    TBranch        *b_MasterAnaDev_EvtHasNBlobIncTracks;   //!
    TBranch        *b_MasterAnaDev_EvtHasNBlobTracks;   //!
+   TBranch        *b_MasterAnaDev_hadron_number;   //!
    TBranch        *b_MasterAnaDev_in_fiducial_area;   //!
    TBranch        *b_MasterAnaDev_minos_trk_end_plane;   //!
    TBranch        *b_MasterAnaDev_minos_trk_quality;   //!
@@ -2357,9 +3111,16 @@ public :
    TBranch        *b_MasterAnaDev_minos_trk_vtx_z;   //!
    TBranch        *b_MasterAnaDev_muon_E;   //!
    TBranch        *b_MasterAnaDev_muon_P;   //!
+   TBranch        *b_MasterAnaDev_muon_Px;   //!
+   TBranch        *b_MasterAnaDev_muon_Py;   //!
+   TBranch        *b_MasterAnaDev_muon_Pz;   //!
    TBranch        *b_MasterAnaDev_muon_T;   //!
+   TBranch        *b_MasterAnaDev_muon_qp;   //!
+   TBranch        *b_MasterAnaDev_muon_qpqpe;   //!
    TBranch        *b_MasterAnaDev_muon_score;   //!
    TBranch        *b_MasterAnaDev_muon_theta;   //!
+   TBranch        *b_MasterAnaDev_muon_theta_biasDown;   //!
+   TBranch        *b_MasterAnaDev_muon_theta_biasUp;   //!
    TBranch        *b_MasterAnaDev_pion_score;   //!
    TBranch        *b_MasterAnaDev_pion_score1;   //!
    TBranch        *b_MasterAnaDev_pion_score2;   //!
@@ -2487,6 +3248,17 @@ public :
    TBranch        *b_MasterAnaDev_BlobVtxDZ_order;   //!
    TBranch        *b_MasterAnaDev_RecoPattern_sz;   //!
    TBranch        *b_MasterAnaDev_RecoPattern;   //!
+   TBranch        *b_MasterAnaDev_hadron_endMichel_category;   //!
+   TBranch        *b_MasterAnaDev_hadron_endMichel_ndigits;   //!
+   TBranch        *b_MasterAnaDev_hadron_isExiting;   //!
+   TBranch        *b_MasterAnaDev_hadron_isForked;   //!
+   TBranch        *b_MasterAnaDev_hadron_isODMatch;   //!
+   TBranch        *b_MasterAnaDev_hadron_isSideECAL;   //!
+   TBranch        *b_MasterAnaDev_hadron_isTracker;   //!
+   TBranch        *b_MasterAnaDev_hadron_tm_PDGCode;   //!
+   TBranch        *b_MasterAnaDev_hadron_tm_destructCode;   //!
+   TBranch        *b_MasterAnaDev_hadron_tm_trackID;   //!
+   TBranch        *b_MasterAnaDev_pion_nNodes;   //!
    TBranch        *b_MasterAnaDev_ref_targZ;   //!
    TBranch        *b_MasterAnaDev_sec_protons_nodes_index_sz;   //!
    TBranch        *b_MasterAnaDev_sec_protons_nodes_index;   //!
@@ -2664,6 +3436,36 @@ public :
    TBranch        *b_MasterAnaDev_MCEnergyFrac_Proton;   //!
    TBranch        *b_MasterAnaDev_ReconstructedHadronMass_sz;   //!
    TBranch        *b_MasterAnaDev_ReconstructedHadronMass;   //!
+   TBranch        *b_MasterAnaDev_hadron_endMichel_energy;   //!
+   TBranch        *b_MasterAnaDev_hadron_endMichel_slice_energy;   //!
+   TBranch        *b_MasterAnaDev_hadron_piFit_score1;   //!
+   TBranch        *b_MasterAnaDev_hadron_piFit_scoreLLR;   //!
+   TBranch        *b_MasterAnaDev_hadron_tm_beginKE;   //!
+   TBranch        *b_MasterAnaDev_piFit_score1_BetheBloch_biasDown;   //!
+   TBranch        *b_MasterAnaDev_piFit_score1_BetheBloch_biasUp;   //!
+   TBranch        *b_MasterAnaDev_piFit_score1_Birks;   //!
+   TBranch        *b_MasterAnaDev_piFit_score1_Mass_biasDown;   //!
+   TBranch        *b_MasterAnaDev_piFit_score1_Mass_biasUp;   //!
+   TBranch        *b_MasterAnaDev_pion_E;   //!
+   TBranch        *b_MasterAnaDev_pion_E_BetheBloch_biasDown;   //!
+   TBranch        *b_MasterAnaDev_pion_E_BetheBloch_biasUp;   //!
+   TBranch        *b_MasterAnaDev_pion_E_Birks;   //!
+   TBranch        *b_MasterAnaDev_pion_E_Mass_biasDown;   //!
+   TBranch        *b_MasterAnaDev_pion_E_Mass_biasUp;   //!
+   TBranch        *b_MasterAnaDev_pion_P;   //!
+   TBranch        *b_MasterAnaDev_pion_Px;   //!
+   TBranch        *b_MasterAnaDev_pion_Py;   //!
+   TBranch        *b_MasterAnaDev_pion_Pz;   //!
+   TBranch        *b_MasterAnaDev_pion_T;   //!
+   TBranch        *b_MasterAnaDev_pion_lastnode_Q0;   //!
+   TBranch        *b_MasterAnaDev_pion_lastnode_Q1;   //!
+   TBranch        *b_MasterAnaDev_pion_lastnode_Q2;   //!
+   TBranch        *b_MasterAnaDev_pion_lastnode_Q3;   //!
+   TBranch        *b_MasterAnaDev_pion_lastnode_Q4;   //!
+   TBranch        *b_MasterAnaDev_pion_lastnode_Q5;   //!
+   TBranch        *b_MasterAnaDev_pion_theta;   //!
+   TBranch        *b_MasterAnaDev_pion_theta_biasDown;   //!
+   TBranch        *b_MasterAnaDev_pion_theta_biasUp;   //!
    TBranch        *b_MasterAnaDev_proton_nodes_E_sz;   //!
    TBranch        *b_MasterAnaDev_proton_nodes_E;   //!
    TBranch        *b_MasterAnaDev_proton_nodes_nodesNormE_sz;   //!
@@ -2921,23 +3723,8 @@ public :
    virtual void    Loop();
    virtual Bool_t  Notify();
    virtual void     Show(Long64_t entry = -1);
-   /*
-   virtual Int_t   Version() const { return 2; }
-   virtual void    Begin(TTree *tree);
-   virtual void    SlaveBegin(TTree *tree);
-   virtual void    Init(TTree *tree);
-   virtual Bool_t  Notify();
-   virtual Bool_t  Process(Long64_t entry);
-   virtual Int_t   GetEntry(Long64_t entry, Int_t getall = 0) { return fChain ? fChain->GetTree()->GetEntry(entry, getall) : 0; }
-   virtual void    SetOption(const char *option) { fOption = option; }
-   virtual void    SetObject(TObject *obj) { fObject = obj; }
-   virtual void    SetInputList(TList *input) { fInput = input; }
-   virtual TList  *GetOutputList() const { return fOutput; }
-   virtual void    SlaveTerminate();
-   virtual void    Terminate();
 
-   ClassDef(MasterAnaDev,0);
-   */
+
 };
 } //end of name space
 #endif
@@ -2957,6 +3744,7 @@ RECOTRACKS_ANA::MasterAnaDev:: MasterAnaDev(TTree *tree) : fChain(0)
      }
      Init(tree);
 }
+
 RECOTRACKS_ANA::MasterAnaDev::~MasterAnaDev()
 {
     if (!fChain) return;
@@ -2982,6 +3770,7 @@ Long64_t RECOTRACKS_ANA::MasterAnaDev::LoadTree(Long64_t entry)
     }
     return centry;
 }
+
 void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
 {
    // The Init() function is called when the selector needs to initialize
@@ -3004,7 +3793,6 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    // Set branch addresses and branch pointers
    if (!tree) return;
    fChain = tree;
-   fCurrent = -1;
    fChain->SetMakeClass(1);
 
    fChain->SetBranchAddress("eventID", &eventID, &b_eventID);
@@ -3030,6 +3818,7 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("prim_vtx_has_misassigned_track_direction", &prim_vtx_has_misassigned_track_direction, &b_prim_vtx_has_misassigned_track_direction);
    fChain->SetBranchAddress("prim_vtx_has_broken_track", &prim_vtx_has_broken_track, &b_prim_vtx_has_broken_track);
    fChain->SetBranchAddress("pass_MasterAnaDev", &pass_MasterAnaDev, &b_pass_MasterAnaDev);
+   fChain->SetBranchAddress("isMinosMatchTrack", &isMinosMatchTrack, &b_isMinosMatchTrack);
    fChain->SetBranchAddress("VetoWall_extrapnowalls", &VetoWall_extrapnowalls, &b_VetoWall_extrapnowalls);
    fChain->SetBranchAddress("VetoWall_extrapwall1", &VetoWall_extrapwall1, &b_VetoWall_extrapwall1);
    fChain->SetBranchAddress("VetoWall_extrapwall2", &VetoWall_extrapwall2, &b_VetoWall_extrapwall2);
@@ -3074,6 +3863,13 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("blob_mufuzz_nClus_nucl", &blob_mufuzz_nClus_nucl, &b_blob_mufuzz_nClus_nucl);
    fChain->SetBranchAddress("blob_mufuzz_nClus_od", &blob_mufuzz_nClus_od, &b_blob_mufuzz_nClus_od);
    fChain->SetBranchAddress("blob_mufuzz_nClus_tracker", &blob_mufuzz_nClus_tracker, &b_blob_mufuzz_nClus_tracker);
+   fChain->SetBranchAddress("blob_nuefuzz_nBlobs", &blob_nuefuzz_nBlobs, &b_blob_nuefuzz_nBlobs);
+   fChain->SetBranchAddress("blob_nuefuzz_nClus", &blob_nuefuzz_nClus, &b_blob_nuefuzz_nClus);
+   fChain->SetBranchAddress("blob_nuefuzz_nClus_ecal", &blob_nuefuzz_nClus_ecal, &b_blob_nuefuzz_nClus_ecal);
+   fChain->SetBranchAddress("blob_nuefuzz_nClus_hcal", &blob_nuefuzz_nClus_hcal, &b_blob_nuefuzz_nClus_hcal);
+   fChain->SetBranchAddress("blob_nuefuzz_nClus_nucl", &blob_nuefuzz_nClus_nucl, &b_blob_nuefuzz_nClus_nucl);
+   fChain->SetBranchAddress("blob_nuefuzz_nClus_od", &blob_nuefuzz_nClus_od, &b_blob_nuefuzz_nClus_od);
+   fChain->SetBranchAddress("blob_nuefuzz_nClus_tracker", &blob_nuefuzz_nClus_tracker, &b_blob_nuefuzz_nClus_tracker);
    fChain->SetBranchAddress("blob_recoil_nBlobs", &blob_recoil_nBlobs, &b_blob_recoil_nBlobs);
    fChain->SetBranchAddress("blob_recoil_nClus", &blob_recoil_nClus, &b_blob_recoil_nClus);
    fChain->SetBranchAddress("blob_recoil_nClus_ecal", &blob_recoil_nClus_ecal, &b_blob_recoil_nClus_ecal);
@@ -3095,7 +3891,9 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("has_single_proton", &has_single_proton, &b_has_single_proton);
    fChain->SetBranchAddress("improved_nmichel", &improved_nmichel, &b_improved_nmichel);
    fChain->SetBranchAddress("isMinosMatchStub", &isMinosMatchStub, &b_isMinosMatchStub);
-   fChain->SetBranchAddress("isMinosMatchTrack", &isMinosMatchTrack, &b_isMinosMatchTrack);
+//    fChain->SetBranchAddress("isMinosMatchTrack", &isMinosMatchTrack, &b_isMinosMatchTrack);
+   fChain->SetBranchAddress("iso_prongs_blob_count", &iso_prongs_blob_count, &b_iso_prongs_blob_count);
+   fChain->SetBranchAddress("iso_prongs_count", &iso_prongs_count, &b_iso_prongs_count);
    fChain->SetBranchAddress("multiplicity", &multiplicity, &b_multiplicity);
    fChain->SetBranchAddress("muon_fuzz_energy", &muon_fuzz_energy, &b_muon_fuzz_energy);
    fChain->SetBranchAddress("muon_is_minos_match_stub", &muon_is_minos_match_stub, &b_muon_is_minos_match_stub);
@@ -3109,6 +3907,7 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("n_nonvtx_iso_blobs", &n_nonvtx_iso_blobs, &b_n_nonvtx_iso_blobs);
    fChain->SetBranchAddress("n_nonvtx_iso_blobs_all", &n_nonvtx_iso_blobs_all, &b_n_nonvtx_iso_blobs_all);
    fChain->SetBranchAddress("part_response_recoil_nClus", &part_response_recoil_nClus, &b_part_response_recoil_nClus);
+   fChain->SetBranchAddress("part_response_recoil_passive_nClus", &part_response_recoil_passive_nClus, &b_part_response_recoil_passive_nClus);
    fChain->SetBranchAddress("pass_MasterAnaDev_precuts", &pass_MasterAnaDev_precuts, &b_pass_MasterAnaDev_precuts);
    fChain->SetBranchAddress("phys_energy_in_road_downstream_nplanes", &phys_energy_in_road_downstream_nplanes, &b_phys_energy_in_road_downstream_nplanes);
    fChain->SetBranchAddress("phys_energy_in_road_upstream_nplanes", &phys_energy_in_road_upstream_nplanes, &b_phys_energy_in_road_upstream_nplanes);
@@ -3310,6 +4109,66 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("blob_mufuzz_E_tracker_p", &blob_mufuzz_E_tracker_p, &b_blob_mufuzz_E_tracker_p);
    fChain->SetBranchAddress("blob_mufuzz_E_tracker_xtalk", &blob_mufuzz_E_tracker_xtalk, &b_blob_mufuzz_E_tracker_xtalk);
    fChain->SetBranchAddress("blob_mufuzz_E_xtalk", &blob_mufuzz_E_xtalk, &b_blob_mufuzz_E_xtalk);
+   fChain->SetBranchAddress("blob_nuefuzz_E", &blob_nuefuzz_E, &b_blob_nuefuzz_E);
+   fChain->SetBranchAddress("blob_nuefuzz_E_ecal", &blob_nuefuzz_E_ecal, &b_blob_nuefuzz_E_ecal);
+   fChain->SetBranchAddress("blob_nuefuzz_E_ecal_em", &blob_nuefuzz_E_ecal_em, &b_blob_nuefuzz_E_ecal_em);
+   fChain->SetBranchAddress("blob_nuefuzz_E_ecal_highn", &blob_nuefuzz_E_ecal_highn, &b_blob_nuefuzz_E_ecal_highn);
+   fChain->SetBranchAddress("blob_nuefuzz_E_ecal_lown", &blob_nuefuzz_E_ecal_lown, &b_blob_nuefuzz_E_ecal_lown);
+   fChain->SetBranchAddress("blob_nuefuzz_E_ecal_meson", &blob_nuefuzz_E_ecal_meson, &b_blob_nuefuzz_E_ecal_meson);
+   fChain->SetBranchAddress("blob_nuefuzz_E_ecal_midn", &blob_nuefuzz_E_ecal_midn, &b_blob_nuefuzz_E_ecal_midn);
+   fChain->SetBranchAddress("blob_nuefuzz_E_ecal_mu", &blob_nuefuzz_E_ecal_mu, &b_blob_nuefuzz_E_ecal_mu);
+   fChain->SetBranchAddress("blob_nuefuzz_E_ecal_other", &blob_nuefuzz_E_ecal_other, &b_blob_nuefuzz_E_ecal_other);
+   fChain->SetBranchAddress("blob_nuefuzz_E_ecal_p", &blob_nuefuzz_E_ecal_p, &b_blob_nuefuzz_E_ecal_p);
+   fChain->SetBranchAddress("blob_nuefuzz_E_ecal_xtalk", &blob_nuefuzz_E_ecal_xtalk, &b_blob_nuefuzz_E_ecal_xtalk);
+   fChain->SetBranchAddress("blob_nuefuzz_E_em", &blob_nuefuzz_E_em, &b_blob_nuefuzz_E_em);
+   fChain->SetBranchAddress("blob_nuefuzz_E_hcal", &blob_nuefuzz_E_hcal, &b_blob_nuefuzz_E_hcal);
+   fChain->SetBranchAddress("blob_nuefuzz_E_hcal_em", &blob_nuefuzz_E_hcal_em, &b_blob_nuefuzz_E_hcal_em);
+   fChain->SetBranchAddress("blob_nuefuzz_E_hcal_highn", &blob_nuefuzz_E_hcal_highn, &b_blob_nuefuzz_E_hcal_highn);
+   fChain->SetBranchAddress("blob_nuefuzz_E_hcal_lown", &blob_nuefuzz_E_hcal_lown, &b_blob_nuefuzz_E_hcal_lown);
+   fChain->SetBranchAddress("blob_nuefuzz_E_hcal_meson", &blob_nuefuzz_E_hcal_meson, &b_blob_nuefuzz_E_hcal_meson);
+   fChain->SetBranchAddress("blob_nuefuzz_E_hcal_midn", &blob_nuefuzz_E_hcal_midn, &b_blob_nuefuzz_E_hcal_midn);
+   fChain->SetBranchAddress("blob_nuefuzz_E_hcal_mu", &blob_nuefuzz_E_hcal_mu, &b_blob_nuefuzz_E_hcal_mu);
+   fChain->SetBranchAddress("blob_nuefuzz_E_hcal_other", &blob_nuefuzz_E_hcal_other, &b_blob_nuefuzz_E_hcal_other);
+   fChain->SetBranchAddress("blob_nuefuzz_E_hcal_p", &blob_nuefuzz_E_hcal_p, &b_blob_nuefuzz_E_hcal_p);
+   fChain->SetBranchAddress("blob_nuefuzz_E_hcal_xtalk", &blob_nuefuzz_E_hcal_xtalk, &b_blob_nuefuzz_E_hcal_xtalk);
+   fChain->SetBranchAddress("blob_nuefuzz_E_highn", &blob_nuefuzz_E_highn, &b_blob_nuefuzz_E_highn);
+   fChain->SetBranchAddress("blob_nuefuzz_E_lown", &blob_nuefuzz_E_lown, &b_blob_nuefuzz_E_lown);
+   fChain->SetBranchAddress("blob_nuefuzz_E_meson", &blob_nuefuzz_E_meson, &b_blob_nuefuzz_E_meson);
+   fChain->SetBranchAddress("blob_nuefuzz_E_midn", &blob_nuefuzz_E_midn, &b_blob_nuefuzz_E_midn);
+   fChain->SetBranchAddress("blob_nuefuzz_E_mu", &blob_nuefuzz_E_mu, &b_blob_nuefuzz_E_mu);
+   fChain->SetBranchAddress("blob_nuefuzz_E_nucl", &blob_nuefuzz_E_nucl, &b_blob_nuefuzz_E_nucl);
+   fChain->SetBranchAddress("blob_nuefuzz_E_nucl_em", &blob_nuefuzz_E_nucl_em, &b_blob_nuefuzz_E_nucl_em);
+   fChain->SetBranchAddress("blob_nuefuzz_E_nucl_highn", &blob_nuefuzz_E_nucl_highn, &b_blob_nuefuzz_E_nucl_highn);
+   fChain->SetBranchAddress("blob_nuefuzz_E_nucl_lown", &blob_nuefuzz_E_nucl_lown, &b_blob_nuefuzz_E_nucl_lown);
+   fChain->SetBranchAddress("blob_nuefuzz_E_nucl_meson", &blob_nuefuzz_E_nucl_meson, &b_blob_nuefuzz_E_nucl_meson);
+   fChain->SetBranchAddress("blob_nuefuzz_E_nucl_midn", &blob_nuefuzz_E_nucl_midn, &b_blob_nuefuzz_E_nucl_midn);
+   fChain->SetBranchAddress("blob_nuefuzz_E_nucl_mu", &blob_nuefuzz_E_nucl_mu, &b_blob_nuefuzz_E_nucl_mu);
+   fChain->SetBranchAddress("blob_nuefuzz_E_nucl_other", &blob_nuefuzz_E_nucl_other, &b_blob_nuefuzz_E_nucl_other);
+   fChain->SetBranchAddress("blob_nuefuzz_E_nucl_p", &blob_nuefuzz_E_nucl_p, &b_blob_nuefuzz_E_nucl_p);
+   fChain->SetBranchAddress("blob_nuefuzz_E_nucl_xtalk", &blob_nuefuzz_E_nucl_xtalk, &b_blob_nuefuzz_E_nucl_xtalk);
+   fChain->SetBranchAddress("blob_nuefuzz_E_od", &blob_nuefuzz_E_od, &b_blob_nuefuzz_E_od);
+   fChain->SetBranchAddress("blob_nuefuzz_E_od_em", &blob_nuefuzz_E_od_em, &b_blob_nuefuzz_E_od_em);
+   fChain->SetBranchAddress("blob_nuefuzz_E_od_highn", &blob_nuefuzz_E_od_highn, &b_blob_nuefuzz_E_od_highn);
+   fChain->SetBranchAddress("blob_nuefuzz_E_od_lown", &blob_nuefuzz_E_od_lown, &b_blob_nuefuzz_E_od_lown);
+   fChain->SetBranchAddress("blob_nuefuzz_E_od_meson", &blob_nuefuzz_E_od_meson, &b_blob_nuefuzz_E_od_meson);
+   fChain->SetBranchAddress("blob_nuefuzz_E_od_midn", &blob_nuefuzz_E_od_midn, &b_blob_nuefuzz_E_od_midn);
+   fChain->SetBranchAddress("blob_nuefuzz_E_od_mu", &blob_nuefuzz_E_od_mu, &b_blob_nuefuzz_E_od_mu);
+   fChain->SetBranchAddress("blob_nuefuzz_E_od_other", &blob_nuefuzz_E_od_other, &b_blob_nuefuzz_E_od_other);
+   fChain->SetBranchAddress("blob_nuefuzz_E_od_p", &blob_nuefuzz_E_od_p, &b_blob_nuefuzz_E_od_p);
+   fChain->SetBranchAddress("blob_nuefuzz_E_od_xtalk", &blob_nuefuzz_E_od_xtalk, &b_blob_nuefuzz_E_od_xtalk);
+   fChain->SetBranchAddress("blob_nuefuzz_E_other", &blob_nuefuzz_E_other, &b_blob_nuefuzz_E_other);
+   fChain->SetBranchAddress("blob_nuefuzz_E_p", &blob_nuefuzz_E_p, &b_blob_nuefuzz_E_p);
+   fChain->SetBranchAddress("blob_nuefuzz_E_tracker", &blob_nuefuzz_E_tracker, &b_blob_nuefuzz_E_tracker);
+   fChain->SetBranchAddress("blob_nuefuzz_E_tracker_em", &blob_nuefuzz_E_tracker_em, &b_blob_nuefuzz_E_tracker_em);
+   fChain->SetBranchAddress("blob_nuefuzz_E_tracker_highn", &blob_nuefuzz_E_tracker_highn, &b_blob_nuefuzz_E_tracker_highn);
+   fChain->SetBranchAddress("blob_nuefuzz_E_tracker_lown", &blob_nuefuzz_E_tracker_lown, &b_blob_nuefuzz_E_tracker_lown);
+   fChain->SetBranchAddress("blob_nuefuzz_E_tracker_meson", &blob_nuefuzz_E_tracker_meson, &b_blob_nuefuzz_E_tracker_meson);
+   fChain->SetBranchAddress("blob_nuefuzz_E_tracker_midn", &blob_nuefuzz_E_tracker_midn, &b_blob_nuefuzz_E_tracker_midn);
+   fChain->SetBranchAddress("blob_nuefuzz_E_tracker_mu", &blob_nuefuzz_E_tracker_mu, &b_blob_nuefuzz_E_tracker_mu);
+   fChain->SetBranchAddress("blob_nuefuzz_E_tracker_other", &blob_nuefuzz_E_tracker_other, &b_blob_nuefuzz_E_tracker_other);
+   fChain->SetBranchAddress("blob_nuefuzz_E_tracker_p", &blob_nuefuzz_E_tracker_p, &b_blob_nuefuzz_E_tracker_p);
+   fChain->SetBranchAddress("blob_nuefuzz_E_tracker_xtalk", &blob_nuefuzz_E_tracker_xtalk, &b_blob_nuefuzz_E_tracker_xtalk);
+   fChain->SetBranchAddress("blob_nuefuzz_E_xtalk", &blob_nuefuzz_E_xtalk, &b_blob_nuefuzz_E_xtalk);
    fChain->SetBranchAddress("blob_recoil_E", &blob_recoil_E, &b_blob_recoil_E);
    fChain->SetBranchAddress("blob_recoil_E_ecal", &blob_recoil_E_ecal, &b_blob_recoil_E_ecal);
    fChain->SetBranchAddress("blob_recoil_E_ecal_em", &blob_recoil_E_ecal_em, &b_blob_recoil_E_ecal_em);
@@ -3434,6 +4293,7 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("energy_from_mc", &energy_from_mc, &b_energy_from_mc);
    fChain->SetBranchAddress("energy_from_mc_fraction", &energy_from_mc_fraction, &b_energy_from_mc_fraction);
    fChain->SetBranchAddress("energy_from_mc_fraction_of_highest", &energy_from_mc_fraction_of_highest, &b_energy_from_mc_fraction_of_highest);
+   fChain->SetBranchAddress("iso_prongs_total_energy", &iso_prongs_total_energy, &b_iso_prongs_total_energy);
    fChain->SetBranchAddress("muon_iso_blobs_energy", &muon_iso_blobs_energy, &b_muon_iso_blobs_energy);
    fChain->SetBranchAddress("muon_minerva_trk_chi2PerDoF", &muon_minerva_trk_chi2PerDoF, &b_muon_minerva_trk_chi2PerDoF);
    fChain->SetBranchAddress("muon_phi", &muon_phi, &b_muon_phi);
@@ -3499,6 +4359,54 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("part_response_recoil_other_id_err", &part_response_recoil_other_id_err, &b_part_response_recoil_other_id_err);
    fChain->SetBranchAddress("part_response_recoil_other_od", &part_response_recoil_other_od, &b_part_response_recoil_other_od);
    fChain->SetBranchAddress("part_response_recoil_other_od_err", &part_response_recoil_other_od_err, &b_part_response_recoil_other_od_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_em_id", &part_response_recoil_passive_em_id, &b_part_response_recoil_passive_em_id);
+   fChain->SetBranchAddress("part_response_recoil_passive_em_id_err", &part_response_recoil_passive_em_id_err, &b_part_response_recoil_passive_em_id_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_em_od", &part_response_recoil_passive_em_od, &b_part_response_recoil_passive_em_od);
+   fChain->SetBranchAddress("part_response_recoil_passive_em_od_err", &part_response_recoil_passive_em_od_err, &b_part_response_recoil_passive_em_od_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_high_neutron_id", &part_response_recoil_passive_high_neutron_id, &b_part_response_recoil_passive_high_neutron_id);
+   fChain->SetBranchAddress("part_response_recoil_passive_high_neutron_id_err", &part_response_recoil_passive_high_neutron_id_err, &b_part_response_recoil_passive_high_neutron_id_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_high_neutron_od", &part_response_recoil_passive_high_neutron_od, &b_part_response_recoil_passive_high_neutron_od);
+   fChain->SetBranchAddress("part_response_recoil_passive_high_neutron_od_err", &part_response_recoil_passive_high_neutron_od_err, &b_part_response_recoil_passive_high_neutron_od_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_high_proton_id", &part_response_recoil_passive_high_proton_id, &b_part_response_recoil_passive_high_proton_id);
+   fChain->SetBranchAddress("part_response_recoil_passive_high_proton_id_err", &part_response_recoil_passive_high_proton_id_err, &b_part_response_recoil_passive_high_proton_id_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_high_proton_od", &part_response_recoil_passive_high_proton_od, &b_part_response_recoil_passive_high_proton_od);
+   fChain->SetBranchAddress("part_response_recoil_passive_high_proton_od_err", &part_response_recoil_passive_high_proton_od_err, &b_part_response_recoil_passive_high_proton_od_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_low_neutron_id", &part_response_recoil_passive_low_neutron_id, &b_part_response_recoil_passive_low_neutron_id);
+   fChain->SetBranchAddress("part_response_recoil_passive_low_neutron_id_err", &part_response_recoil_passive_low_neutron_id_err, &b_part_response_recoil_passive_low_neutron_id_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_low_neutron_od", &part_response_recoil_passive_low_neutron_od, &b_part_response_recoil_passive_low_neutron_od);
+   fChain->SetBranchAddress("part_response_recoil_passive_low_neutron_od_err", &part_response_recoil_passive_low_neutron_od_err, &b_part_response_recoil_passive_low_neutron_od_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_low_proton_id", &part_response_recoil_passive_low_proton_id, &b_part_response_recoil_passive_low_proton_id);
+   fChain->SetBranchAddress("part_response_recoil_passive_low_proton_id_err", &part_response_recoil_passive_low_proton_id_err, &b_part_response_recoil_passive_low_proton_id_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_low_proton_od", &part_response_recoil_passive_low_proton_od, &b_part_response_recoil_passive_low_proton_od);
+   fChain->SetBranchAddress("part_response_recoil_passive_low_proton_od_err", &part_response_recoil_passive_low_proton_od_err, &b_part_response_recoil_passive_low_proton_od_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_meson_id", &part_response_recoil_passive_meson_id, &b_part_response_recoil_passive_meson_id);
+   fChain->SetBranchAddress("part_response_recoil_passive_meson_id_err", &part_response_recoil_passive_meson_id_err, &b_part_response_recoil_passive_meson_id_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_meson_od", &part_response_recoil_passive_meson_od, &b_part_response_recoil_passive_meson_od);
+   fChain->SetBranchAddress("part_response_recoil_passive_meson_od_err", &part_response_recoil_passive_meson_od_err, &b_part_response_recoil_passive_meson_od_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_mid_neutron_id", &part_response_recoil_passive_mid_neutron_id, &b_part_response_recoil_passive_mid_neutron_id);
+   fChain->SetBranchAddress("part_response_recoil_passive_mid_neutron_id_err", &part_response_recoil_passive_mid_neutron_id_err, &b_part_response_recoil_passive_mid_neutron_id_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_mid_neutron_od", &part_response_recoil_passive_mid_neutron_od, &b_part_response_recoil_passive_mid_neutron_od);
+   fChain->SetBranchAddress("part_response_recoil_passive_mid_neutron_od_err", &part_response_recoil_passive_mid_neutron_od_err, &b_part_response_recoil_passive_mid_neutron_od_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_mid_proton_id", &part_response_recoil_passive_mid_proton_id, &b_part_response_recoil_passive_mid_proton_id);
+   fChain->SetBranchAddress("part_response_recoil_passive_mid_proton_id_err", &part_response_recoil_passive_mid_proton_id_err, &b_part_response_recoil_passive_mid_proton_id_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_mid_proton_od", &part_response_recoil_passive_mid_proton_od, &b_part_response_recoil_passive_mid_proton_od);
+   fChain->SetBranchAddress("part_response_recoil_passive_mid_proton_od_err", &part_response_recoil_passive_mid_proton_od_err, &b_part_response_recoil_passive_mid_proton_od_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_muon_id", &part_response_recoil_passive_muon_id, &b_part_response_recoil_passive_muon_id);
+   fChain->SetBranchAddress("part_response_recoil_passive_muon_id_err", &part_response_recoil_passive_muon_id_err, &b_part_response_recoil_passive_muon_id_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_muon_od", &part_response_recoil_passive_muon_od, &b_part_response_recoil_passive_muon_od);
+   fChain->SetBranchAddress("part_response_recoil_passive_muon_od_err", &part_response_recoil_passive_muon_od_err, &b_part_response_recoil_passive_muon_od_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_other_id", &part_response_recoil_passive_other_id, &b_part_response_recoil_passive_other_id);
+   fChain->SetBranchAddress("part_response_recoil_passive_other_id_err", &part_response_recoil_passive_other_id_err, &b_part_response_recoil_passive_other_id_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_other_od", &part_response_recoil_passive_other_od, &b_part_response_recoil_passive_other_od);
+   fChain->SetBranchAddress("part_response_recoil_passive_other_od_err", &part_response_recoil_passive_other_od_err, &b_part_response_recoil_passive_other_od_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_proton_id", &part_response_recoil_passive_proton_id, &b_part_response_recoil_passive_proton_id);
+   fChain->SetBranchAddress("part_response_recoil_passive_proton_id_err", &part_response_recoil_passive_proton_id_err, &b_part_response_recoil_passive_proton_id_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_proton_od", &part_response_recoil_passive_proton_od, &b_part_response_recoil_passive_proton_od);
+   fChain->SetBranchAddress("part_response_recoil_passive_proton_od_err", &part_response_recoil_passive_proton_od_err, &b_part_response_recoil_passive_proton_od_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_xtalk_id", &part_response_recoil_passive_xtalk_id, &b_part_response_recoil_passive_xtalk_id);
+   fChain->SetBranchAddress("part_response_recoil_passive_xtalk_id_err", &part_response_recoil_passive_xtalk_id_err, &b_part_response_recoil_passive_xtalk_id_err);
+   fChain->SetBranchAddress("part_response_recoil_passive_xtalk_od", &part_response_recoil_passive_xtalk_od, &b_part_response_recoil_passive_xtalk_od);
+   fChain->SetBranchAddress("part_response_recoil_passive_xtalk_od_err", &part_response_recoil_passive_xtalk_od_err, &b_part_response_recoil_passive_xtalk_od_err);
    fChain->SetBranchAddress("part_response_recoil_proton_id", &part_response_recoil_proton_id, &b_part_response_recoil_proton_id);
    fChain->SetBranchAddress("part_response_recoil_proton_id_err", &part_response_recoil_proton_id_err, &b_part_response_recoil_proton_id_err);
    fChain->SetBranchAddress("part_response_recoil_proton_od", &part_response_recoil_proton_od, &b_part_response_recoil_proton_od);
@@ -3507,6 +4415,8 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("part_response_recoil_xtalk_id_err", &part_response_recoil_xtalk_id_err, &b_part_response_recoil_xtalk_id_err);
    fChain->SetBranchAddress("part_response_recoil_xtalk_od", &part_response_recoil_xtalk_od, &b_part_response_recoil_xtalk_od);
    fChain->SetBranchAddress("part_response_recoil_xtalk_od_err", &part_response_recoil_xtalk_od_err, &b_part_response_recoil_xtalk_od_err);
+   fChain->SetBranchAddress("part_response_total_recoil_passive_id", &part_response_total_recoil_passive_id, &b_part_response_total_recoil_passive_id);
+   fChain->SetBranchAddress("part_response_total_recoil_passive_od", &part_response_total_recoil_passive_od, &b_part_response_total_recoil_passive_od);
    fChain->SetBranchAddress("phys_energy_dispersed", &phys_energy_dispersed, &b_phys_energy_dispersed);
    fChain->SetBranchAddress("phys_energy_in_road_downstream", &phys_energy_in_road_downstream, &b_phys_energy_in_road_downstream);
    fChain->SetBranchAddress("phys_energy_in_road_upstream", &phys_energy_in_road_upstream, &b_phys_energy_in_road_upstream);
@@ -3554,6 +4464,11 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("event_track_nhits", event_track_nhits, &b_event_track_nhits);
    fChain->SetBranchAddress("event_vertex_types_sz", &event_vertex_types_sz, &b_event_vertex_types_sz);
    fChain->SetBranchAddress("event_vertex_types", event_vertex_types, &b_event_vertex_types);
+   fChain->SetBranchAddress("hadron_ntrack", hadron_ntrack, &b_hadron_ntrack);
+   fChain->SetBranchAddress("has_michel_primary_particle_PDG_sz", &has_michel_primary_particle_PDG_sz, &b_has_michel_primary_particle_PDG_sz);
+   fChain->SetBranchAddress("has_michel_primary_particle_PDG", has_michel_primary_particle_PDG, &b_has_michel_primary_particle_PDG);
+   fChain->SetBranchAddress("has_michel_primary_particle_trackID_sz", &has_michel_primary_particle_trackID_sz, &b_has_michel_primary_particle_trackID_sz);
+   fChain->SetBranchAddress("has_michel_primary_particle_trackID", has_michel_primary_particle_trackID, &b_has_michel_primary_particle_trackID);
    fChain->SetBranchAddress("improved_michel_in_vertex_point_sz", &improved_michel_in_vertex_point_sz, &b_improved_michel_in_vertex_point_sz);
    fChain->SetBranchAddress("improved_michel_in_vertex_point", improved_michel_in_vertex_point, &b_improved_michel_in_vertex_point);
    fChain->SetBranchAddress("improved_michel_match_vec_sz", &improved_michel_match_vec_sz, &b_improved_michel_match_vec_sz);
@@ -3568,8 +4483,31 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("improved_michel_vertex_type", improved_michel_vertex_type, &b_improved_michel_vertex_type);
    fChain->SetBranchAddress("improved_michel_view_vec_sz", &improved_michel_view_vec_sz, &b_improved_michel_view_vec_sz);
    fChain->SetBranchAddress("improved_michel_view_vec", improved_michel_view_vec, &b_improved_michel_view_vec);
+   fChain->SetBranchAddress("iso_prong_nhits", iso_prong_nhits, &b_iso_prong_nhits);
    fChain->SetBranchAddress("latticeEnergyIndices", latticeEnergyIndices, &b_latticeEnergyIndices);
-//   fChain->SetBranchAddress("latticeEnergyIndices_new", latticeEnergyIndices_new, &b_latticeEnergyIndices_new);
+   fChain->SetBranchAddress("matched_michel_avg_idx", matched_michel_avg_idx, &b_matched_michel_avg_idx);
+   fChain->SetBranchAddress("matched_michel_avg_module", matched_michel_avg_module, &b_matched_michel_avg_module);
+   fChain->SetBranchAddress("matched_michel_code", matched_michel_code, &b_matched_michel_code);
+   fChain->SetBranchAddress("matched_michel_end_idx", matched_michel_end_idx, &b_matched_michel_end_idx);
+   fChain->SetBranchAddress("matched_michel_end_module1", matched_michel_end_module1, &b_matched_michel_end_module1);
+   fChain->SetBranchAddress("matched_michel_end_module2", matched_michel_end_module2, &b_matched_michel_end_module2);
+   fChain->SetBranchAddress("matched_michel_fitPass_sz", &matched_michel_fitPass_sz, &b_matched_michel_fitPass_sz);
+   fChain->SetBranchAddress("matched_michel_fitPass", matched_michel_fitPass, &b_matched_michel_fitPass);
+   fChain->SetBranchAddress("matched_michel_idx_sz", &matched_michel_idx_sz, &b_matched_michel_idx_sz);
+   fChain->SetBranchAddress("matched_michel_idx", matched_michel_idx, &b_matched_michel_idx);
+   fChain->SetBranchAddress("matched_michel_ov_idx", matched_michel_ov_idx, &b_matched_michel_ov_idx);
+   fChain->SetBranchAddress("matched_michel_slice_sz", &matched_michel_slice_sz, &b_matched_michel_slice_sz);
+   fChain->SetBranchAddress("matched_michel_slice", matched_michel_slice, &b_matched_michel_slice);
+   fChain->SetBranchAddress("matched_michel_unique_idx_sz", &matched_michel_unique_idx_sz, &b_matched_michel_unique_idx_sz);
+   fChain->SetBranchAddress("matched_michel_unique_idx", matched_michel_unique_idx, &b_matched_michel_unique_idx);
+   fChain->SetBranchAddress("matched_michel_views_sz", &matched_michel_views_sz, &b_matched_michel_views_sz);
+   fChain->SetBranchAddress("matched_michel_views", matched_michel_views, &b_matched_michel_views);
+   fChain->SetBranchAddress("michel_from_decay_sz", &michel_from_decay_sz, &b_michel_from_decay_sz);
+   fChain->SetBranchAddress("michel_from_decay", michel_from_decay, &b_michel_from_decay);
+   fChain->SetBranchAddress("michel_parent_PDG_sz", &michel_parent_PDG_sz, &b_michel_parent_PDG_sz);
+   fChain->SetBranchAddress("michel_parent_PDG", michel_parent_PDG, &b_michel_parent_PDG);
+   fChain->SetBranchAddress("michel_parent_trackID_sz", &michel_parent_trackID_sz, &b_michel_parent_trackID_sz);
+   fChain->SetBranchAddress("michel_parent_trackID", michel_parent_trackID, &b_michel_parent_trackID);
    fChain->SetBranchAddress("nonvtx_iso_blobs_n_hits_in_prong_sz", &nonvtx_iso_blobs_n_hits_in_prong_sz, &b_nonvtx_iso_blobs_n_hits_in_prong_sz);
    fChain->SetBranchAddress("nonvtx_iso_blobs_n_hits_in_prong", nonvtx_iso_blobs_n_hits_in_prong, &b_nonvtx_iso_blobs_n_hits_in_prong);
    fChain->SetBranchAddress("nonvtx_iso_blobs_particle_pdg_in_prong_sz", &nonvtx_iso_blobs_particle_pdg_in_prong_sz, &b_nonvtx_iso_blobs_particle_pdg_in_prong_sz);
@@ -3578,6 +4516,8 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("nonvtx_iso_blobs_primary_particle_pdg_in_prong", nonvtx_iso_blobs_primary_particle_pdg_in_prong, &b_nonvtx_iso_blobs_primary_particle_pdg_in_prong);
    fChain->SetBranchAddress("number_clusters_at_end_proton_prong_sz", &number_clusters_at_end_proton_prong_sz, &b_number_clusters_at_end_proton_prong_sz);
    fChain->SetBranchAddress("number_clusters_at_end_proton_prong", number_clusters_at_end_proton_prong, &b_number_clusters_at_end_proton_prong);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_nClus_sz", &part_response_container_recoil_passive_nClus_sz, &b_part_response_container_recoil_passive_nClus_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_nClus", &part_response_container_recoil_passive_nClus, &b_part_response_container_recoil_passive_nClus);
    fChain->SetBranchAddress("recoil_lower_time_limit_sz", &recoil_lower_time_limit_sz, &b_recoil_lower_time_limit_sz);
    fChain->SetBranchAddress("recoil_lower_time_limit", recoil_lower_time_limit, &b_recoil_lower_time_limit);
    fChain->SetBranchAddress("recoil_upper_time_limit_sz", &recoil_upper_time_limit_sz, &b_recoil_upper_time_limit_sz);
@@ -3586,6 +4526,8 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("sec_protons_prong_PDG", sec_protons_prong_PDG, &b_sec_protons_prong_PDG);
    fChain->SetBranchAddress("sec_protons_prong_traj_ID_sz", &sec_protons_prong_traj_ID_sz, &b_sec_protons_prong_traj_ID_sz);
    fChain->SetBranchAddress("sec_protons_prong_traj_ID", sec_protons_prong_traj_ID, &b_sec_protons_prong_traj_ID);
+   fChain->SetBranchAddress("true_michel_pdg_sz", &true_michel_pdg_sz, &b_true_michel_pdg_sz);
+   fChain->SetBranchAddress("true_michel_pdg", true_michel_pdg, &b_true_michel_pdg);
 //    fChain->SetBranchAddress("", &, &b_);
    fChain->SetBranchAddress("ANN_plane_probs", ANN_plane_probs, &b_ANN_plane_probs);
    fChain->SetBranchAddress("VetoWall_muon_extrapVetoXY", VetoWall_muon_extrapVetoXY, &b_VetoWall_muon_extrapVetoXY);
@@ -3611,6 +4553,20 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("event_tracks_energy", event_tracks_energy, &b_event_tracks_energy);
    fChain->SetBranchAddress("event_vertex_time_diff_sz", &event_vertex_time_diff_sz, &b_event_vertex_time_diff_sz);
    fChain->SetBranchAddress("event_vertex_time_diff", event_vertex_time_diff, &b_event_vertex_time_diff);
+   fChain->SetBranchAddress("hadron_track_length", hadron_track_length, &b_hadron_track_length);
+   fChain->SetBranchAddress("hadron_track_length_area", hadron_track_length_area, &b_hadron_track_length_area);
+   fChain->SetBranchAddress("hadron_track_length_area_ecal", hadron_track_length_area_ecal, &b_hadron_track_length_area_ecal);
+   fChain->SetBranchAddress("hadron_track_length_area_trkr", hadron_track_length_area_trkr, &b_hadron_track_length_area_trkr);
+   fChain->SetBranchAddress("has_michel_primary_particle_E_sz", &has_michel_primary_particle_E_sz, &b_has_michel_primary_particle_E_sz);
+   fChain->SetBranchAddress("has_michel_primary_particle_E", has_michel_primary_particle_E, &b_has_michel_primary_particle_E);
+   fChain->SetBranchAddress("has_michel_primary_particle_p_sz", &has_michel_primary_particle_p_sz, &b_has_michel_primary_particle_p_sz);
+   fChain->SetBranchAddress("has_michel_primary_particle_p", has_michel_primary_particle_p, &b_has_michel_primary_particle_p);
+   fChain->SetBranchAddress("has_michel_primary_particle_px_sz", &has_michel_primary_particle_px_sz, &b_has_michel_primary_particle_px_sz);
+   fChain->SetBranchAddress("has_michel_primary_particle_px", has_michel_primary_particle_px, &b_has_michel_primary_particle_px);
+   fChain->SetBranchAddress("has_michel_primary_particle_py_sz", &has_michel_primary_particle_py_sz, &b_has_michel_primary_particle_py_sz);
+   fChain->SetBranchAddress("has_michel_primary_particle_py", has_michel_primary_particle_py, &b_has_michel_primary_particle_py);
+   fChain->SetBranchAddress("has_michel_primary_particle_pz_sz", &has_michel_primary_particle_pz_sz, &b_has_michel_primary_particle_pz_sz);
+   fChain->SetBranchAddress("has_michel_primary_particle_pz", has_michel_primary_particle_pz, &b_has_michel_primary_particle_pz);
    fChain->SetBranchAddress("improved_michel_data_energy_fraction_sz", &improved_michel_data_energy_fraction_sz, &b_improved_michel_data_energy_fraction_sz);
    fChain->SetBranchAddress("improved_michel_data_energy_fraction", improved_michel_data_energy_fraction, &b_improved_michel_data_energy_fraction);
    fChain->SetBranchAddress("improved_michel_dist_vec_sz", &improved_michel_dist_vec_sz, &b_improved_michel_dist_vec_sz);
@@ -3643,10 +4599,62 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("improved_michel_yvec", improved_michel_yvec, &b_improved_michel_yvec);
    fChain->SetBranchAddress("improved_michel_zvec_sz", &improved_michel_zvec_sz, &b_improved_michel_zvec_sz);
    fChain->SetBranchAddress("improved_michel_zvec", improved_michel_zvec, &b_improved_michel_zvec);
+   fChain->SetBranchAddress("iso_prong_energy", iso_prong_energy, &b_iso_prong_energy);
+   fChain->SetBranchAddress("iso_prong_separation", iso_prong_separation, &b_iso_prong_separation);
+   fChain->SetBranchAddress("iso_prong_x", iso_prong_x, &b_iso_prong_x);
+   fChain->SetBranchAddress("iso_prong_y", iso_prong_y, &b_iso_prong_y);
+   fChain->SetBranchAddress("iso_prong_z", iso_prong_z, &b_iso_prong_z);
    fChain->SetBranchAddress("latticeNormEnergySums", latticeNormEnergySums, &b_latticeNormEnergySums);
    fChain->SetBranchAddress("latticeRelativeTimes", latticeRelativeTimes, &b_latticeRelativeTimes);
-//   fChain->SetBranchAddress("latticeNormEnergySums_new", latticeNormEnergySums_new, &b_latticeNormEnergySums_new);
-//   fChain->SetBranchAddress("latticeRelativeTimes_new", latticeRelativeTimes_new, &b_latticeRelativeTimes_new);
+   fChain->SetBranchAddress("matched_michel_cal_energy_sz", &matched_michel_cal_energy_sz, &b_matched_michel_cal_energy_sz);
+   fChain->SetBranchAddress("matched_michel_cal_energy", matched_michel_cal_energy, &b_matched_michel_cal_energy);
+   fChain->SetBranchAddress("matched_michel_down_end_U_sz", &matched_michel_down_end_U_sz, &b_matched_michel_down_end_U_sz);
+   fChain->SetBranchAddress("matched_michel_down_end_U", matched_michel_down_end_U, &b_matched_michel_down_end_U);
+   fChain->SetBranchAddress("matched_michel_down_end_V_sz", &matched_michel_down_end_V_sz, &b_matched_michel_down_end_V_sz);
+   fChain->SetBranchAddress("matched_michel_down_end_V", matched_michel_down_end_V, &b_matched_michel_down_end_V);
+   fChain->SetBranchAddress("matched_michel_down_end_X_sz", &matched_michel_down_end_X_sz, &b_matched_michel_down_end_X_sz);
+   fChain->SetBranchAddress("matched_michel_down_end_X", matched_michel_down_end_X, &b_matched_michel_down_end_X);
+   fChain->SetBranchAddress("matched_michel_down_end_Y_sz", &matched_michel_down_end_Y_sz, &b_matched_michel_down_end_Y_sz);
+   fChain->SetBranchAddress("matched_michel_down_end_Y", matched_michel_down_end_Y, &b_matched_michel_down_end_Y);
+   fChain->SetBranchAddress("matched_michel_down_end_Z_sz", &matched_michel_down_end_Z_sz, &b_matched_michel_down_end_Z_sz);
+   fChain->SetBranchAddress("matched_michel_down_end_Z", matched_michel_down_end_Z, &b_matched_michel_down_end_Z);
+   fChain->SetBranchAddress("matched_michel_end_dist_sz", &matched_michel_end_dist_sz, &b_matched_michel_end_dist_sz);
+   fChain->SetBranchAddress("matched_michel_end_dist", matched_michel_end_dist, &b_matched_michel_end_dist);
+   fChain->SetBranchAddress("matched_michel_fit_AU_sz", &matched_michel_fit_AU_sz, &b_matched_michel_fit_AU_sz);
+   fChain->SetBranchAddress("matched_michel_fit_AU", matched_michel_fit_AU, &b_matched_michel_fit_AU);
+   fChain->SetBranchAddress("matched_michel_fit_AV_sz", &matched_michel_fit_AV_sz, &b_matched_michel_fit_AV_sz);
+   fChain->SetBranchAddress("matched_michel_fit_AV", matched_michel_fit_AV, &b_matched_michel_fit_AV);
+   fChain->SetBranchAddress("matched_michel_fit_AX_sz", &matched_michel_fit_AX_sz, &b_matched_michel_fit_AX_sz);
+   fChain->SetBranchAddress("matched_michel_fit_AX", matched_michel_fit_AX, &b_matched_michel_fit_AX);
+   fChain->SetBranchAddress("matched_michel_fit_AY_sz", &matched_michel_fit_AY_sz, &b_matched_michel_fit_AY_sz);
+   fChain->SetBranchAddress("matched_michel_fit_AY", matched_michel_fit_AY, &b_matched_michel_fit_AY);
+   fChain->SetBranchAddress("matched_michel_fit_residual", matched_michel_fit_residual, &b_matched_michel_fit_residual);
+   fChain->SetBranchAddress("matched_michel_ov_dist_sz", &matched_michel_ov_dist_sz, &b_matched_michel_ov_dist_sz);
+   fChain->SetBranchAddress("matched_michel_ov_dist", matched_michel_ov_dist, &b_matched_michel_ov_dist);
+   fChain->SetBranchAddress("matched_michel_position_u_sz", &matched_michel_position_u_sz, &b_matched_michel_position_u_sz);
+   fChain->SetBranchAddress("matched_michel_position_u", matched_michel_position_u, &b_matched_michel_position_u);
+   fChain->SetBranchAddress("matched_michel_position_v_sz", &matched_michel_position_v_sz, &b_matched_michel_position_v_sz);
+   fChain->SetBranchAddress("matched_michel_position_v", matched_michel_position_v, &b_matched_michel_position_v);
+   fChain->SetBranchAddress("matched_michel_position_x_sz", &matched_michel_position_x_sz, &b_matched_michel_position_x_sz);
+   fChain->SetBranchAddress("matched_michel_position_x", matched_michel_position_x, &b_matched_michel_position_x);
+   fChain->SetBranchAddress("matched_michel_position_y_sz", &matched_michel_position_y_sz, &b_matched_michel_position_y_sz);
+   fChain->SetBranchAddress("matched_michel_position_y", matched_michel_position_y, &b_matched_michel_position_y);
+   fChain->SetBranchAddress("matched_michel_position_z_sz", &matched_michel_position_z_sz, &b_matched_michel_position_z_sz);
+   fChain->SetBranchAddress("matched_michel_position_z", matched_michel_position_z, &b_matched_michel_position_z);
+   fChain->SetBranchAddress("matched_michel_time_sz", &matched_michel_time_sz, &b_matched_michel_time_sz);
+   fChain->SetBranchAddress("matched_michel_time", matched_michel_time, &b_matched_michel_time);
+   fChain->SetBranchAddress("matched_michel_up_end_U_sz", &matched_michel_up_end_U_sz, &b_matched_michel_up_end_U_sz);
+   fChain->SetBranchAddress("matched_michel_up_end_U", matched_michel_up_end_U, &b_matched_michel_up_end_U);
+   fChain->SetBranchAddress("matched_michel_up_end_V_sz", &matched_michel_up_end_V_sz, &b_matched_michel_up_end_V_sz);
+   fChain->SetBranchAddress("matched_michel_up_end_V", matched_michel_up_end_V, &b_matched_michel_up_end_V);
+   fChain->SetBranchAddress("matched_michel_up_end_X_sz", &matched_michel_up_end_X_sz, &b_matched_michel_up_end_X_sz);
+   fChain->SetBranchAddress("matched_michel_up_end_X", matched_michel_up_end_X, &b_matched_michel_up_end_X);
+   fChain->SetBranchAddress("matched_michel_up_end_Y_sz", &matched_michel_up_end_Y_sz, &b_matched_michel_up_end_Y_sz);
+   fChain->SetBranchAddress("matched_michel_up_end_Y", matched_michel_up_end_Y, &b_matched_michel_up_end_Y);
+   fChain->SetBranchAddress("matched_michel_up_end_Z_sz", &matched_michel_up_end_Z_sz, &b_matched_michel_up_end_Z_sz);
+   fChain->SetBranchAddress("matched_michel_up_end_Z", matched_michel_up_end_Z, &b_matched_michel_up_end_Z);
+   fChain->SetBranchAddress("matched_michel_vis_energy_sz", &matched_michel_vis_energy_sz, &b_matched_michel_vis_energy_sz);
+   fChain->SetBranchAddress("matched_michel_vis_energy", matched_michel_vis_energy, &b_matched_michel_vis_energy);
    fChain->SetBranchAddress("muon_thetaX_allNodes_sz", &muon_thetaX_allNodes_sz, &b_muon_thetaX_allNodes_sz);
    fChain->SetBranchAddress("muon_thetaX_allNodes", muon_thetaX_allNodes, &b_muon_thetaX_allNodes);
    fChain->SetBranchAddress("muon_thetaY_allNodes_sz", &muon_thetaY_allNodes_sz, &b_muon_thetaY_allNodes_sz);
@@ -3689,6 +4697,107 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("nonvtx_iso_blobs_time_difference_in_prong", nonvtx_iso_blobs_time_difference_in_prong, &b_nonvtx_iso_blobs_time_difference_in_prong);
    fChain->SetBranchAddress("nonvtx_iso_blobs_time_in_prong_sz", &nonvtx_iso_blobs_time_in_prong_sz, &b_nonvtx_iso_blobs_time_in_prong_sz);
    fChain->SetBranchAddress("nonvtx_iso_blobs_time_in_prong", nonvtx_iso_blobs_time_in_prong, &b_nonvtx_iso_blobs_time_in_prong);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_em_id_sz", &part_response_container_recoil_passive_em_id_sz, &b_part_response_container_recoil_passive_em_id_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_em_id", &part_response_container_recoil_passive_em_id, &b_part_response_container_recoil_passive_em_id);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_em_id_err_sz", &part_response_container_recoil_passive_em_id_err_sz, &b_part_response_container_recoil_passive_em_id_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_em_id_err", &part_response_container_recoil_passive_em_id_err, &b_part_response_container_recoil_passive_em_id_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_em_od_sz", &part_response_container_recoil_passive_em_od_sz, &b_part_response_container_recoil_passive_em_od_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_em_od", &part_response_container_recoil_passive_em_od, &b_part_response_container_recoil_passive_em_od);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_em_od_err_sz", &part_response_container_recoil_passive_em_od_err_sz, &b_part_response_container_recoil_passive_em_od_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_em_od_err", &part_response_container_recoil_passive_em_od_err, &b_part_response_container_recoil_passive_em_od_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_high_neutron_id_sz", &part_response_container_recoil_passive_high_neutron_id_sz, &b_part_response_container_recoil_passive_high_neutron_id_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_high_neutron_id", &part_response_container_recoil_passive_high_neutron_id, &b_part_response_container_recoil_passive_high_neutron_id);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_high_neutron_id_err_sz", &part_response_container_recoil_passive_high_neutron_id_err_sz, &b_part_response_container_recoil_passive_high_neutron_id_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_high_neutron_id_err", &part_response_container_recoil_passive_high_neutron_id_err, &b_part_response_container_recoil_passive_high_neutron_id_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_high_neutron_od_sz", &part_response_container_recoil_passive_high_neutron_od_sz, &b_part_response_container_recoil_passive_high_neutron_od_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_high_neutron_od", &part_response_container_recoil_passive_high_neutron_od, &b_part_response_container_recoil_passive_high_neutron_od);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_high_neutron_od_err_sz", &part_response_container_recoil_passive_high_neutron_od_err_sz, &b_part_response_container_recoil_passive_high_neutron_od_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_high_neutron_od_err", &part_response_container_recoil_passive_high_neutron_od_err, &b_part_response_container_recoil_passive_high_neutron_od_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_high_proton_id_sz", &part_response_container_recoil_passive_high_proton_id_sz, &b_part_response_container_recoil_passive_high_proton_id_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_high_proton_id", &part_response_container_recoil_passive_high_proton_id, &b_part_response_container_recoil_passive_high_proton_id);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_high_proton_id_err_sz", &part_response_container_recoil_passive_high_proton_id_err_sz, &b_part_response_container_recoil_passive_high_proton_id_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_high_proton_id_err", &part_response_container_recoil_passive_high_proton_id_err, &b_part_response_container_recoil_passive_high_proton_id_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_high_proton_od_sz", &part_response_container_recoil_passive_high_proton_od_sz, &b_part_response_container_recoil_passive_high_proton_od_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_high_proton_od", &part_response_container_recoil_passive_high_proton_od, &b_part_response_container_recoil_passive_high_proton_od);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_high_proton_od_err_sz", &part_response_container_recoil_passive_high_proton_od_err_sz, &b_part_response_container_recoil_passive_high_proton_od_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_high_proton_od_err", &part_response_container_recoil_passive_high_proton_od_err, &b_part_response_container_recoil_passive_high_proton_od_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_low_neutron_id_sz", &part_response_container_recoil_passive_low_neutron_id_sz, &b_part_response_container_recoil_passive_low_neutron_id_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_low_neutron_id", &part_response_container_recoil_passive_low_neutron_id, &b_part_response_container_recoil_passive_low_neutron_id);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_low_neutron_id_err_sz", &part_response_container_recoil_passive_low_neutron_id_err_sz, &b_part_response_container_recoil_passive_low_neutron_id_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_low_neutron_id_err", &part_response_container_recoil_passive_low_neutron_id_err, &b_part_response_container_recoil_passive_low_neutron_id_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_low_neutron_od_sz", &part_response_container_recoil_passive_low_neutron_od_sz, &b_part_response_container_recoil_passive_low_neutron_od_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_low_neutron_od", &part_response_container_recoil_passive_low_neutron_od, &b_part_response_container_recoil_passive_low_neutron_od);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_low_neutron_od_err_sz", &part_response_container_recoil_passive_low_neutron_od_err_sz, &b_part_response_container_recoil_passive_low_neutron_od_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_low_neutron_od_err", &part_response_container_recoil_passive_low_neutron_od_err, &b_part_response_container_recoil_passive_low_neutron_od_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_low_proton_id_sz", &part_response_container_recoil_passive_low_proton_id_sz, &b_part_response_container_recoil_passive_low_proton_id_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_low_proton_id", &part_response_container_recoil_passive_low_proton_id, &b_part_response_container_recoil_passive_low_proton_id);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_low_proton_id_err_sz", &part_response_container_recoil_passive_low_proton_id_err_sz, &b_part_response_container_recoil_passive_low_proton_id_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_low_proton_id_err", &part_response_container_recoil_passive_low_proton_id_err, &b_part_response_container_recoil_passive_low_proton_id_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_low_proton_od_sz", &part_response_container_recoil_passive_low_proton_od_sz, &b_part_response_container_recoil_passive_low_proton_od_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_low_proton_od", &part_response_container_recoil_passive_low_proton_od, &b_part_response_container_recoil_passive_low_proton_od);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_low_proton_od_err_sz", &part_response_container_recoil_passive_low_proton_od_err_sz, &b_part_response_container_recoil_passive_low_proton_od_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_low_proton_od_err", &part_response_container_recoil_passive_low_proton_od_err, &b_part_response_container_recoil_passive_low_proton_od_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_meson_id_sz", &part_response_container_recoil_passive_meson_id_sz, &b_part_response_container_recoil_passive_meson_id_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_meson_id", &part_response_container_recoil_passive_meson_id, &b_part_response_container_recoil_passive_meson_id);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_meson_id_err_sz", &part_response_container_recoil_passive_meson_id_err_sz, &b_part_response_container_recoil_passive_meson_id_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_meson_id_err", &part_response_container_recoil_passive_meson_id_err, &b_part_response_container_recoil_passive_meson_id_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_meson_od_sz", &part_response_container_recoil_passive_meson_od_sz, &b_part_response_container_recoil_passive_meson_od_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_meson_od", &part_response_container_recoil_passive_meson_od, &b_part_response_container_recoil_passive_meson_od);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_meson_od_err_sz", &part_response_container_recoil_passive_meson_od_err_sz, &b_part_response_container_recoil_passive_meson_od_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_meson_od_err", &part_response_container_recoil_passive_meson_od_err, &b_part_response_container_recoil_passive_meson_od_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_mid_neutron_id_sz", &part_response_container_recoil_passive_mid_neutron_id_sz, &b_part_response_container_recoil_passive_mid_neutron_id_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_mid_neutron_id", &part_response_container_recoil_passive_mid_neutron_id, &b_part_response_container_recoil_passive_mid_neutron_id);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_mid_neutron_id_err_sz", &part_response_container_recoil_passive_mid_neutron_id_err_sz, &b_part_response_container_recoil_passive_mid_neutron_id_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_mid_neutron_id_err", &part_response_container_recoil_passive_mid_neutron_id_err, &b_part_response_container_recoil_passive_mid_neutron_id_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_mid_neutron_od_sz", &part_response_container_recoil_passive_mid_neutron_od_sz, &b_part_response_container_recoil_passive_mid_neutron_od_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_mid_neutron_od", &part_response_container_recoil_passive_mid_neutron_od, &b_part_response_container_recoil_passive_mid_neutron_od);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_mid_neutron_od_err_sz", &part_response_container_recoil_passive_mid_neutron_od_err_sz, &b_part_response_container_recoil_passive_mid_neutron_od_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_mid_neutron_od_err", &part_response_container_recoil_passive_mid_neutron_od_err, &b_part_response_container_recoil_passive_mid_neutron_od_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_mid_proton_id_sz", &part_response_container_recoil_passive_mid_proton_id_sz, &b_part_response_container_recoil_passive_mid_proton_id_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_mid_proton_id", &part_response_container_recoil_passive_mid_proton_id, &b_part_response_container_recoil_passive_mid_proton_id);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_mid_proton_id_err_sz", &part_response_container_recoil_passive_mid_proton_id_err_sz, &b_part_response_container_recoil_passive_mid_proton_id_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_mid_proton_id_err", &part_response_container_recoil_passive_mid_proton_id_err, &b_part_response_container_recoil_passive_mid_proton_id_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_mid_proton_od_sz", &part_response_container_recoil_passive_mid_proton_od_sz, &b_part_response_container_recoil_passive_mid_proton_od_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_mid_proton_od", &part_response_container_recoil_passive_mid_proton_od, &b_part_response_container_recoil_passive_mid_proton_od);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_mid_proton_od_err_sz", &part_response_container_recoil_passive_mid_proton_od_err_sz, &b_part_response_container_recoil_passive_mid_proton_od_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_mid_proton_od_err", &part_response_container_recoil_passive_mid_proton_od_err, &b_part_response_container_recoil_passive_mid_proton_od_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_muon_id_sz", &part_response_container_recoil_passive_muon_id_sz, &b_part_response_container_recoil_passive_muon_id_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_muon_id", &part_response_container_recoil_passive_muon_id, &b_part_response_container_recoil_passive_muon_id);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_muon_id_err_sz", &part_response_container_recoil_passive_muon_id_err_sz, &b_part_response_container_recoil_passive_muon_id_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_muon_id_err", &part_response_container_recoil_passive_muon_id_err, &b_part_response_container_recoil_passive_muon_id_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_muon_od_sz", &part_response_container_recoil_passive_muon_od_sz, &b_part_response_container_recoil_passive_muon_od_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_muon_od", &part_response_container_recoil_passive_muon_od, &b_part_response_container_recoil_passive_muon_od);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_muon_od_err_sz", &part_response_container_recoil_passive_muon_od_err_sz, &b_part_response_container_recoil_passive_muon_od_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_muon_od_err", &part_response_container_recoil_passive_muon_od_err, &b_part_response_container_recoil_passive_muon_od_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_other_id_sz", &part_response_container_recoil_passive_other_id_sz, &b_part_response_container_recoil_passive_other_id_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_other_id", &part_response_container_recoil_passive_other_id, &b_part_response_container_recoil_passive_other_id);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_other_id_err_sz", &part_response_container_recoil_passive_other_id_err_sz, &b_part_response_container_recoil_passive_other_id_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_other_id_err", &part_response_container_recoil_passive_other_id_err, &b_part_response_container_recoil_passive_other_id_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_other_od_sz", &part_response_container_recoil_passive_other_od_sz, &b_part_response_container_recoil_passive_other_od_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_other_od", &part_response_container_recoil_passive_other_od, &b_part_response_container_recoil_passive_other_od);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_other_od_err_sz", &part_response_container_recoil_passive_other_od_err_sz, &b_part_response_container_recoil_passive_other_od_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_other_od_err", &part_response_container_recoil_passive_other_od_err, &b_part_response_container_recoil_passive_other_od_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_proton_id_sz", &part_response_container_recoil_passive_proton_id_sz, &b_part_response_container_recoil_passive_proton_id_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_proton_id", &part_response_container_recoil_passive_proton_id, &b_part_response_container_recoil_passive_proton_id);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_proton_id_err_sz", &part_response_container_recoil_passive_proton_id_err_sz, &b_part_response_container_recoil_passive_proton_id_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_proton_id_err", &part_response_container_recoil_passive_proton_id_err, &b_part_response_container_recoil_passive_proton_id_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_proton_od_sz", &part_response_container_recoil_passive_proton_od_sz, &b_part_response_container_recoil_passive_proton_od_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_proton_od", &part_response_container_recoil_passive_proton_od, &b_part_response_container_recoil_passive_proton_od);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_proton_od_err_sz", &part_response_container_recoil_passive_proton_od_err_sz, &b_part_response_container_recoil_passive_proton_od_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_proton_od_err", &part_response_container_recoil_passive_proton_od_err, &b_part_response_container_recoil_passive_proton_od_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_xtalk_id_sz", &part_response_container_recoil_passive_xtalk_id_sz, &b_part_response_container_recoil_passive_xtalk_id_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_xtalk_id", &part_response_container_recoil_passive_xtalk_id, &b_part_response_container_recoil_passive_xtalk_id);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_xtalk_id_err_sz", &part_response_container_recoil_passive_xtalk_id_err_sz, &b_part_response_container_recoil_passive_xtalk_id_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_xtalk_id_err", &part_response_container_recoil_passive_xtalk_id_err, &b_part_response_container_recoil_passive_xtalk_id_err);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_xtalk_od_sz", &part_response_container_recoil_passive_xtalk_od_sz, &b_part_response_container_recoil_passive_xtalk_od_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_xtalk_od", &part_response_container_recoil_passive_xtalk_od, &b_part_response_container_recoil_passive_xtalk_od);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_xtalk_od_err_sz", &part_response_container_recoil_passive_xtalk_od_err_sz, &b_part_response_container_recoil_passive_xtalk_od_err_sz);
+   fChain->SetBranchAddress("part_response_container_recoil_passive_xtalk_od_err", &part_response_container_recoil_passive_xtalk_od_err, &b_part_response_container_recoil_passive_xtalk_od_err);
+   fChain->SetBranchAddress("part_response_container_total_recoil_passive_id_sz", &part_response_container_total_recoil_passive_id_sz, &b_part_response_container_total_recoil_passive_id_sz);
+   fChain->SetBranchAddress("part_response_container_total_recoil_passive_id", &part_response_container_total_recoil_passive_id, &b_part_response_container_total_recoil_passive_id);
+   fChain->SetBranchAddress("part_response_container_total_recoil_passive_od_sz", &part_response_container_total_recoil_passive_od_sz, &b_part_response_container_total_recoil_passive_od_sz);
+   fChain->SetBranchAddress("part_response_container_total_recoil_passive_od", &part_response_container_total_recoil_passive_od, &b_part_response_container_total_recoil_passive_od);
+   fChain->SetBranchAddress("primary_prong_separation", primary_prong_separation, &b_primary_prong_separation);
    fChain->SetBranchAddress("proton_prong_4p", proton_prong_4p, &b_proton_prong_4p);
    fChain->SetBranchAddress("proton_prong_tpos", proton_prong_tpos, &b_proton_prong_tpos);
    fChain->SetBranchAddress("proton_prong_tpos_t_sz", &proton_prong_tpos_t_sz, &b_proton_prong_tpos_t_sz);
@@ -3717,6 +4826,18 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("slice_hit_energy", slice_hit_energy, &b_slice_hit_energy);
    fChain->SetBranchAddress("slice_hit_time_sz", &slice_hit_time_sz, &b_slice_hit_time_sz);
    fChain->SetBranchAddress("slice_hit_time", slice_hit_time, &b_slice_hit_time);
+   fChain->SetBranchAddress("true_michel_x1_sz", &true_michel_x1_sz, &b_true_michel_x1_sz);
+   fChain->SetBranchAddress("true_michel_x1", true_michel_x1, &b_true_michel_x1);
+   fChain->SetBranchAddress("true_michel_x2_sz", &true_michel_x2_sz, &b_true_michel_x2_sz);
+   fChain->SetBranchAddress("true_michel_x2", true_michel_x2, &b_true_michel_x2);
+   fChain->SetBranchAddress("true_michel_y1_sz", &true_michel_y1_sz, &b_true_michel_y1_sz);
+   fChain->SetBranchAddress("true_michel_y1", true_michel_y1, &b_true_michel_y1);
+   fChain->SetBranchAddress("true_michel_y2_sz", &true_michel_y2_sz, &b_true_michel_y2_sz);
+   fChain->SetBranchAddress("true_michel_y2", true_michel_y2, &b_true_michel_y2);
+   fChain->SetBranchAddress("true_michel_z1_sz", &true_michel_z1_sz, &b_true_michel_z1_sz);
+   fChain->SetBranchAddress("true_michel_z1", true_michel_z1, &b_true_michel_z1);
+   fChain->SetBranchAddress("true_michel_z2_sz", &true_michel_z2_sz, &b_true_michel_z2_sz);
+   fChain->SetBranchAddress("true_michel_z2", true_michel_z2, &b_true_michel_z2);
    fChain->SetBranchAddress("visE_clusters_at_end_proton_prong_sz", &visE_clusters_at_end_proton_prong_sz, &b_visE_clusters_at_end_proton_prong_sz);
    fChain->SetBranchAddress("visE_clusters_at_end_proton_prong", visE_clusters_at_end_proton_prong, &b_visE_clusters_at_end_proton_prong);
    fChain->SetBranchAddress("vtx_blob_radius", &vtx_blob_radius, &b_vtx_blob_radius);
@@ -3733,9 +4854,19 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("truth_has_physics_event", &truth_has_physics_event, &b_truth_has_physics_event);
    fChain->SetBranchAddress("truth_pass_MasterAnaDev", &truth_pass_MasterAnaDev, &b_truth_pass_MasterAnaDev);
    fChain->SetBranchAddress("truth_is_fiducial", &truth_is_fiducial, &b_truth_is_fiducial);
+   fChain->SetBranchAddress("truth_reco_hasGoodObjects", &truth_reco_hasGoodObjects, &b_truth_reco_hasGoodObjects);
+   fChain->SetBranchAddress("truth_reco_isGoodVertex", &truth_reco_isGoodVertex, &b_truth_reco_isGoodVertex);
+   fChain->SetBranchAddress("truth_reco_isFidVol_smeared", &truth_reco_isFidVol_smeared, &b_truth_reco_isFidVol_smeared);
    fChain->SetBranchAddress("truth_reco_has_muon", &truth_reco_has_muon, &b_truth_reco_has_muon);
    fChain->SetBranchAddress("truth_reco_has_int_vtx", &truth_reco_has_int_vtx, &b_truth_reco_has_int_vtx);
-   //fChain->SetBranchAddress("truth_", &truth_, &b_truth_);
+   fChain->SetBranchAddress("truth_", &truth_, &b_truth_);
+   fChain->SetBranchAddress("truth_N_K0", &truth_N_K0, &b_truth_N_K0);
+   fChain->SetBranchAddress("truth_N_chargedK", &truth_N_chargedK, &b_truth_N_chargedK);
+   fChain->SetBranchAddress("truth_N_lambda", &truth_N_lambda, &b_truth_N_lambda);
+   fChain->SetBranchAddress("truth_N_pi0", &truth_N_pi0, &b_truth_N_pi0);
+   fChain->SetBranchAddress("truth_N_pim", &truth_N_pim, &b_truth_N_pim);
+   fChain->SetBranchAddress("truth_N_pip", &truth_N_pip, &b_truth_N_pip);
+   fChain->SetBranchAddress("truth_N_sigma", &truth_N_sigma, &b_truth_N_sigma);
    fChain->SetBranchAddress("truth_hadronReweightNPaths", &truth_hadronReweightNPaths, &b_truth_hadronReweightNPaths);
    fChain->SetBranchAddress("truth_hadronReweightNPoints", &truth_hadronReweightNPoints, &b_truth_hadronReweightNPoints);
    fChain->SetBranchAddress("truth_in_fiducial_area", &truth_in_fiducial_area, &b_truth_in_fiducial_area);
@@ -3752,6 +4883,10 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("truth_vtx_module", &truth_vtx_module, &b_truth_vtx_module);
    fChain->SetBranchAddress("truth_vtx_plane", &truth_vtx_plane, &b_truth_vtx_plane);
 //    fChain->SetBranchAddress("truth_", &truth_, &b_truth_);
+   fChain->SetBranchAddress("truth_muon_E", &truth_muon_E, &b_truth_muon_E);
+   fChain->SetBranchAddress("truth_muon_px", &truth_muon_px, &b_truth_muon_px);
+   fChain->SetBranchAddress("truth_muon_py", &truth_muon_py, &b_truth_muon_py);
+   fChain->SetBranchAddress("truth_muon_pz", &truth_muon_pz, &b_truth_muon_pz);
    fChain->SetBranchAddress("truth_muon_theta", &truth_muon_theta, &b_truth_muon_theta);
    fChain->SetBranchAddress("truth_target_dist_to_division", &truth_target_dist_to_division, &b_truth_target_dist_to_division);
    fChain->SetBranchAddress("truth_target_zDist", &truth_target_zDist, &b_truth_target_zDist);
@@ -3777,6 +4912,7 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("truth_hadronReweightTrackID", truth_hadronReweightTrackID, &b_truth_hadronReweightTrackID);
    fChain->SetBranchAddress("truth_hadronReweightTrajPointFlag_sz", &truth_hadronReweightTrajPointFlag_sz, &b_truth_hadronReweightTrajPointFlag_sz);
    fChain->SetBranchAddress("truth_hadronReweightTrajPointFlag", truth_hadronReweightTrajPointFlag, &b_truth_hadronReweightTrajPointFlag);
+   fChain->SetBranchAddress("truth_pi_charge", truth_pi_charge, &b_truth_pi_charge);
 //    fChain->SetBranchAddress("truth_", &truth_, &b_truth_);
    fChain->SetBranchAddress("genie_wgt_n_shifts", &genie_wgt_n_shifts, &b_genie_wgt_n_shifts);
    fChain->SetBranchAddress("truth_genie_wgt_AGKYxF1pi", truth_genie_wgt_AGKYxF1pi, &b_truth_genie_wgt_AGKYxF1pi);
@@ -3833,6 +4969,11 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("truth_hadronReweightPosZ", truth_hadronReweightPosZ, &b_truth_hadronReweightPosZ);
    fChain->SetBranchAddress("truth_hadronReweightTimeDelta_sz", &truth_hadronReweightTimeDelta_sz, &b_truth_hadronReweightTimeDelta_sz);
    fChain->SetBranchAddress("truth_hadronReweightTimeDelta", truth_hadronReweightTimeDelta, &b_truth_hadronReweightTimeDelta);
+   fChain->SetBranchAddress("truth_pi_E", truth_pi_E, &b_truth_pi_E);
+   fChain->SetBranchAddress("truth_pi_px", truth_pi_px, &b_truth_pi_px);
+   fChain->SetBranchAddress("truth_pi_py", truth_pi_py, &b_truth_pi_py);
+   fChain->SetBranchAddress("truth_pi_pz", truth_pi_pz, &b_truth_pi_pz);
+   fChain->SetBranchAddress("truth_pi_theta_wrtbeam", truth_pi_theta_wrtbeam, &b_truth_pi_theta_wrtbeam);
    fChain->SetBranchAddress("MasterAnaDev_nuFlavor", &MasterAnaDev_nuFlavor, &b_MasterAnaDev_nuFlavor);
    fChain->SetBranchAddress("MasterAnaDev_nuHelicity", &MasterAnaDev_nuHelicity, &b_MasterAnaDev_nuHelicity);
    fChain->SetBranchAddress("MasterAnaDev_intCurrent", &MasterAnaDev_intCurrent, &b_MasterAnaDev_intCurrent);
@@ -3851,6 +4992,7 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("MasterAnaDev_minos_used_curvature", &MasterAnaDev_minos_used_curvature, &b_MasterAnaDev_minos_used_curvature);
    fChain->SetBranchAddress("MasterAnaDev_EvtHasNBlobIncTracks", &MasterAnaDev_EvtHasNBlobIncTracks, &b_MasterAnaDev_EvtHasNBlobIncTracks);
    fChain->SetBranchAddress("MasterAnaDev_EvtHasNBlobTracks", &MasterAnaDev_EvtHasNBlobTracks, &b_MasterAnaDev_EvtHasNBlobTracks);
+   fChain->SetBranchAddress("MasterAnaDev_hadron_number", &MasterAnaDev_hadron_number, &b_MasterAnaDev_hadron_number);
    fChain->SetBranchAddress("MasterAnaDev_in_fiducial_area", &MasterAnaDev_in_fiducial_area, &b_MasterAnaDev_in_fiducial_area);
    fChain->SetBranchAddress("MasterAnaDev_minos_trk_end_plane", &MasterAnaDev_minos_trk_end_plane, &b_MasterAnaDev_minos_trk_end_plane);
    fChain->SetBranchAddress("MasterAnaDev_minos_trk_quality", &MasterAnaDev_minos_trk_quality, &b_MasterAnaDev_minos_trk_quality);
@@ -3889,9 +5031,16 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("MasterAnaDev_minos_trk_vtx_z", &MasterAnaDev_minos_trk_vtx_z, &b_MasterAnaDev_minos_trk_vtx_z);
    fChain->SetBranchAddress("MasterAnaDev_muon_E", &MasterAnaDev_muon_E, &b_MasterAnaDev_muon_E);
    fChain->SetBranchAddress("MasterAnaDev_muon_P", &MasterAnaDev_muon_P, &b_MasterAnaDev_muon_P);
+   fChain->SetBranchAddress("MasterAnaDev_muon_Px", &MasterAnaDev_muon_Px, &b_MasterAnaDev_muon_Px);
+   fChain->SetBranchAddress("MasterAnaDev_muon_Py", &MasterAnaDev_muon_Py, &b_MasterAnaDev_muon_Py);
+   fChain->SetBranchAddress("MasterAnaDev_muon_Pz", &MasterAnaDev_muon_Pz, &b_MasterAnaDev_muon_Pz);
    fChain->SetBranchAddress("MasterAnaDev_muon_T", &MasterAnaDev_muon_T, &b_MasterAnaDev_muon_T);
+   fChain->SetBranchAddress("MasterAnaDev_muon_qp", &MasterAnaDev_muon_qp, &b_MasterAnaDev_muon_qp);
+   fChain->SetBranchAddress("MasterAnaDev_muon_qpqpe", &MasterAnaDev_muon_qpqpe, &b_MasterAnaDev_muon_qpqpe);
    fChain->SetBranchAddress("MasterAnaDev_muon_score", &MasterAnaDev_muon_score, &b_MasterAnaDev_muon_score);
    fChain->SetBranchAddress("MasterAnaDev_muon_theta", &MasterAnaDev_muon_theta, &b_MasterAnaDev_muon_theta);
+   fChain->SetBranchAddress("MasterAnaDev_muon_theta_biasDown", &MasterAnaDev_muon_theta_biasDown, &b_MasterAnaDev_muon_theta_biasDown);
+   fChain->SetBranchAddress("MasterAnaDev_muon_theta_biasUp", &MasterAnaDev_muon_theta_biasUp, &b_MasterAnaDev_muon_theta_biasUp);
    fChain->SetBranchAddress("MasterAnaDev_pion_score", &MasterAnaDev_pion_score, &b_MasterAnaDev_pion_score);
    fChain->SetBranchAddress("MasterAnaDev_pion_score1", &MasterAnaDev_pion_score1, &b_MasterAnaDev_pion_score1);
    fChain->SetBranchAddress("MasterAnaDev_pion_score2", &MasterAnaDev_pion_score2, &b_MasterAnaDev_pion_score2);
@@ -4019,6 +5168,17 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("MasterAnaDev_BlobVtxDZ_order", &MasterAnaDev_BlobVtxDZ_order, &b_MasterAnaDev_BlobVtxDZ_order);
    fChain->SetBranchAddress("MasterAnaDev_RecoPattern_sz", &MasterAnaDev_RecoPattern_sz, &b_MasterAnaDev_RecoPattern_sz);
    fChain->SetBranchAddress("MasterAnaDev_RecoPattern", MasterAnaDev_RecoPattern, &b_MasterAnaDev_RecoPattern);
+   fChain->SetBranchAddress("MasterAnaDev_hadron_endMichel_category", MasterAnaDev_hadron_endMichel_category, &b_MasterAnaDev_hadron_endMichel_category);
+   fChain->SetBranchAddress("MasterAnaDev_hadron_endMichel_ndigits", MasterAnaDev_hadron_endMichel_ndigits, &b_MasterAnaDev_hadron_endMichel_ndigits);
+   fChain->SetBranchAddress("MasterAnaDev_hadron_isExiting", MasterAnaDev_hadron_isExiting, &b_MasterAnaDev_hadron_isExiting);
+   fChain->SetBranchAddress("MasterAnaDev_hadron_isForked", MasterAnaDev_hadron_isForked, &b_MasterAnaDev_hadron_isForked);
+   fChain->SetBranchAddress("MasterAnaDev_hadron_isODMatch", MasterAnaDev_hadron_isODMatch, &b_MasterAnaDev_hadron_isODMatch);
+   fChain->SetBranchAddress("MasterAnaDev_hadron_isSideECAL", MasterAnaDev_hadron_isSideECAL, &b_MasterAnaDev_hadron_isSideECAL);
+   fChain->SetBranchAddress("MasterAnaDev_hadron_isTracker", MasterAnaDev_hadron_isTracker, &b_MasterAnaDev_hadron_isTracker);
+   fChain->SetBranchAddress("MasterAnaDev_hadron_tm_PDGCode", MasterAnaDev_hadron_tm_PDGCode, &b_MasterAnaDev_hadron_tm_PDGCode);
+   fChain->SetBranchAddress("MasterAnaDev_hadron_tm_destructCode", MasterAnaDev_hadron_tm_destructCode, &b_MasterAnaDev_hadron_tm_destructCode);
+   fChain->SetBranchAddress("MasterAnaDev_hadron_tm_trackID", MasterAnaDev_hadron_tm_trackID, &b_MasterAnaDev_hadron_tm_trackID);
+   fChain->SetBranchAddress("MasterAnaDev_pion_nNodes", MasterAnaDev_pion_nNodes, &b_MasterAnaDev_pion_nNodes);
    fChain->SetBranchAddress("MasterAnaDev_ref_targZ", MasterAnaDev_ref_targZ, &b_MasterAnaDev_ref_targZ);
    fChain->SetBranchAddress("MasterAnaDev_sec_protons_nodes_index_sz", &MasterAnaDev_sec_protons_nodes_index_sz, &b_MasterAnaDev_sec_protons_nodes_index_sz);
    fChain->SetBranchAddress("MasterAnaDev_sec_protons_nodes_index", MasterAnaDev_sec_protons_nodes_index, &b_MasterAnaDev_sec_protons_nodes_index);
@@ -4196,6 +5356,36 @@ void RECOTRACKS_ANA::MasterAnaDev::Init(TTree *tree)
    fChain->SetBranchAddress("MasterAnaDev_MCEnergyFrac_Proton", MasterAnaDev_MCEnergyFrac_Proton, &b_MasterAnaDev_MCEnergyFrac_Proton);
    fChain->SetBranchAddress("MasterAnaDev_ReconstructedHadronMass_sz", &MasterAnaDev_ReconstructedHadronMass_sz, &b_MasterAnaDev_ReconstructedHadronMass_sz);
    fChain->SetBranchAddress("MasterAnaDev_ReconstructedHadronMass", MasterAnaDev_ReconstructedHadronMass, &b_MasterAnaDev_ReconstructedHadronMass);
+   fChain->SetBranchAddress("MasterAnaDev_hadron_endMichel_energy", MasterAnaDev_hadron_endMichel_energy, &b_MasterAnaDev_hadron_endMichel_energy);
+   fChain->SetBranchAddress("MasterAnaDev_hadron_endMichel_slice_energy", MasterAnaDev_hadron_endMichel_slice_energy, &b_MasterAnaDev_hadron_endMichel_slice_energy);
+   fChain->SetBranchAddress("MasterAnaDev_hadron_piFit_score1", MasterAnaDev_hadron_piFit_score1, &b_MasterAnaDev_hadron_piFit_score1);
+   fChain->SetBranchAddress("MasterAnaDev_hadron_piFit_scoreLLR", MasterAnaDev_hadron_piFit_scoreLLR, &b_MasterAnaDev_hadron_piFit_scoreLLR);
+   fChain->SetBranchAddress("MasterAnaDev_hadron_tm_beginKE", MasterAnaDev_hadron_tm_beginKE, &b_MasterAnaDev_hadron_tm_beginKE);
+   fChain->SetBranchAddress("MasterAnaDev_piFit_score1_BetheBloch_biasDown", MasterAnaDev_piFit_score1_BetheBloch_biasDown, &b_MasterAnaDev_piFit_score1_BetheBloch_biasDown);
+   fChain->SetBranchAddress("MasterAnaDev_piFit_score1_BetheBloch_biasUp", MasterAnaDev_piFit_score1_BetheBloch_biasUp, &b_MasterAnaDev_piFit_score1_BetheBloch_biasUp);
+   fChain->SetBranchAddress("MasterAnaDev_piFit_score1_Birks", MasterAnaDev_piFit_score1_Birks, &b_MasterAnaDev_piFit_score1_Birks);
+   fChain->SetBranchAddress("MasterAnaDev_piFit_score1_Mass_biasDown", MasterAnaDev_piFit_score1_Mass_biasDown, &b_MasterAnaDev_piFit_score1_Mass_biasDown);
+   fChain->SetBranchAddress("MasterAnaDev_piFit_score1_Mass_biasUp", MasterAnaDev_piFit_score1_Mass_biasUp, &b_MasterAnaDev_piFit_score1_Mass_biasUp);
+   fChain->SetBranchAddress("MasterAnaDev_pion_E", MasterAnaDev_pion_E, &b_MasterAnaDev_pion_E);
+   fChain->SetBranchAddress("MasterAnaDev_pion_E_BetheBloch_biasDown", MasterAnaDev_pion_E_BetheBloch_biasDown, &b_MasterAnaDev_pion_E_BetheBloch_biasDown);
+   fChain->SetBranchAddress("MasterAnaDev_pion_E_BetheBloch_biasUp", MasterAnaDev_pion_E_BetheBloch_biasUp, &b_MasterAnaDev_pion_E_BetheBloch_biasUp);
+   fChain->SetBranchAddress("MasterAnaDev_pion_E_Birks", MasterAnaDev_pion_E_Birks, &b_MasterAnaDev_pion_E_Birks);
+   fChain->SetBranchAddress("MasterAnaDev_pion_E_Mass_biasDown", MasterAnaDev_pion_E_Mass_biasDown, &b_MasterAnaDev_pion_E_Mass_biasDown);
+   fChain->SetBranchAddress("MasterAnaDev_pion_E_Mass_biasUp", MasterAnaDev_pion_E_Mass_biasUp, &b_MasterAnaDev_pion_E_Mass_biasUp);
+   fChain->SetBranchAddress("MasterAnaDev_pion_P", MasterAnaDev_pion_P, &b_MasterAnaDev_pion_P);
+   fChain->SetBranchAddress("MasterAnaDev_pion_Px", MasterAnaDev_pion_Px, &b_MasterAnaDev_pion_Px);
+   fChain->SetBranchAddress("MasterAnaDev_pion_Py", MasterAnaDev_pion_Py, &b_MasterAnaDev_pion_Py);
+   fChain->SetBranchAddress("MasterAnaDev_pion_Pz", MasterAnaDev_pion_Pz, &b_MasterAnaDev_pion_Pz);
+   fChain->SetBranchAddress("MasterAnaDev_pion_T", MasterAnaDev_pion_T, &b_MasterAnaDev_pion_T);
+   fChain->SetBranchAddress("MasterAnaDev_pion_lastnode_Q0", MasterAnaDev_pion_lastnode_Q0, &b_MasterAnaDev_pion_lastnode_Q0);
+   fChain->SetBranchAddress("MasterAnaDev_pion_lastnode_Q1", MasterAnaDev_pion_lastnode_Q1, &b_MasterAnaDev_pion_lastnode_Q1);
+   fChain->SetBranchAddress("MasterAnaDev_pion_lastnode_Q2", MasterAnaDev_pion_lastnode_Q2, &b_MasterAnaDev_pion_lastnode_Q2);
+   fChain->SetBranchAddress("MasterAnaDev_pion_lastnode_Q3", MasterAnaDev_pion_lastnode_Q3, &b_MasterAnaDev_pion_lastnode_Q3);
+   fChain->SetBranchAddress("MasterAnaDev_pion_lastnode_Q4", MasterAnaDev_pion_lastnode_Q4, &b_MasterAnaDev_pion_lastnode_Q4);
+   fChain->SetBranchAddress("MasterAnaDev_pion_lastnode_Q5", MasterAnaDev_pion_lastnode_Q5, &b_MasterAnaDev_pion_lastnode_Q5);
+   fChain->SetBranchAddress("MasterAnaDev_pion_theta", MasterAnaDev_pion_theta, &b_MasterAnaDev_pion_theta);
+   fChain->SetBranchAddress("MasterAnaDev_pion_theta_biasDown", MasterAnaDev_pion_theta_biasDown, &b_MasterAnaDev_pion_theta_biasDown);
+   fChain->SetBranchAddress("MasterAnaDev_pion_theta_biasUp", MasterAnaDev_pion_theta_biasUp, &b_MasterAnaDev_pion_theta_biasUp);
    fChain->SetBranchAddress("MasterAnaDev_proton_nodes_E_sz", &MasterAnaDev_proton_nodes_E_sz, &b_MasterAnaDev_proton_nodes_E_sz);
    fChain->SetBranchAddress("MasterAnaDev_proton_nodes_E", MasterAnaDev_proton_nodes_E, &b_MasterAnaDev_proton_nodes_E);
    fChain->SetBranchAddress("MasterAnaDev_proton_nodes_nodesNormE_sz", &MasterAnaDev_proton_nodes_nodesNormE_sz, &b_MasterAnaDev_proton_nodes_nodesNormE_sz);
